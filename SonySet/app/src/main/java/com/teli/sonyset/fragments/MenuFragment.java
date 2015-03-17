@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,15 +59,15 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
 
         ButterKnife.inject(this,view);
 
-//        DisplayMetrics displaymetrics = new DisplayMetrics();
-//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-//        int height = displaymetrics.heightPixels;
-//        int width = displaymetrics.widthPixels;
-//        if(width==540){
-//            RelativeLayout.LayoutParams relativeParams = (RelativeLayout.LayoutParams)getActivity().relativeLayout.getLayoutParams();
-//            relativeParams.setMargins(0, 80, 0, 0);  // left, top, right, bottom
-//            relativeLayout.setLayoutParams(relativeParams);
-//        }
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+        if(width==540){
+            RelativeLayout.LayoutParams relativeParams = (RelativeLayout.LayoutParams) socialButtonRL.getLayoutParams();
+            relativeParams.setMargins(30, 0, 0, 0);  // left, top, right, bottom
+            socialButtonRL.setLayoutParams(relativeParams);
+        }
 
 //        socialButtonRL
 
