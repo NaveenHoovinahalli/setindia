@@ -2,18 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:background="@drawable/expandable_group_selection"
+    android:background="#191919"
     >
+    <!--android:padding="8dp"-->
+
+
+    <!--android:background="@drawable/expandable_group_selection"-->
+
 
 
     <ImageView
         android:id="@+id/expandableplusminus"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_centerInParent="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/btn_square_plus"
         />
+
+
 
 
     <ImageView
@@ -25,8 +31,15 @@
         android:gravity="center_vertical"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        />
+
+    <View
+        android:id="@+id/colorcodemenu"
+        android:layout_width="3dp"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/expandableplusminus"
+        android:layout_alignBottom="@+id/expandableplusminus"
+       />
     
     <com.teli.sonyset.views.SonyTextView
         android:id="@+id/lblListHeader"

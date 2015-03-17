@@ -10,4 +10,9 @@
     <dimen name="promoHeight">230dp</dimen>
     <dimen name="actionBarHeight">17sp</dimen>
     <dimen name="loopPagerMargin">-860dp</dimen>
+    <dimen name="menucentertext">120dp</dimen>
+    <dimen name="menucenterImage">95dp</dimen>
+    <dimen name="menucenterbottomtext">85dp</dimen>
+    <dimen name="menucenterbottomtexttwo">115dp</dimen>
+    <dimen name="menucenterline">55dp</dimen>
 </resources>

@@ -14,6 +14,11 @@ import android.widget.Toast;
 import com.teli.sonyset.R;
 import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.views.SonyTextView;
+import com.zedo.androidsdk.ZedoAndroidSdk;
+import com.zedo.androidsdk.utils.AdRenderer;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,6 +43,9 @@ public class WebViewActivity extends Activity {
     @InjectView(R.id.textHeading)
     SonyTextView mTextHeading;
 
+    Map<String, String> aliasMap;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_webview);
@@ -47,6 +55,11 @@ public class WebViewActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Sorry! No Internet Connection", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        aliasMap = new LinkedHashMap<String, String>();
+        aliasMap.put("banner", "c1986d14s378");
+
+        ZedoAndroidSdk.init(getApplicationContext(), "480", aliasMap);
 
         if (getIntent().hasExtra(WEB_TEXT_HEADER)){
             relativeLayout.setVisibility(View.VISIBLE);
@@ -89,5 +102,11 @@ public class WebViewActivity extends Activity {
     @OnClick(R.id.backBtn)
     public void backPressed(){
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AdRenderer.showStickyFooter(this, "banner",AdRenderer.ANIMATION_SLIDE_FROM_BOTTOM);
     }
 }

@@ -1,36 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#323232"
+    android:background="#2E2E2E"
 
    >
-  <RelativeLayout
-      android:id="@+id/topLayout"
-      android:layout_width="fill_parent"
-      android:layout_height="100dp"
-      android:background="@drawable/place_holder1">
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/sony_logo"
-          android:padding="10dp"/>
 
-      </RelativeLayout>
 
-  <ExpandableListView
-      android:id="@+id/lvExp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:groupIndicator="@null"
-      android:dividerHeight="2dp"
-      android:background="#2E2E2E"
-         />
     <!--android:groupIndicator="@drawable/btn_expandable"-->
     <!--android:layout_marginLeft="10dp"-->
     <!--android:padding="5dp"-->
 
     <!--android:groupIndicator="@drawable/btn_expandable"-->
 
+<RelativeLayout
+    android:id="@+id/bottomsocial"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#2E2E2E"
+    >
 
-</LinearLayout>
+    <com.teli.sonyset.views.SonyTextView
+        android:id="@+id/socialTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FOLLOW US ON"
+        android:textColor="#828282"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/menucentertext"/>
+    <LinearLayout
+        android:id="@+id/socialButtonId"
+        android:layout_below="@+id/socialTV"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/menucenterImage">
+        <ImageView
+            android:id="@+id/btnFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/facebook"/>
+        <ImageView
+            android:id="@+id/btnTwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/twitter"/>
+        <ImageView
+            android:id="@+id/btnYoutube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/you_tube"/>
+
+        </LinearLayout>
+    <View
+        android:layout_below="@id/socialButtonId"
+        android:layout_marginTop="5dp"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+       android:layout_marginLeft="@dimen/menucenterline"
+        android:background="#828282"/>
+
+    <com.teli.sonyset.views.SonyTextView
+        android:id="@+id/textviewone"
+        android:layout_marginTop="10dp"
+        android:textSize="10sp"
+        android:layout_below="@id/socialButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="©2015,Multi Screen Media Pvt. Ltd."
+        android:textColor="#828282"
+        android:layout_marginLeft="@dimen/menucenterbottomtext"
+        />
+
+    <com.teli.sonyset.views.SonyTextView
+        android:textSize="10sp"
+        android:layout_below="@id/textviewone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All rights reserved "
+        android:textColor="#828282"
+        android:layout_marginLeft="@dimen/menucenterbottomtexttwo"
+
+        />
+
+  </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/place_holder1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sony_logo"
+            android:padding="10dp"/>
+
+    </RelativeLayout>
+
+
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_above="@+id/bottomsocial"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/topLayout"
+        android:layout_height="wrap_content"
+        android:groupIndicator="@null"
+        android:dividerHeight="1dp"
+        android:divider="#323232"
+        android:background="#2E2E2E"
+        />
+
+
+
+</RelativeLayout>
