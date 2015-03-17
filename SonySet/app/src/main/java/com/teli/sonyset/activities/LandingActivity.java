@@ -168,6 +168,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 //        bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
         bottomPager.setOnPageChangeListener(bottomPagerListener);
         bottomPager.setOffscreenPageLimit(15);
+        bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
             bottomPager.setCurrentItem(1);
@@ -742,10 +743,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     };
 
     public void setSelectedIten(int position) {
-//        pager.setCurrentItem(2500 + position);
+        pager.setCurrentItem(position);
     }
 
-    private int pagerCount;
     ViewPager.OnPageChangeListener bottomPagerListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {
@@ -765,5 +765,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }
     };
 }
+
+
+
+
 
 
