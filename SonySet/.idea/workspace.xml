@@ -30,29 +30,13 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="AdapterPosition" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.teli.sonyset" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/ExclusiveFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/views/HorizontalLinearLayout.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_exclusive.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/refs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/strip_selector.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_HeaderFooterGridView_0_2_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_HeaderFooterGridView_0_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_sdk_4_3_4_unspecified.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_sdk_4_3_4_unspecified.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SonySet.iws" />
@@ -79,44 +63,44 @@
       <file leaf-file-name="LandingActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74285716" vertical-offset="2730" max-vertical-offset="13986">
-              <caret line="169" column="46" selection-start-line="169" selection-start-column="46" selection-end-line="169" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.35714287" vertical-offset="13260" max-vertical-offset="13950">
+              <caret line="745" column="5" selection-start-line="745" selection-start-column="5" selection-end-line="745" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3952#3960#0" expanded="true" />
                 <element signature="e#4155#4162#0" expanded="true" />
-                <element signature="e#8366#9158#0" expanded="true" />
-                <element signature="e#9139#9140#0" expanded="true" />
-                <element signature="e#9160#9374#0" expanded="true" />
-                <element signature="e#9363#9364#0" expanded="true" />
-                <element signature="e#10212#10396#0" expanded="true" />
-                <element signature="e#10377#10378#0" expanded="true" />
-                <element signature="e#12154#13248#0" expanded="true" />
-                <element signature="e#13229#13230#0" expanded="true" />
-                <element signature="e#13266#13560#0" expanded="true" />
-                <element signature="e#13541#13542#0" expanded="true" />
-                <element signature="e#14288#14289#0" expanded="true" />
-                <element signature="e#14348#14349#0" expanded="true" />
-                <element signature="e#14977#14984#0" expanded="true" />
-                <element signature="e#15426#15427#0" expanded="true" />
-                <element signature="e#15470#15471#0" expanded="true" />
-                <element signature="e#15557#15558#0" expanded="true" />
-                <element signature="e#15602#15603#0" expanded="true" />
-                <element signature="e#16546#16850#0" expanded="true" />
-                <element signature="e#16835#16836#0" expanded="true" />
-                <element signature="e#17644#17874#0" expanded="true" />
-                <element signature="e#17867#17868#0" expanded="true" />
-                <element signature="e#19288#19289#0" expanded="true" />
-                <element signature="e#19328#19329#0" expanded="true" />
-                <element signature="e#20320#20321#0" expanded="true" />
-                <element signature="e#20363#20364#0" expanded="true" />
-                <element signature="e#20736#20751#0" expanded="true" />
-                <element signature="e#24390#24548#0" expanded="true" />
-                <element signature="e#24525#24526#0" expanded="true" />
-                <element signature="e#24588#25379#0" expanded="true" />
-                <element signature="e#25356#25357#0" expanded="true" />
-                <element signature="e#25428#25598#0" expanded="true" />
-                <element signature="e#25574#25575#0" expanded="true" />
+                <element signature="e#8318#9110#0" expanded="true" />
+                <element signature="e#9091#9092#0" expanded="true" />
+                <element signature="e#9112#9326#0" expanded="true" />
+                <element signature="e#9315#9316#0" expanded="true" />
+                <element signature="e#10164#10348#0" expanded="true" />
+                <element signature="e#10329#10330#0" expanded="true" />
+                <element signature="e#12106#13200#0" expanded="true" />
+                <element signature="e#13181#13182#0" expanded="true" />
+                <element signature="e#13218#13512#0" expanded="true" />
+                <element signature="e#13493#13494#0" expanded="true" />
+                <element signature="e#14240#14241#0" expanded="true" />
+                <element signature="e#14300#14301#0" expanded="true" />
+                <element signature="e#14929#14936#0" expanded="true" />
+                <element signature="e#15378#15379#0" expanded="true" />
+                <element signature="e#15422#15423#0" expanded="true" />
+                <element signature="e#15509#15510#0" expanded="true" />
+                <element signature="e#15554#15555#0" expanded="true" />
+                <element signature="e#16498#16802#0" expanded="true" />
+                <element signature="e#16787#16788#0" expanded="true" />
+                <element signature="e#17596#17826#0" expanded="true" />
+                <element signature="e#17819#17820#0" expanded="true" />
+                <element signature="e#19307#19308#0" expanded="true" />
+                <element signature="e#19347#19348#0" expanded="true" />
+                <element signature="e#20339#20340#0" expanded="true" />
+                <element signature="e#20382#20383#0" expanded="true" />
+                <element signature="e#20755#20770#0" expanded="true" />
+                <element signature="e#24409#24567#0" expanded="true" />
+                <element signature="e#24544#24545#0" expanded="true" />
+                <element signature="e#24607#25398#0" expanded="true" />
+                <element signature="e#25375#25376#0" expanded="true" />
+                <element signature="e#25447#25617#0" expanded="true" />
+                <element signature="e#25593#25594#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,8 +131,8 @@
       <file leaf-file-name="MyPagerAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="738">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="774">
+              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1761,11 +1745,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/views/HorizontalLinearLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_exclusive.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/ExclusiveFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
       </list>
     </option>
@@ -2383,7 +2367,11 @@
       <created>1426401747289</created>
       <updated>1426401747289</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="ViewPager Demo">
+      <created>1426591166589</created>
+      <updated>1426591166589</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2423,7 +2411,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.4996016" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48553056" sideWeight="0.4996016" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48553056" sideWeight="0.4996016" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2465,7 +2453,8 @@
     <MESSAGE value="merged with kalyan" />
     <MESSAGE value="inter" />
     <MESSAGE value="merged with naveen" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged with naveen" />
+    <MESSAGE value="ViewPager Demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ViewPager Demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2811,16 +2800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="738">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="933" max-vertical-offset="1836">
@@ -2853,46 +2832,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="774">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74285716" vertical-offset="2730" max-vertical-offset="13986">
-          <caret line="169" column="46" selection-start-line="169" selection-start-column="46" selection-end-line="169" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.35714287" vertical-offset="13260" max-vertical-offset="13950">
+          <caret line="745" column="5" selection-start-line="745" selection-start-column="5" selection-end-line="745" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3952#3960#0" expanded="true" />
             <element signature="e#4155#4162#0" expanded="true" />
-            <element signature="e#8366#9158#0" expanded="true" />
-            <element signature="e#9139#9140#0" expanded="true" />
-            <element signature="e#9160#9374#0" expanded="true" />
-            <element signature="e#9363#9364#0" expanded="true" />
-            <element signature="e#10212#10396#0" expanded="true" />
-            <element signature="e#10377#10378#0" expanded="true" />
-            <element signature="e#12154#13248#0" expanded="true" />
-            <element signature="e#13229#13230#0" expanded="true" />
-            <element signature="e#13266#13560#0" expanded="true" />
-            <element signature="e#13541#13542#0" expanded="true" />
-            <element signature="e#14288#14289#0" expanded="true" />
-            <element signature="e#14348#14349#0" expanded="true" />
-            <element signature="e#14977#14984#0" expanded="true" />
-            <element signature="e#15426#15427#0" expanded="true" />
-            <element signature="e#15470#15471#0" expanded="true" />
-            <element signature="e#15557#15558#0" expanded="true" />
-            <element signature="e#15602#15603#0" expanded="true" />
-            <element signature="e#16546#16850#0" expanded="true" />
-            <element signature="e#16835#16836#0" expanded="true" />
-            <element signature="e#17644#17874#0" expanded="true" />
-            <element signature="e#17867#17868#0" expanded="true" />
-            <element signature="e#19288#19289#0" expanded="true" />
-            <element signature="e#19328#19329#0" expanded="true" />
-            <element signature="e#20320#20321#0" expanded="true" />
-            <element signature="e#20363#20364#0" expanded="true" />
-            <element signature="e#20736#20751#0" expanded="true" />
-            <element signature="e#24390#24548#0" expanded="true" />
-            <element signature="e#24525#24526#0" expanded="true" />
-            <element signature="e#24588#25379#0" expanded="true" />
-            <element signature="e#25356#25357#0" expanded="true" />
-            <element signature="e#25428#25598#0" expanded="true" />
-            <element signature="e#25574#25575#0" expanded="true" />
+            <element signature="e#8318#9110#0" expanded="true" />
+            <element signature="e#9091#9092#0" expanded="true" />
+            <element signature="e#9112#9326#0" expanded="true" />
+            <element signature="e#9315#9316#0" expanded="true" />
+            <element signature="e#10164#10348#0" expanded="true" />
+            <element signature="e#10329#10330#0" expanded="true" />
+            <element signature="e#12106#13200#0" expanded="true" />
+            <element signature="e#13181#13182#0" expanded="true" />
+            <element signature="e#13218#13512#0" expanded="true" />
+            <element signature="e#13493#13494#0" expanded="true" />
+            <element signature="e#14240#14241#0" expanded="true" />
+            <element signature="e#14300#14301#0" expanded="true" />
+            <element signature="e#14929#14936#0" expanded="true" />
+            <element signature="e#15378#15379#0" expanded="true" />
+            <element signature="e#15422#15423#0" expanded="true" />
+            <element signature="e#15509#15510#0" expanded="true" />
+            <element signature="e#15554#15555#0" expanded="true" />
+            <element signature="e#16498#16802#0" expanded="true" />
+            <element signature="e#16787#16788#0" expanded="true" />
+            <element signature="e#17596#17826#0" expanded="true" />
+            <element signature="e#17819#17820#0" expanded="true" />
+            <element signature="e#19307#19308#0" expanded="true" />
+            <element signature="e#19347#19348#0" expanded="true" />
+            <element signature="e#20339#20340#0" expanded="true" />
+            <element signature="e#20382#20383#0" expanded="true" />
+            <element signature="e#20755#20770#0" expanded="true" />
+            <element signature="e#24409#24567#0" expanded="true" />
+            <element signature="e#24544#24545#0" expanded="true" />
+            <element signature="e#24607#25398#0" expanded="true" />
+            <element signature="e#25375#25376#0" expanded="true" />
+            <element signature="e#25447#25617#0" expanded="true" />
+            <element signature="e#25593#25594#0" expanded="true" />
           </folding>
         </state>
       </provider>

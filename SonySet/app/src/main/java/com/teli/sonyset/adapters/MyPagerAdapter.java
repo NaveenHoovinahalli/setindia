@@ -3,6 +3,7 @@ package com.teli.sonyset.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.fragments.MyFragment;
@@ -25,6 +26,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int position)
 	{
+        Log.d("LandingActivity", "AdapterPositionMy" + position);
         position = position % LandingActivity.PAGES;
         return MyFragment.newInstance(context, position, 0.5f);
 	}
