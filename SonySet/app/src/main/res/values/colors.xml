@@ -6,4 +6,6 @@
     <color name="sony_black">#000000</color>
     <color name="sony_white">#FFFFFF</color>
     <color name="sony_grey">#666666</color>
+    <color name="dark_grey">#191919</color>
+    <color name="light_grey">#353535</color>
 </resources>

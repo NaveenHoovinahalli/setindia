@@ -1,5 +1,6 @@
 package com.teli.sonyset.activities;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +40,9 @@ import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
+import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
+import com.teli.sonyset.fragments.ExclusiveFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;
@@ -92,65 +95,28 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @InjectView(R.id.bottomPager)
     ViewPager bottomPager;
 
-    @InjectView(R.id.tab1)
-    LinearLayout tab1;
-
-    @InjectView(R.id.tab2)
-    LinearLayout tab2;
-
-    @InjectView(R.id.tab3)
-    LinearLayout tab3;
-
-    @InjectView(R.id.tab4)
-    LinearLayout tab4;
-
-    @InjectView(R.id.iv1)
-    ImageView iv1;
-
-    @InjectView(R.id.iv2)
-    ImageView iv2;
-
-    @InjectView(R.id.iv3)
-    ImageView iv3;
-
-    @InjectView(R.id.iv4)
-    ImageView iv4;
-
-    @InjectView(R.id.tv1)
-    TextView tv1;
-
-    @InjectView(R.id.tv2)
-    TextView tv2;
-
-    @InjectView(R.id.tv3)
-    TextView tv3;
-
-    @InjectView(R.id.tv4)
-    TextView tv4;
-
     @InjectView(R.id.secondScreen)
     ImageView mSecondScreen;
 
-    @InjectView(R.id.colorCode1)
-    ImageView colorCode1;
+    public final static int PAGES = 5;
+    // You can choose a bigger number for LOOPS, but you know, nobody will fling
+    // more than 1000 times just in order to test your "infinite" ViewPager :D
+    public final static int LOOPS = 1000;
+    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+    public final static float BIG_SCALE = 0.75f;
+    public final static float SMALL_SCALE = 0.75f;
+    public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
 
-    @InjectView(R.id.colorCode2)
-    ImageView colorCode2;
-
-    @InjectView(R.id.colorCode3)
-    ImageView colorCode3;
-
-    @InjectView(R.id.colorCode4)
-    ImageView colorCode4;
+    public MyPagerAdapter adapter;
+    public ViewPager pager;
 
     private ArrayList<String> brightCoveIds = new ArrayList<String>();
-
     private static final double SLIDE_DURATION_FACTOR = 3.0;
     private static final long SLIDE_INTERVAL = 4000;
     private Timer timer1;
     private ArrayList<Video> promos = new ArrayList<Video>();
     private NavigationAdapter mPagerAdapter;
-    private HashMap<Integer,String> thumbnailsBrightCove = new HashMap<>();
+    private HashMap<Integer, String> thumbnailsBrightCove = new HashMap<>();
     private ArrayList<String> brightCoveList = new ArrayList<>();
     private String countryCode;
     private DetectedAudio mDetectedAudio;
@@ -178,39 +144,43 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         setContentView(R.layout.activity_landing);
         ButterKnife.inject(this);
         BusProvider.getInstance().register(this);
+        pager = (ViewPager) findViewById(R.id.myviewpager);
+        adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
+        pager.setAdapter(adapter);
+        pager.setOnPageChangeListener(horizontalListener);
+        pager.setCurrentItem(FIRST_PAGE);
+        pager.setOffscreenPageLimit(15);
+        pager.setPageMargin(-860);
 
         countryId = SonyDataManager.init(this).getCountryId();
 
 
-        if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
+        if (!AndroidUtils.isNetworkOnline(getApplicationContext())) {
             Toast.makeText(getApplicationContext(), "Sorry! No Internet Connection", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (countryId!=null)
+        if (countryId != null)
             fetchPromos();
 
-        mPagerAdapter = new NavigationAdapter(getSupportFragmentManager());
+        mPagerAdapter = new NavigationAdapter(getSupportFragmentManager(), LandingActivity.this);
         bottomPager.setAdapter(mPagerAdapter);
-        bottomPager.setCurrentItem(2);
-        tab3.setBackgroundColor(Color.parseColor("#000000"));
-        iv3.setImageResource(R.drawable.shows_sel);
-        tv3.setTextColor(Color.parseColor("#FFFFFF"));
-        colorCode3.setBackgroundColor(Color.parseColor("#CE2C2F"));
-        oldView = tab3;
-        //  bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
+//        bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
+        bottomPager.setOnPageChangeListener(bottomPagerListener);
+        bottomPager.setOffscreenPageLimit(15);
+        bottomPager.setCurrentItem(FIRST_PAGE);
 
-        if (getIntent().hasExtra(Constants.OPEN_IS_HD)){
+        if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
             bottomPager.setCurrentItem(1);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
-        }else if (getIntent().hasExtra(Constants.OPEN_IS_SD)){
+        } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
             bottomPager.setCurrentItem(1);
-        }else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)){
+        } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
             bottomPager.setCurrentItem(3);
-        }else if (getIntent().hasExtra(Constants.OPEN_PROMOS)){
+        } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
             bottomPager.setCurrentItem(3);
-        }else if (getIntent().hasExtra(Constants.OPEN_EPISODES)){
+        } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
             bottomPager.setCurrentItem(0);
         }
 
@@ -221,12 +191,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         countryCode = SonyDataManager.init(this).getConutryCode();
 
-        Log.d("LandingAcitivity","countrycode" + countryCode);
-        if(countryCode!=null && !countryCode.isEmpty())
-            if(!countryCode.equals("in")){
+        Log.d("LandingAcitivity", "countrycode" + countryCode);
+        if (countryCode != null && !countryCode.isEmpty())
+            if (!countryCode.equals("in")) {
                 return;
-            }else{
-                Log.d("LandingAcitivity","countrycode india" + countryCode);
+            } else {
+                Log.d("LandingAcitivity", "countrycode india" + countryCode);
                 checkForSecondScreen();
             }
         super.onCreate(savedInstanceState);
@@ -244,7 +214,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     }*/
 
     private void checkForSecondScreen() {
-        String url = String.format(Constants.URL_ON_OFF_STATE,"android");
+        String url = String.format(Constants.URL_ON_OFF_STATE, "android");
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
                 url,
                 null,
@@ -252,12 +222,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        if(response!=null){
+                        if (response != null) {
                             try {
                                 String onState = response.getString("on_state");
-                                if(onState.equals("true")){
+                                if (onState.equals("true")) {
                                     startServiceForDetection();
-                                }else {
+                                } else {
                                     // layoutMyLayout.mTvBlank.setVisibility(View.GONE);
                                 }
                             } catch (JSONException e) {
@@ -268,7 +238,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("SplashScreenResponse","Error::"+error.toString());
+                Log.d("SplashScreenResponse", "Error::" + error.toString());
             }
         }
         );
@@ -276,7 +246,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     }
 
     private void startServiceForDetection() {
-        Intent intent = new Intent(this,BackgroundService.class);
+        Intent intent = new Intent(this, BackgroundService.class);
         startService(intent);
     }
 
@@ -285,12 +255,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         String url = String.format(Constants.ALL_PROMOS, countryId);
         Log.d("MyActivity", "JsonArray Url" + url);
 
-        com.teli.sonyset.Utils.SonyRequest request = new SonyRequest(this,url) {
+        com.teli.sonyset.Utils.SonyRequest request = new SonyRequest(this, url) {
             @Override
             public void onResponse(JSONArray s) {
                 Log.d("MyActivity", "Response" + s);
 
-                if (s!=null && !s.toString().isEmpty()){
+                if (s != null && !s.toString().isEmpty()) {
                     initAdapter(s);
                 }
             }
@@ -310,24 +280,24 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void initAdapter(JSONArray jsonArray) {
 
-        Gson gson=new Gson();
+        Gson gson = new Gson();
 
         promos = gson.fromJson(jsonArray.toString(), new TypeToken<List<Video>>() {
         }.getType());
-        if (promos!=null && !promos.isEmpty()){
-            for (int i = 0;i<promos.size();i++){
+        if (promos != null && !promos.isEmpty()) {
+            for (int i = 0; i < promos.size(); i++) {
                 brightCoveIds.add(promos.get(i).getBrightCoveId());
             }
 
-            for (int i = 0;i<brightCoveIds.size();i++){
+            for (int i = 0; i < brightCoveIds.size(); i++) {
                 Log.d("pageScrolled", "brightCoveIds" + brightCoveIds.get(i));
-                fetchThumbnail(promos.get(i).getBrightCoveId() , promos , i);
+                fetchThumbnail(promos.get(i).getBrightCoveId(), promos, i);
             }
         }
     }
 
     @OnClick(R.id.menu_button)
-    public void onMenuClicked(View view){
+    public void onMenuClicked(View view) {
 
         int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
         SlideoutActivity.prepare(LandingActivity.this, R.id.mainRelativeLayour, width);
@@ -353,7 +323,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private void fetchThumbnail(String s, final ArrayList<Video> promos, final int i) {
 
         String url = String.format(Constants.BRIGHT_COVE_THUMBNAIL, s);
-        final JsonObjectRequest request = new JsonObjectRequest(url,null,
+        final JsonObjectRequest request = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -363,11 +333,11 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                             try {
                                 JSONObject object = new JSONObject(response.toString());
 
-                                thumbnailsBrightCove.put(i,(String) object.get("videoStillURL"));
+                                thumbnailsBrightCove.put(i, (String) object.get("videoStillURL"));
                                 // brightCoveThumbnails.add(i,(String) object.get("videoStillURL"));
 
-                                if (thumbnailsBrightCove.size() == brightCoveIds.size()){
-                                    setTopPager(promos , thumbnailsBrightCove);
+                                if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                                    setTopPager(promos, thumbnailsBrightCove);
 
                                     brightCoveList = new ArrayList<String>(thumbnailsBrightCove.values());
                                 }
@@ -421,8 +391,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private class ViewPagerAdapter extends PagerAdapter {
 
         private LayoutInflater inflater;
-        private HashMap<Integer,String> brightCoveThumbnails = new HashMap<>();
+        private HashMap<Integer, String> brightCoveThumbnails = new HashMap<>();
         private ArrayList<Video> promos = new ArrayList<Video>();
+
         ViewPagerAdapter() {
 
         }
@@ -453,9 +424,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
             ImageView imageView = (ImageView) itemView.findViewById(R.id.promo_iv);
 
-            if (!brightCoveThumbnails.get(position).equals("null")){
+            if (!brightCoveThumbnails.get(position).equals("null")) {
                 Picasso.with(LandingActivity.this).load(Uri.parse(brightCoveThumbnails.get(position))).into(imageView);
-            }else {
+            } else {
                 imageView.setImageResource(R.drawable.place_holder);
             }
 
@@ -470,7 +441,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 public void onClick(View view) {
                     // Toast.makeText(LandingActivity.this, "clicked image", Toast.LENGTH_SHORT).show();
 
-                    callVideoActivity(view , position , promos);
+                    callVideoActivity(view, position, promos);
                 }
             });
             container.addView(itemView);
@@ -485,7 +456,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void callVideoActivity(View view, int position, ArrayList<Video> promos) {
 
-        Intent intent = new Intent(this,VideoDetailsActivity.class);
+        Intent intent = new Intent(this, VideoDetailsActivity.class);
         intent.putExtra(Constants.POSITION, "" + position);
         intent.putExtra(Constants.EPISODE_RESPONSE, promos);
         intent.putStringArrayListExtra(Constants.EPISODE_THUMBNAILS, brightCoveList);
@@ -506,44 +477,53 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @Override
     public void onResume() {
         super.onResume();
-        if(!promos.isEmpty())
+        if (!promos.isEmpty())
             handler.postDelayed(slidePagerRunnable, SLIDE_INTERVAL);
     }
 
     private static class NavigationAdapter extends FragmentStatePagerAdapter {
 
-        private static final String[] TITLES = new String[]{"Episodes", "Schedule", "Shows", "Exclusives" ,"Videos", "Extra"};
+//        private static final String[] TITLES = new String[]{"Episodes", "Schedule", "Shows", "Exclusives", "Videos", "Extra"};
 
-        public NavigationAdapter(FragmentManager fm) {
+        private FragmentManager fm;
+        Activity mContext;
+
+        public NavigationAdapter(FragmentManager fm, Activity context) {
             super(fm);
+            this.fm = fm;
+            this.mContext = context;
         }
 
         @Override
         public Fragment getItem(int position) {
-            Fragment f = new Fragment();
+            Fragment f = null;
 
-            final int pattern = position % 4;
-            switch (pattern) {
+            position = position % 5;
+//            final int pattern = position % 5;
+            switch (position) {
 
                 case 0:
-                    f = new EpisodeFragment();
-                    break;
-                case 1:
-                    f = new Schedule();
-                    break;
-                case 2:
                     f = new ShowFragment();
                     break;
-                case 3:
+                case 1:
+                    f = new ExclusiveFragment();
+                    break;
+                case 2:
                     f = new VideoFragment();
-
+                    break;
+                case 3:
+                    f = new EpisodeFragment();
+                    break;
+                case 4:
+                    f = new Schedule();
+                    break;
             }
             return f;
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return 5 * LOOPS;
         }
 
        /* @Override
@@ -563,9 +543,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     }
 
     @OnClick(R.id.secondScreen)
-    public void secondScreenClicked(){
+    public void secondScreenClicked() {
 
-        if (programLink!=null && !programLink.isEmpty()) {
+        if (programLink != null && !programLink.isEmpty()) {
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
@@ -578,21 +558,22 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }*/
     }
 
-    public  class SonyPostRequest extends AsyncTask<String, Void, JSONObject> {
+    public class SonyPostRequest extends AsyncTask<String, Void, JSONObject> {
 
         String channelId;
+
         public SonyPostRequest(String id) {
             this.channelId = id;
         }
 
         @Override
         protected JSONObject doInBackground(String... strings) {
-            Log.d("bus provider","boolean value do in background");
+            Log.d("bus provider", "boolean value do in background");
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(Constants.URL_NOW_PLAYING);
             try {
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
-                nameValuePairs.add(new BasicNameValuePair("channel_id",channelId));
+                nameValuePairs.add(new BasicNameValuePair("channel_id", channelId));
                 nameValuePairs.add(new BasicNameValuePair("uid", AndroidUtils.getDeviceImei(LandingActivity.this)));
                 nameValuePairs.add(new BasicNameValuePair("phone_build", AndroidUtils.getDeviceManufacturer()));
                 nameValuePairs.add(new BasicNameValuePair("phone_model", AndroidUtils.getDeviceModel()));
@@ -602,13 +583,13 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 HttpResponse response = (HttpResponse) httpclient.execute(httppost);
 
-                if (response!=null) {
+                if (response != null) {
                     Log.d("MainActivity", "Landing response n do in background" + response.getStatusLine().toString());
 
                     if (response.getStatusLine().getStatusCode() == 200) {
                         HttpEntity entity1 = response.getEntity();
 
-                        if (entity1!=null) {
+                        if (entity1 != null) {
                             InputStream instream1 = null;
                             try {
                                 instream1 = entity1.getContent();
@@ -616,8 +597,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                 instream1.close();
 
                                 return jsonArray;
-                            }catch (IOException e){
-                                e.printStackTrace();}
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                     }
@@ -647,7 +629,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         protected void onPostExecute(JSONObject s) {
-            if (s!=null){
+            if (s != null) {
                 Log.d("MainActivity", "Landing response in pot execute" + s.toString());
 
                 NowPlayingResponse nowPlayingResponse = new Gson().fromJson(s.toString(), NowPlayingResponse.class);
@@ -665,13 +647,13 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 if (bundle != null && !bundle.isEmpty()) {
                     String response = bundle.getString(BackgroundService.RESPONSE_KEY);
 
-                    if(response!=null && !response.isEmpty())
+                    if (response != null && !response.isEmpty())
 
-                        detectedAudio = new Gson().fromJson(response.toString(),DetectedAudio.class);
+                        detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
 
                     final int delay = 4000;
                     final Timer timer = new Timer();
-                    i=0;
+                    i = 0;
                     count = 1;
 
 
@@ -709,15 +691,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                             mHandler.post(mUpdateResults);
                         }
 
-                    },delay, 100);
+                    }, delay, 100);
 
-                    if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
+                    if (!AndroidUtils.isNetworkOnline(getApplicationContext())) {
                         return;
                     }
 
                     new SonyPostRequest(detectedAudio.getId()).execute();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -739,92 +721,51 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         super.onDestroy();
     }
 
-    @OnClick({R.id.tab1,R.id.tab2,R.id.tab3,R.id.tab4})
-    public void OnTabItemClicked(View view){
-        setOldView(oldView);
 
-        switch (view.getId()){
-            case R.id.tab1: bottomPager.setCurrentItem(0);
-//                setOldView(oldView);
-                Log.d("LandingActivity","InOnclick");
-                tab1.setBackgroundColor(Color.parseColor("#191919"));
-                iv1.setImageResource(R.drawable.episodes_sel);
-                tv1.setTextColor(Color.parseColor("#FFFFFF"));
-                colorCode1.setVisibility(View.VISIBLE);
-                colorCode1.setBackgroundColor(Color.parseColor("#36AB49"));
-                oldView = tab1;
-                break;
+    ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i2) {
 
-            case R.id.tab2: bottomPager.setCurrentItem(1);
-//                setOldView(oldView);
-                tab2.setBackgroundColor(Color.parseColor("#191919"));
-                iv2.setImageResource(R.drawable.schedule_sel);
-                tv2.setTextColor(Color.parseColor("#FFFFFF"));
-                colorCode2.setVisibility(View.VISIBLE);
-                colorCode2.setBackgroundColor(Color.parseColor("#496BB4"));
-                oldView = tab2;
-                break;
-
-            case R.id.tab3:bottomPager.setCurrentItem(2);
-//                setOldView(oldView);
-                tab3.setBackgroundColor(Color.parseColor("#191919"));
-                iv3.setImageResource(R.drawable.shows_sel);
-                tv3.setTextColor(Color.parseColor("#FFFFFF"));
-                colorCode3.setVisibility(View.VISIBLE);
-                colorCode3.setBackgroundColor(Color.parseColor("#CE2C2F"));
-                oldView = tab3;
-                break;
-
-            case R.id.tab4:bottomPager.setCurrentItem(3);
-//                setOldView(oldView);
-                tab4.setBackgroundColor(Color.parseColor("#191919"));
-                iv4.setImageResource(R.drawable.videos_sel);
-                tv4.setTextColor(Color.parseColor("#FFFFFF"));
-                colorCode4.setVisibility(View.VISIBLE);
-                colorCode4.setBackgroundColor(Color.parseColor("#496BB4"));
-                oldView = tab4;
-                break;
         }
+
+        @Override
+        public void onPageSelected(int i) {
+//            Log.d("MainActivity","PageSelected::" + pager.getCurrentItem()%5);
+
+//            bottomPager.setCurrentItem(pager.getCurrentItem() % 5);
+            bottomPager.setCurrentItem(pager.getCurrentItem() % 5);
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+        }
+    };
+
+    public void setSelectedIten(int position) {
+        bottomPager.setCurrentItem(position);
+        pager.setCurrentItem(2500 + position);
     }
 
-    private void setOldView(View oldView) {
-
-        Log.d("LandingActivity","InsideOldView");
-
-        switch (oldView.getId()){
-            case R.id.tab1: bottomPager.setCurrentItem(0);
-                Log.d("LandingActivity","Tab1");
-                tab1.setBackgroundColor(Color.parseColor("#2E2E2E"));
-                iv1.setImageResource(R.drawable.episodes_unsel);
-                tv1.setTextColor(Color.parseColor("#848484"));
-                colorCode1.setVisibility(View.INVISIBLE);
-                break;
-
-            case R.id.tab2: bottomPager.setCurrentItem(1);
-                Log.d("LandingActivity","Tab2");
-                tab2.setBackgroundColor(Color.parseColor("#2E2E2E"));
-                iv2.setImageResource(R.drawable.schedule_unsel);
-                tv2.setTextColor(Color.parseColor("#848484"));
-                colorCode2.setVisibility(View.INVISIBLE);
-                break;
-
-            case R.id.tab3:bottomPager.setCurrentItem(2);
-                Log.d("LandingActivity","Tab3");
-                tab3.setBackgroundColor(Color.parseColor("#2E2E2E"));
-                iv3.setImageResource(R.drawable.shows_unsel);
-                tv3.setTextColor(Color.parseColor("#848484"));
-                colorCode3.setVisibility(View.INVISIBLE);
-                break;
-
-            case R.id.tab4:bottomPager.setCurrentItem(3);
-                Log.d("LandingActivity","Tab4");
-                tab4.setBackgroundColor(Color.parseColor("#2E2E2E"));
-                iv4.setImageResource(R.drawable.videos_unsel);
-                tv4.setTextColor(Color.parseColor("#848484"));
-                colorCode4.setVisibility(View.INVISIBLE);
-                break;
+    private int pagerCount;
+    ViewPager.OnPageChangeListener bottomPagerListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i2) {
+            Log.d("MainActivity", "PageScrolled::" + i);
         }
-    }
+
+        @Override
+        public void onPageSelected(int i) {
+//            Log.d("MainActivity","PageSelected::" + pager.getCurrentItem()%5);
+            Log.d("MainActivity", "PageSelected::" + i);
+            pager.setCurrentItem(bottomPager.getCurrentItem() + 2500);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+            Log.d("MainActivity", "PageScrollStateChanged::" + i);
+        }
+    };
 }
 
 
