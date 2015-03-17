@@ -145,6 +145,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private ArrayList<String> brightCoveIds = new ArrayList<String>();
 
+    private MenuActivity slideOut;
+
     private static final double SLIDE_DURATION_FACTOR = 3.0;
     private static final long SLIDE_INTERVAL = 4000;
     private Timer timer1;
@@ -180,6 +182,13 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         BusProvider.getInstance().register(this);
 
         countryId = SonyDataManager.init(this).getCountryId();
+
+        slideOut= new MenuActivity();
+        slideOut.getSlideoutHelper();
+
+
+//        slideOut.
+
 
 
         if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
@@ -348,6 +357,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 //        }
 
     }
+
+
 
 
     private void fetchThumbnail(String s, final ArrayList<Video> promos, final int i) {

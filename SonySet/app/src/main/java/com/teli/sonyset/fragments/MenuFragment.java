@@ -3,6 +3,7 @@ package com.teli.sonyset.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -30,6 +32,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class MenuFragment extends Fragment implements ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener {
 
@@ -44,12 +47,32 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
     private Context mContext;
     private SlideoutHelper slideOut;
 
+    @InjectView(R.id.bottomsocial)
+    RelativeLayout socialButtonRL;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.menu_list,null);
 
         ButterKnife.inject(this,view);
+
+//        DisplayMetrics displaymetrics = new DisplayMetrics();
+//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+//        int height = displaymetrics.heightPixels;
+//        int width = displaymetrics.widthPixels;
+//        if(width==540){
+//            RelativeLayout.LayoutParams relativeParams = (RelativeLayout.LayoutParams)getActivity().relativeLayout.getLayoutParams();
+//            relativeParams.setMargins(0, 80, 0, 0);  // left, top, right, bottom
+//            relativeLayout.setLayoutParams(relativeParams);
+//        }
+
+//        socialButtonRL
+
+//        Log.d("Menu","Screen hight"+height+"width"+width);
+        //888 540
+
 
         fetchValues();
         setListView();
@@ -250,4 +273,30 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
        /* */
         return false;
     }
+
+
+    @OnClick({R.id.btnFacebook,R.id.btnTwitter,R.id.btnYoutube})
+    public void onSocialMedia(View view){
+        switch (view.getId()){
+            case R.id.btnFacebook:
+                Uri uri=Uri.parse("https://www.facebook.com/sonytelevision");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                    startActivity(intent);
+                break;
+            case R.id.btnTwitter:
+                Uri uri2=Uri.parse("https://twitter.com/SonyTV");
+                Intent intent2 = new Intent(Intent.ACTION_VIEW,uri2);
+                startActivity(intent2);
+                break;
+            case R.id.btnYoutube:
+                Uri uri3=Uri.parse("http://www.youtube.com/setindia");
+                Intent intent3 = new Intent(Intent.ACTION_VIEW,uri3);
+                startActivity(intent3);
+                break;
+
+
+        }
+    }
+
+
 }

@@ -2,8 +2,8 @@
   <library name="android-sdk-4.3.4-unspecified">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/classes.jar!/" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/libs/jacocoagent.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

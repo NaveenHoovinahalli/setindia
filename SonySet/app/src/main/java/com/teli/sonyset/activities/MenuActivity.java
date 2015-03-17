@@ -34,6 +34,8 @@ public class MenuActivity extends FragmentActivity {
 	public SlideoutHelper getSlideoutHelper(){
 		return mSlideoutHelper;
 	}
+
+
 	
 	private SlideoutHelper mSlideoutHelper;
 
