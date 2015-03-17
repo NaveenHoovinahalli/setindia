@@ -2,11 +2,11 @@ package com.teli.sonyset.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.activities.LandingActivity;
@@ -31,9 +31,13 @@ public class MyFragment extends Fragment {
             "EPISODES",
             "SCHEDULE"
     };
+
     private int pos;
     private LinearLayout strip_container;
+    private HorizontalLinearLayout rootLayout;
     private int mCount;
+    private View previousView;
+    private int oldPos;
 
     public static Fragment newInstance(LandingActivity context, int pos,
                                        float scale, int count) {
@@ -42,7 +46,8 @@ public class MyFragment extends Fragment {
         b.putInt("pos", pos);
         b.putInt("count", count);
         b.putFloat("scale", scale);
-        return Fragment.instantiate(context, MyFragment.class.getName(), b);
+        Fragment fragment = Fragment.instantiate(context, MyFragment.class.getName(), b);
+        return fragment;
     }
 
     @Override
@@ -57,6 +62,8 @@ public class MyFragment extends Fragment {
 
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
+        rootLayout = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
+        rootLayout.setTag(pos);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
         strip_container.setBackgroundResource(images[pos]);
@@ -65,17 +72,26 @@ public class MyFragment extends Fragment {
         ImageView iv = (ImageView) linearLayout.findViewById(R.id.imageview);
         tv.setText(names[pos]);
         iv.setImageResource(images[pos]);*/
+       /* oldPos = pos;
+        previousView = strip_container;*/
         if(pos == 0){
-            strip_container.setSelected(true);
+//            strip_container.setSelected(true);
+            previousView = strip_container;
         }
+
         strip_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Position" + pos, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getActivity(), "Position" + rootLayout.getChildCount(), Toast.LENGTH_SHORT).show();
                 ((LandingActivity)getActivity()).setSelectedIten(mCount);
+                for(int i=0; i<rootLayout.getChildCount(); i++){
+                    View mView = rootLayout.getChildAt(i);
+                    mView.setSelected(false);
+                }
+//                strip_container.setSelected(true);
+               // previousView.setBackgroundResource(images[oldPos]);
             }
         });
-
 
         HorizontalLinearLayout root = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
         float scale = this.getArguments().getFloat("scale");
@@ -84,7 +100,10 @@ public class MyFragment extends Fragment {
         return linearLayout;
     }
 
-    private void setSelected(View view) {
+    public void setSelected(int pos) {
+
+        Log.d("MyFragment","setSelected" + pos);
+
 
     }
 

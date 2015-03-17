@@ -63,8 +63,8 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/myviewpager"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:background="#353535"
+        android:layout_height="63dp"
+        android:background="#1e1e1e"
         android:layout_below="@+id/topPager"/>
 
     <!--<com.teli.sonyset.views.MotionViewPager

@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,8 +21,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -150,7 +147,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
-        pager.setPageMargin(-860);
+        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
 
         countryId = SonyDataManager.init(this).getCountryId();
 
@@ -734,6 +731,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
 //            bottomPager.setCurrentItem(pager.getCurrentItem() % 5);
             bottomPager.setCurrentItem(pager.getCurrentItem());
+            adapter.selectedItem(pager.getCurrentItem());
 
         }
 

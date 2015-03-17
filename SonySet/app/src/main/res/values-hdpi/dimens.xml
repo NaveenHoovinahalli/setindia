@@ -9,4 +9,5 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="promoHeight">180dp</dimen>
     <dimen name="actionBarHeight">14sp</dimen>
+    <dimen name="loopPagerMargin">-280dp</dimen>
 </resources>

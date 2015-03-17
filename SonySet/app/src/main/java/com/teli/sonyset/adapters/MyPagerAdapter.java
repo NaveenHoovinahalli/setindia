@@ -11,30 +11,39 @@ import com.teli.sonyset.views.HorizontalLinearLayout;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
-	private HorizontalLinearLayout cur = null;
-	private HorizontalLinearLayout next = null;
-	private LandingActivity context;
-	private FragmentManager fm;
-	private float scale;
+    private HorizontalLinearLayout cur = null;
+    private HorizontalLinearLayout next = null;
+    private LandingActivity context;
+    private FragmentManager fm;
+    MyFragment myFragment;
+    private float scale;
 
-	public MyPagerAdapter(LandingActivity context, FragmentManager fm) {
-		super(fm);
-		this.fm = fm;
-		this.context = context;
-	}
+    public MyPagerAdapter(LandingActivity context, FragmentManager fm) {
+        super(fm);
+        this.fm = fm;
+        this.context = context;
+    }
 
-	@Override
-	public Fragment getItem(int position)
-	{
+    @Override
+    public Fragment getItem(int position)
+    {
         int count = position;
         position = position % LandingActivity.PAGES;
-        return MyFragment.newInstance(context, position, 0.5f, count);
-	}
+        myFragment = (MyFragment)myFragment.newInstance(context, position, 0.5f, count);
+        return myFragment;
+    }
 
-	@Override
-	public int getCount()
-	{
-		return LandingActivity.PAGES * LandingActivity.LOOPS;
-	}
+    @Override
+    public int getCount()
+    {
+        return LandingActivity.PAGES * LandingActivity.LOOPS;
+    }
+
+    public void selectedItem(int pos){
+
+        Log.d("MyPagerAdapter", "setSelected" + pos);
+        if (myFragment!=null)
+            myFragment.setSelected(pos);
+    }
 
 }
