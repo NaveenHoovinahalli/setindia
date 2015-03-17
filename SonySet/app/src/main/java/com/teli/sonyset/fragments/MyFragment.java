@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teli.sonyset.R;
@@ -19,12 +17,11 @@ public class MyFragment extends Fragment {
     public static int mPosition;
     private LinearLayout linearLayout;
     int[] images = new int[]{
-            R.drawable.shows_unsel,
-            R.drawable.exclusive_unsel,
-            R.drawable.videos_unsel,
-            R.drawable.episodes_unsel,
-            R.drawable.schedule_unsel
-
+            R.drawable.strip_selector_show,
+            R.drawable.strip_selector_exclusive,
+            R.drawable.strip_selector_video,
+            R.drawable.strip_selector_episode,
+            R.drawable.strip_selector_schedule
     };
 
     String[] names = new String[]{
@@ -59,12 +56,13 @@ public class MyFragment extends Fragment {
         pos = this.getArguments().getInt("pos");
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
-        View view = (View) linearLayout.findViewById(R.id.strip);
+        strip_container.setBackgroundResource(images[pos]);
+       /* View view = (View) linearLayout.findViewById(R.id.strip);
         TextView tv = (TextView) linearLayout.findViewById(R.id.text);
         ImageView iv = (ImageView) linearLayout.findViewById(R.id.imageview);
         tv.setText(names[pos]);
-        iv.setImageResource(images[pos]);
-        if(pos==0){
+        iv.setImageResource(images[pos]);*/
+        if(pos == 0){
             strip_container.setSelected(true);
         }
         strip_container.setOnClickListener(new View.OnClickListener() {
