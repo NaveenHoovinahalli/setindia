@@ -30,13 +30,13 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="AdapterPosition" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="PageSelected" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.teli.sonyset" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SonySet.iws" />
@@ -60,60 +60,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LandingActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LandingActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35714287" vertical-offset="13260" max-vertical-offset="13950">
-              <caret line="745" column="5" selection-start-line="745" selection-start-column="5" selection-end-line="745" selection-end-column="5" />
+            <state vertical-scroll-proportion="-13.5" vertical-offset="13077" max-vertical-offset="14202">
+              <caret line="749" column="55" selection-start-line="749" selection-start-column="55" selection-end-line="749" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3952#3960#0" expanded="true" />
                 <element signature="e#4155#4162#0" expanded="true" />
-                <element signature="e#8318#9110#0" expanded="true" />
-                <element signature="e#9091#9092#0" expanded="true" />
-                <element signature="e#9112#9326#0" expanded="true" />
-                <element signature="e#9315#9316#0" expanded="true" />
-                <element signature="e#10164#10348#0" expanded="true" />
-                <element signature="e#10329#10330#0" expanded="true" />
-                <element signature="e#12106#13200#0" expanded="true" />
-                <element signature="e#13181#13182#0" expanded="true" />
-                <element signature="e#13218#13512#0" expanded="true" />
-                <element signature="e#13493#13494#0" expanded="true" />
-                <element signature="e#14240#14241#0" expanded="true" />
-                <element signature="e#14300#14301#0" expanded="true" />
-                <element signature="e#14929#14936#0" expanded="true" />
-                <element signature="e#15378#15379#0" expanded="true" />
-                <element signature="e#15422#15423#0" expanded="true" />
-                <element signature="e#15509#15510#0" expanded="true" />
-                <element signature="e#15554#15555#0" expanded="true" />
-                <element signature="e#16498#16802#0" expanded="true" />
-                <element signature="e#16787#16788#0" expanded="true" />
-                <element signature="e#17596#17826#0" expanded="true" />
-                <element signature="e#17819#17820#0" expanded="true" />
-                <element signature="e#19307#19308#0" expanded="true" />
-                <element signature="e#19347#19348#0" expanded="true" />
-                <element signature="e#20339#20340#0" expanded="true" />
-                <element signature="e#20382#20383#0" expanded="true" />
-                <element signature="e#20755#20770#0" expanded="true" />
-                <element signature="e#24409#24567#0" expanded="true" />
-                <element signature="e#24544#24545#0" expanded="true" />
-                <element signature="e#24607#25398#0" expanded="true" />
-                <element signature="e#25375#25376#0" expanded="true" />
-                <element signature="e#25447#25617#0" expanded="true" />
-                <element signature="e#25593#25594#0" expanded="true" />
+                <element signature="e#8366#9158#0" expanded="true" />
+                <element signature="e#9139#9140#0" expanded="true" />
+                <element signature="e#9160#9374#0" expanded="true" />
+                <element signature="e#9363#9364#0" expanded="true" />
+                <element signature="e#10212#10396#0" expanded="true" />
+                <element signature="e#10377#10378#0" expanded="true" />
+                <element signature="e#12154#13248#0" expanded="true" />
+                <element signature="e#13229#13230#0" expanded="true" />
+                <element signature="e#13266#13560#0" expanded="true" />
+                <element signature="e#13541#13542#0" expanded="true" />
+                <element signature="e#14288#14289#0" expanded="true" />
+                <element signature="e#14348#14349#0" expanded="true" />
+                <element signature="e#14977#14984#0" expanded="true" />
+                <element signature="e#15426#15427#0" expanded="true" />
+                <element signature="e#15470#15471#0" expanded="true" />
+                <element signature="e#15557#15558#0" expanded="true" />
+                <element signature="e#15602#15603#0" expanded="true" />
+                <element signature="e#16546#16850#0" expanded="true" />
+                <element signature="e#16835#16836#0" expanded="true" />
+                <element signature="e#17644#17874#0" expanded="true" />
+                <element signature="e#17867#17868#0" expanded="true" />
+                <element signature="e#19355#19356#0" expanded="true" />
+                <element signature="e#19395#19396#0" expanded="true" />
+                <element signature="e#20387#20388#0" expanded="true" />
+                <element signature="e#20430#20431#0" expanded="true" />
+                <element signature="e#20803#20818#0" expanded="true" />
+                <element signature="e#24457#24615#0" expanded="true" />
+                <element signature="e#24592#24593#0" expanded="true" />
+                <element signature="e#24655#25446#0" expanded="true" />
+                <element signature="e#25423#25424#0" expanded="true" />
+                <element signature="e#25495#25665#0" expanded="true" />
+                <element signature="e#25641#25642#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="933" max-vertical-offset="1836">
-              <caret line="73" column="68" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.5614618" vertical-offset="879" max-vertical-offset="1890">
+              <caret line="80" column="33" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="horiz_bar_fragment.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.137931" vertical-offset="26" max-vertical-offset="900">
+              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strip_selector.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/strip_selector.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1745,11 +1768,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/views/HorizontalLinearLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_exclusive.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/ExclusiveFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/adapters/MyPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
       </list>
     </option>
@@ -2033,7 +2056,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
+              <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2371,7 +2394,11 @@
       <created>1426591166589</created>
       <updated>1426591166589</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="ViewPager working">
+      <created>1426592698976</created>
+      <updated>1426592698976</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2411,7 +2438,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.4996016" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48553056" sideWeight="0.4996016" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48553056" sideWeight="0.4996016" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2428,6 +2455,37 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5003984" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30469584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28922093" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.4996016" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48553056" sideWeight="0.4996016" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -2454,7 +2512,8 @@
     <MESSAGE value="inter" />
     <MESSAGE value="merged with naveen" />
     <MESSAGE value="ViewPager Demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="ViewPager Demo" />
+    <MESSAGE value="ViewPager working" />
+    <option name="LAST_COMMIT_MESSAGE" value="ViewPager working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2719,25 +2778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/strip_selector.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43249428" vertical-offset="0" max-vertical-offset="900">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/views/HorizontalLinearLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09966777" vertical-offset="0" max-vertical-offset="903">
@@ -2800,16 +2840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="933" max-vertical-offset="1836">
-          <caret line="73" column="68" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.172414" vertical-offset="1073" max-vertical-offset="1602">
@@ -2842,46 +2872,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.137931" vertical-offset="26" max-vertical-offset="900">
+          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/strip_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35714287" vertical-offset="13260" max-vertical-offset="13950">
-          <caret line="745" column="5" selection-start-line="745" selection-start-column="5" selection-end-line="745" selection-end-column="5" />
+        <state vertical-scroll-proportion="-13.5" vertical-offset="13077" max-vertical-offset="14202">
+          <caret line="749" column="55" selection-start-line="749" selection-start-column="55" selection-end-line="749" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3952#3960#0" expanded="true" />
             <element signature="e#4155#4162#0" expanded="true" />
-            <element signature="e#8318#9110#0" expanded="true" />
-            <element signature="e#9091#9092#0" expanded="true" />
-            <element signature="e#9112#9326#0" expanded="true" />
-            <element signature="e#9315#9316#0" expanded="true" />
-            <element signature="e#10164#10348#0" expanded="true" />
-            <element signature="e#10329#10330#0" expanded="true" />
-            <element signature="e#12106#13200#0" expanded="true" />
-            <element signature="e#13181#13182#0" expanded="true" />
-            <element signature="e#13218#13512#0" expanded="true" />
-            <element signature="e#13493#13494#0" expanded="true" />
-            <element signature="e#14240#14241#0" expanded="true" />
-            <element signature="e#14300#14301#0" expanded="true" />
-            <element signature="e#14929#14936#0" expanded="true" />
-            <element signature="e#15378#15379#0" expanded="true" />
-            <element signature="e#15422#15423#0" expanded="true" />
-            <element signature="e#15509#15510#0" expanded="true" />
-            <element signature="e#15554#15555#0" expanded="true" />
-            <element signature="e#16498#16802#0" expanded="true" />
-            <element signature="e#16787#16788#0" expanded="true" />
-            <element signature="e#17596#17826#0" expanded="true" />
-            <element signature="e#17819#17820#0" expanded="true" />
-            <element signature="e#19307#19308#0" expanded="true" />
-            <element signature="e#19347#19348#0" expanded="true" />
-            <element signature="e#20339#20340#0" expanded="true" />
-            <element signature="e#20382#20383#0" expanded="true" />
-            <element signature="e#20755#20770#0" expanded="true" />
-            <element signature="e#24409#24567#0" expanded="true" />
-            <element signature="e#24544#24545#0" expanded="true" />
-            <element signature="e#24607#25398#0" expanded="true" />
-            <element signature="e#25375#25376#0" expanded="true" />
-            <element signature="e#25447#25617#0" expanded="true" />
-            <element signature="e#25593#25594#0" expanded="true" />
+            <element signature="e#8366#9158#0" expanded="true" />
+            <element signature="e#9139#9140#0" expanded="true" />
+            <element signature="e#9160#9374#0" expanded="true" />
+            <element signature="e#9363#9364#0" expanded="true" />
+            <element signature="e#10212#10396#0" expanded="true" />
+            <element signature="e#10377#10378#0" expanded="true" />
+            <element signature="e#12154#13248#0" expanded="true" />
+            <element signature="e#13229#13230#0" expanded="true" />
+            <element signature="e#13266#13560#0" expanded="true" />
+            <element signature="e#13541#13542#0" expanded="true" />
+            <element signature="e#14288#14289#0" expanded="true" />
+            <element signature="e#14348#14349#0" expanded="true" />
+            <element signature="e#14977#14984#0" expanded="true" />
+            <element signature="e#15426#15427#0" expanded="true" />
+            <element signature="e#15470#15471#0" expanded="true" />
+            <element signature="e#15557#15558#0" expanded="true" />
+            <element signature="e#15602#15603#0" expanded="true" />
+            <element signature="e#16546#16850#0" expanded="true" />
+            <element signature="e#16835#16836#0" expanded="true" />
+            <element signature="e#17644#17874#0" expanded="true" />
+            <element signature="e#17867#17868#0" expanded="true" />
+            <element signature="e#19355#19356#0" expanded="true" />
+            <element signature="e#19395#19396#0" expanded="true" />
+            <element signature="e#20387#20388#0" expanded="true" />
+            <element signature="e#20430#20431#0" expanded="true" />
+            <element signature="e#20803#20818#0" expanded="true" />
+            <element signature="e#24457#24615#0" expanded="true" />
+            <element signature="e#24592#24593#0" expanded="true" />
+            <element signature="e#24655#25446#0" expanded="true" />
+            <element signature="e#25423#25424#0" expanded="true" />
+            <element signature="e#25495#25665#0" expanded="true" />
+            <element signature="e#25641#25642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/MyFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5614618" vertical-offset="879" max-vertical-offset="1890">
+          <caret line="80" column="33" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
