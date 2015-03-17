@@ -60,18 +60,25 @@
         android:layout_below="@id/rlheader"
         />
 
-    <include layout="@layout/custom_tab"
-        android:id="@+id/customTab"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myviewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="#353535"
+        android:layout_below="@+id/topPager"/>
+
+    <!--<com.teli.sonyset.views.MotionViewPager
+        android:id="@+id/bottomPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/topPager"
-        android:background="#2E2E2E"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/myviewpager"/>-->
 
     <android.support.v4.view.ViewPager
         android:id="@+id/bottomPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/customTab"/>
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/myviewpager"/>
 
 </RelativeLayout>
