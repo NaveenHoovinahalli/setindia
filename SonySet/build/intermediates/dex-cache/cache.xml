@@ -16,41 +16,6 @@
         <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-eff9bd9ef785e41180589f4c817217411c86dccf.jar" />
     </item>
     <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/5.1.1/b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8/butterknife-5.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
-        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/butterknife-5.1.1-9d90052329d886bc522a74b257eee11cd9b82e24.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/libs/jacocoagent.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e084e6b8a000c2a3fd71fa1c6f603f47f90ea7c4">
-        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/jacocoagent-f560c44f4743c9bd054361cf21c1f05a5e6fa331.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/IDE/android-studio-new/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-055c5d3a6a720b0386ab26aa7f6e453fb73c9e8c.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gson-2.2.4-f97977d2bed7ed377b4973a57f93240d171df5e1.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/gama_carousel_v1.0/gama_carousel_v1.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="12c1aa96784f1de0a386bb25034d2fbbb04342b3">
-        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gama_carousel_v1.0-7a4530d17b6483cc4925ba692831e01a4dabcb42.jar" />
-    </item>
-    <item
         jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/exploded-aar/jp.co.recruit_mp/android-HeaderFooterGridView/0.2.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -65,6 +30,20 @@
         <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-b12ed4d40a7ed74c73c348b27c7a5a6acf1bf1df.jar" />
     </item>
     <item
+        jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/libs/jacocoagent.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e084e6b8a000c2a3fd71fa1c6f603f47f90ea7c4">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/jacocoagent-f560c44f4743c9bd054361cf21c1f05a5e6fa331.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/5.1.1/b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8/butterknife-5.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/butterknife-5.1.1-9d90052329d886bc522a74b257eee11cd9b82e24.jar" />
+    </item>
+    <item
         jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.squareup/otto/1.3.5/7941cd2c2c8ec006800d75c35f8a9dacf892ab93/otto-1.3.5.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -77,6 +56,13 @@
         revision="21.1.2"
         sha1="0297cbd10dd293d1e445091c4af944e4c1071aae">
         <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-4ecba19d73ab1c65c8cdac4c197a8e07b3c3f142.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/IDE/android-studio-new/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-055c5d3a6a720b0386ab26aa7f6e453fb73c9e8c.jar" />
     </item>
     <item
         jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/libs/android-sdk-1.0.14.2.0-ea.jar"
@@ -100,11 +86,32 @@
         <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-f05b29ad4dbf37f7f2ff3edcf836638968beb1f6.jar" />
     </item>
     <item
+        jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/libs/zedoandroidsdk1.0.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f9d5871e2cd1ffe8ed49900d141f1b0b1ca900d2">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/zedoandroidsdk1.0.4-58d56345dcea8b308a0e2706f79b812b8e6a2abd.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c7a5716b4fe39ccf9bb7ad0b183f3e6457dd90b6">
         <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-31e5e9bab44bf9b208dc181290e60fa16f993604.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/gama_carousel_v1.0/gama_carousel_v1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="12c1aa96784f1de0a386bb25034d2fbbb04342b3">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gama_carousel_v1.0-7a4530d17b6483cc4925ba692831e01a4dabcb42.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gson-2.2.4-f97977d2bed7ed377b4973a57f93240d171df5e1.jar" />
     </item>
     <item
         jar="/home/madhuri/Madhuri/Projects/TeliProjects/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"

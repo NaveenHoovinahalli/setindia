@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.models.Synopsis;
+import com.teli.sonyset.views.ExpandableTextView;
 import com.teli.sonyset.views.SonyTextView;
 
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ public class SynopsisAdapter extends BaseAdapter {
     ArrayList<Synopsis> synopsises = new ArrayList<>();
     private SonyTextView episodeNumber;
     private SonyTextView date;
-    private SonyTextView episodeDetail;
+    private ExpandableTextView episodeDetail;
     private ImageView fullEpisode;
     private ImageView fullDetails;
 
@@ -60,7 +61,7 @@ public class SynopsisAdapter extends BaseAdapter {
 
         episodeNumber = (SonyTextView) view.findViewById(R.id.episode_number);
         date = (SonyTextView) view.findViewById(R.id.date);
-        episodeDetail = (SonyTextView) view.findViewById(R.id.episode_detail);
+        episodeDetail = (ExpandableTextView) view.findViewById(R.id.episode_detail);
         fullEpisode = (ImageView) view.findViewById(R.id.full_episode);
         fullDetails = (ImageView) view.findViewById(R.id.full_details);
         //  }
