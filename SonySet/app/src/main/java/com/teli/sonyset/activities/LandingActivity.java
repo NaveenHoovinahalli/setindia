@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,6 +41,7 @@ import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
 import com.teli.sonyset.fragments.ExclusiveFragment;
+import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;
@@ -147,8 +149,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
-//        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
-        pager.setPageMargin(-860);
+        pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
+//        pager.setPageMargin(-860);
 
         countryId = SonyDataManager.init(this).getCountryId();
 
@@ -169,17 +171,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(1);
+            bottomPager.setCurrentItem(2504);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(1);
+            bottomPager.setCurrentItem(2504);
+            SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
-            bottomPager.setCurrentItem(3);
+            bottomPager.setCurrentItem(2502);
         } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
-            bottomPager.setCurrentItem(3);
+            SonyDataManager.init(this).savePrecapsIsFromMenu(false);
+            bottomPager.setCurrentItem(2502);
         } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
-            bottomPager.setCurrentItem(0);
+            bottomPager.setCurrentItem(2503);
         }
 
         receiver = new ResponseReceiver();
@@ -720,6 +724,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     }
 
 
+    private int previousItem = FIRST_PAGE;
     ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {
@@ -728,12 +733,22 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
-//            Log.d("MainActivity","PageSelected::" + pager.getCurrentItem()%5);
+//            MyFragment fragment = (MyFragment) adapter.getItem(previousItem);
+//            fragment.unSelectLayout(pager.getCurrentItem());
+//            fragment.selectLayout(pager.getCurrentItem());
+//            adapter.unSetSelection(previousItem);
+//            adapter.setSelection(pager.getCurrentItem());
 
-//            bottomPager.setCurrentItem(pager.getCurrentItem() % 5);
+            int index = pager.getCurrentItem();
+            MyPagerAdapter adapter = ((MyPagerAdapter)pager.getAdapter());
+            MyFragment fragment = adapter.getFragment(index);
+
+
+            Log.d("MainActivity", "PageSelectedView::" + fragment.getView());
+//            Log.d("MainActivity", "PageSelectedFragment::" + fragment.getTag());
+
             bottomPager.setCurrentItem(pager.getCurrentItem());
-            adapter.selectedItem(pager.getCurrentItem());
-
+            previousItem = pager.getCurrentItem();
         }
 
         @Override
@@ -741,7 +756,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }
     };
 
-    public void setSelectedIten(int position) {
+    public void setSelectedItem(int position) {
         pager.setCurrentItem(position);
     }
 

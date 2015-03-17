@@ -9,6 +9,8 @@ import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.views.HorizontalLinearLayout;
 
+import java.util.ArrayList;
+
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
     private HorizontalLinearLayout cur = null;
@@ -25,25 +27,26 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position)
-    {
+    public Fragment getItem(int position) {
         int count = position;
         position = position % LandingActivity.PAGES;
-        myFragment = (MyFragment)myFragment.newInstance(context, position, 0.5f, count);
+        myFragment = (MyFragment) myFragment.newInstance(context, position, 0.5f, count);
         return myFragment;
     }
 
     @Override
-    public int getCount()
-    {
+    public int getCount() {
         return LandingActivity.PAGES * LandingActivity.LOOPS;
     }
 
-    public void selectedItem(int pos){
+    public MyFragment getFragment(int key) {
+        return null;
+    }
 
-        Log.d("MyPagerAdapter", "setSelected" + pos);
-        if (myFragment!=null)
-            myFragment.setSelected(pos);
+    public void setSelection(int position) {
+    }
+
+    public void unSetSelection(int position) {
     }
 
 }

@@ -9,7 +9,7 @@
     <dimen name="tabHeightShow">45dp</dimen>
     <dimen name="promoHeight">230dp</dimen>
     <dimen name="actionBarHeight">17sp</dimen>
-    <dimen name="loopPagerMargin">-860dp</dimen>
+    <dimen name="loopPagerMargin">-285dp</dimen>
     <dimen name="menucentertext">120dp</dimen>
     <dimen name="menucenterImage">95dp</dimen>
     <dimen name="menucenterbottomtext">85dp</dimen>

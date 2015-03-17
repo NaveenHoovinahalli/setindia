@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.views.HorizontalLinearLayout;
+
+import java.util.ArrayList;
 
 public class MyFragment extends Fragment {
 
@@ -39,6 +42,9 @@ public class MyFragment extends Fragment {
     private View previousView;
     private int oldPos;
 
+    static ArrayList<Fragment> fragments = new ArrayList<>();
+    private int previousItem;
+
     public static Fragment newInstance(LandingActivity context, int pos,
                                        float scale, int count) {
         mPosition = pos;
@@ -47,6 +53,7 @@ public class MyFragment extends Fragment {
         b.putInt("count", count);
         b.putFloat("scale", scale);
         Fragment fragment = Fragment.instantiate(context, MyFragment.class.getName(), b);
+        fragments.add(fragment);
         return fragment;
     }
 
@@ -63,33 +70,28 @@ public class MyFragment extends Fragment {
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
         rootLayout = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
-        rootLayout.setTag(pos);
+        rootLayout.setTag(mCount);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
         strip_container.setBackgroundResource(images[pos]);
-       /* View view = (View) linearLayout.findViewById(R.id.strip);
-        TextView tv = (TextView) linearLayout.findViewById(R.id.text);
-        ImageView iv = (ImageView) linearLayout.findViewById(R.id.imageview);
-        tv.setText(names[pos]);
-        iv.setImageResource(images[pos]);*/
-       /* oldPos = pos;
-        previousView = strip_container;*/
-        if(pos == 0){
-//            strip_container.setSelected(true);
-            previousView = strip_container;
+        if (pos == 0) {
+            strip_container.setSelected(true);
+            previousItem = 0;
         }
 
         strip_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   Toast.makeText(getActivity(), "Position" + rootLayout.getChildCount(), Toast.LENGTH_SHORT).show();
-                ((LandingActivity)getActivity()).setSelectedIten(mCount);
-                for(int i=0; i<rootLayout.getChildCount(); i++){
-                    View mView = rootLayout.getChildAt(i);
-                    mView.setSelected(false);
+                ((LandingActivity) getActivity()).setSelectedItem(mCount);
+                for (int i = 0; i < fragments.size(); i++) {
+                    View v = fragments.get(i).getView();
+                    if (v != null) {
+                        LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
+                        layout.setSelected(false);
+                    }
                 }
-//                strip_container.setSelected(true);
-               // previousView.setBackgroundResource(images[oldPos]);
+
+                strip_container.setSelected(true);
             }
         });
 
@@ -100,17 +102,26 @@ public class MyFragment extends Fragment {
         return linearLayout;
     }
 
-    public void setSelected(int pos) {
+    public void selectLayout(int position) {
+    }
 
-        Log.d("MyFragment","setSelected" + pos);
-
-
+    public void unSelectLayout(int position) {
+//        for (int i = 0; i < fragments.size(); i++) {
+//            View v = fragments.get(i).getView();
+//            if (v != null) {
+//                LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
+//                if(i!=position) {
+//                    layout.setSelected(false);
+//                }else if(i==position){
+//                    layout.setSelected(true);
+//                }
+//            }
+//        }
     }
 
     public LinearLayout getFragmentLayout() {
         if (linearLayout != null)
             return linearLayout;
-
         return null;
     }
 }

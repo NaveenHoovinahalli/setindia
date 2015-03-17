@@ -139,7 +139,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             pager.setOnPageChangeListener(horizontalListener);
             pager.setCurrentItem(FIRST_PAGE);
             pager.setOffscreenPageLimit(15);
-            pager.setPageMargin(-860);
+            pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
 
             String showId =   getIntent().getStringExtra(SHOW_ID);
             String countryId = SonyDataManager.init(this).getCountryId();
@@ -359,23 +359,23 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         switch (view.getId()){
             case R.id.menuConcept :
-                loadPager(1);
+                loadPager(2504);
                 break;
 
             case R.id.menuCast :
-                loadPager(0);
+                loadPager(2503);
                 break;
 
             case R.id.menuSynopsis :
-                loadPager(4);
+                loadPager(2502);
                 break;
 
             case R.id.menuEpisodes :
-                loadPager(3);
+                loadPager(2501);
                 break;
 
             case R.id.menuVideos :
-                loadPager(2);
+                loadPager(2500);
                 break;
 
            /* case R.id.menuVideos :
