@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <!-- <jp.co.recruit_mp.android.widget.HeaderFooterGridView
+             android:id="@+id/shows_gv"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:horizontalSpacing="10dp"
+             android:verticalSpacing="10dp"
+             android:numColumns="2"
+             android:layout_margin="10dp"
+             />-->
+
+        <LinearLayout android:id="@+id/shows_gv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <include layout="@layout/show_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/first_iv"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+<!--
+        <LinearLayout android:id="@+id/images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>-->
+
+        <com.teli.sonyset.views.SonyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_the_show"
+            android:textSize="18sp"
+            android:id="@+id/read_more_text"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/shows_gv"
+            android:layout_marginLeft="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/read_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/read_more"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/shows_gv"
+            android:layout_marginRight="10dp"
+            />
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/about_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read more details"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/read_more_text"
+            android:layout_alignParentLeft="true"
+            android:textColor="#848484"
+            android:layout_marginLeft="8dp"
+            android:maxLines="3"
+            />
+
+        <View android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/about_details"
+            android:background="#848484"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <com.teli.sonyset.views.SonyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cast"
+            android:textSize="18sp"
+            android:layout_below="@+id/line"
+            android:textColor="@android:color/black"
+            android:id="@+id/cast_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+       <!-- <com.teli.sonyset.views.SonyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_all_btn"
+            android:text="@string/view_all"
+            android:textSize="12sp"
+            android:padding="5dp"
+            android:layout_below="@+id/line"
+            android:layout_alignParentRight="true"
+            android:textColor="#848484"
+            android:background="@drawable/text_box_corner"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            />-->
+
+        <ImageView
+            android:id="@+id/view_all_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/view_all"
+            android:layout_below="@+id/line"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <!--<GridView android:id="@+id/cast_gv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cast_text"
+            android:numColumns="3"
+            android:layout_margin="10dp"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            />-->
+
+        <LinearLayout android:id="@+id/cast_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/cast_text"
+            >
+
+            <com.pkmmte.view.CircularImageView
+                android:id="@+id/cast_iv1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                />
+
+            <com.pkmmte.view.CircularImageView
+                android:id="@+id/cast_iv2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                />
+
+            <com.pkmmte.view.CircularImageView
+                android:id="@+id/cast_iv3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+              />
+
+        </LinearLayout>
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/noContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
+
+        <ProgressBar android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</ScrollView>

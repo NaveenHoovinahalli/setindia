@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sony_blue">#496BB4</color>
+    <color name="sony_green">#36AB49</color>
+    <color name="sony_red">#CE2C2F</color>
+    <color name="sony_black">#000000</color>
+    <color name="sony_white">#FFFFFF</color>
+    <color name="sony_grey">#666666</color>
+</resources>

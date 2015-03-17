@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('gama_carousel_v1.0.jar'))

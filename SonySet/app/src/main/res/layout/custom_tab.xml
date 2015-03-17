@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/divider_horizonal"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:background="#2E2E2E">
+
+        <LinearLayout
+            android:id="@+id/tab1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView android:id="@+id/colorCode1"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginBottom="3dp"/>
+
+            <ImageView android:id="@+id/iv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/episodes_unsel"
+                android:layout_gravity="center"/>
+
+            <TextView android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EPISODES"
+                android:layout_gravity="center"
+                android:textColor="#848484"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/divider"
+            android:layout_gravity="center_vertical"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/tab2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView android:id="@+id/colorCode2"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginBottom="3dp"/>
+
+            <ImageView android:id="@+id/iv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/schedule_unsel"
+                android:layout_gravity="center"/>
+
+            <TextView android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCHEDULE"
+                android:layout_gravity="center"
+                android:textColor="#848484"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/divider"
+            android:layout_gravity="center_vertical"
+            />
+
+        <LinearLayout
+            android:id="@+id/tab3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView android:id="@+id/colorCode3"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginBottom="3dp"/>
+
+            <ImageView android:id="@+id/iv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shows_sel"
+                android:layout_gravity="center"/>
+
+            <TextView android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SHOWS"
+                android:textColor="#848484"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/divider"
+            android:layout_gravity="center_vertical"
+            />
+
+        <LinearLayout
+            android:id="@+id/tab4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView android:id="@+id/colorCode4"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginBottom="3dp"/>
+
+            <ImageView android:id="@+id/iv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/videos_unsel"
+                android:layout_gravity="center"/>
+
+            <TextView android:id="@+id/tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIDEOS"
+                android:layout_gravity="center"
+                android:textColor="#848484"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

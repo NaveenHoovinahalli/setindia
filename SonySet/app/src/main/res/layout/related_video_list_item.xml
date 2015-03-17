@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:padding="10dp">
+
+    <View
+        android:layout_width="4dp"
+        android:id="@+id/itemColor"
+        android:orientation="horizontal"
+        android:layout_height="fill_parent"
+        android:background="@color/sony_grey"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/related_thumbnail"
+        android:layout_alignTop="@+id/related_thumbnail"/>
+
+    <ImageView
+        android:id="@+id/related_thumbnail"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:paddingRight="5dp"
+        android:scaleType="fitXY"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_toRightOf="@+id/itemColor"
+        android:layout_toEndOf="@+id/itemColor"
+        android:background="@drawable/border"/>
+
+    <RelativeLayout
+        android:id="@+id/video_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bc_video_view"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="false"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_toEndOf="@+id/related_thumbnail"
+        android:layout_toRightOf="@+id/related_thumbnail">
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:inputType="textNoSuggestions"
+            android:capitalize="words"
+            android:textColor="@color/sony_black"
+            android:textSize="13sp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/show_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:capitalize="characters"
+            android:inputType="textNoSuggestions"
+            android:textSize="10sp"
+            android:textAllCaps="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+
+        <View
+            android:id="@+id/show_separator"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/video_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/show_name"
+            android:background="@drawable/divider"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textAllCaps="true"
+            android:inputType="textNoSuggestions"
+            android:layout_alignTop="@+id/show_separator"
+            android:layout_toRightOf="@+id/show_separator"
+            android:layout_toEndOf="@+id/show_separator"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+        </RelativeLayout>
+
+</RelativeLayout>

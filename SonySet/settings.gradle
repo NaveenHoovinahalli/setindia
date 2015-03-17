@@ -1,0 +1,2 @@
+include ':app', ':android-sdk-4.3.4', ':MenuSlideOutNavigation', ':gama_carousel_v1.0'
+include ':phoicAudioLib'

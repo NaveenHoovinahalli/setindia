@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView android:id="@+id/promo_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/promo_title"
+            style="@style/textView"
+            android:text="Promo title"
+            android:textSize="18sp"
+            android:layout_above="@+id/promo_name"
+            />
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/promo_name"
+            style="@style/textView"
+            android:text="Promo title"
+            android:layout_marginBottom="30dp"
+            />
+
+    </LinearLayout>
+    <ImageView android:id="@+id/play_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/play_btn_big"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"/>
+
+</RelativeLayout>

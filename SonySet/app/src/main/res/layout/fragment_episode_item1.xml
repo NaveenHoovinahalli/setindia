@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+
+    <TextView
+        android:id="@+id/color_code_view1"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:paddingBottom="5dp"
+        android:background="#666666"
+        android:layout_alignBottom="@+id/episode_iv"
+        android:layout_alignTop="@+id/episode_iv"/>
+
+    <ImageView
+        android:id="@+id/episode_iv1"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/color_code_view1"
+        android:layout_toEndOf="@+id/color_code_view1" />
+
+    <com.teli.sonyset.views.SonyTextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/color_code_view"
+        android:layout_alignParentTop="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        >
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/episode_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+
+            />
+     <!--   android:background="@drawable/rounded_text_box"-->
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/episode_num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            />
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/episode_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+    <ImageView android:id="@+id/play_iv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/play_btn_big"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="15dp"
+        android:layout_marginRight="10dp"/>
+</RelativeLayout>

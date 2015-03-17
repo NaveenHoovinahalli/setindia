@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('android-sdk-4.3.4.aar'))

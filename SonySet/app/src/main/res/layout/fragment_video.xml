@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/promos"
+            style="@style/textView"
+            android:text="@string/promos"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#101010"
+            android:textStyle="bold"/>
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/precaps"
+            style="@style/textView"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@string/precaps"
+            android:gravity="center"
+            android:background="#323232"
+            android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    <jp.co.recruit_mp.android.widget.HeaderFooterGridView
+        android:id="@+id/videos_gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabs"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="2"
+        android:layout_margin="10dp"/>
+
+    <ProgressBar android:id="@+id/videobar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

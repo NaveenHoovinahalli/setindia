@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <!--<HorizontalScrollView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!-->-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#191919">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lldate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                >
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/day1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11"
+                android:textSize="17sp"
+                android:textColor="#848484"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/dayN1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="FEB"
+                android:textColor="#848484"
+                android:layout_gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#848484" />
+
+            <LinearLayout
+                android:id="@+id/lldate2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/day2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#848484"
+                android:layout_gravity="center"
+                />
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/dayN2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FEB"
+                android:textSize="10sp"
+                android:textColor="#848484"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#848484" />
+
+            <LinearLayout
+                android:id="@+id/lldate3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#848484"
+                android:layout_gravity="center"
+
+             />
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/dayN3"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="FEB"
+                    android:textSize="10sp"
+                    android:textColor="#848484"
+                 android:layout_gravity="center"/>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#848484" />
+            <LinearLayout
+                android:id="@+id/lldate4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/day4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#848484"
+                    android:layout_gravity="center"
+
+                    />
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/dayN4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#848484"
+                    android:text="FEB"
+                    android:textSize="10sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lldate5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/day5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#848484"
+                    android:layout_gravity="center"
+
+                    />
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/dayN5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FEB"
+                    android:textSize="10sp"
+                    android:textColor="#848484"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lldate6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/day6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#848484"
+                    android:layout_gravity="center"
+                    />
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/dayN6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#848484"
+                    android:text="FEB"
+                    android:textSize="10sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lldate7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/day7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#848484"
+                    android:layout_gravity="center"
+
+                    />
+                <com.teli.sonyset.views.SonyTextView
+                    android:id="@+id/dayN7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#848484"
+                    android:text="FEB"
+                    android:textSize="10sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:layout_marginRight="2dp"
+            >
+
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/tvsd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="SD"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#848484"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical" />
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/tvhd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="HD"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="20sp"
+                android:textColor="#848484"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        </LinearLayout>
+  <!--</HorizontalScrollView>-->
+    <ProgressBar
+        android:id="@+id/scheduleProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+    <ListView
+        android:background="#ffffff"
+        android:id="@+id/listSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:divider="#ffffff"
+        android:padding="5dp"/>
+
+
+
+</LinearLayout>

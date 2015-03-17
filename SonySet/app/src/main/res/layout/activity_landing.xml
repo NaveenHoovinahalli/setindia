@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainRelativeLayour">
+
+    <View
+        android:id="@+id/viewTop"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:background="#1A1A1A"/>
+    <RelativeLayout
+        android:id="@+id/rlheader"
+        android:layout_below="@id/viewTop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#2E2E2E">
+        <ImageView
+            android:id="@+id/menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/sony_menu"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SONY ENTERTAINMENT TELEVISION"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/actionBarHeight"
+            android:layout_centerInParent="true"
+            />
+
+        <ImageView android:id="@+id/secondScreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+
+    <com.teli.sonyset.views.MotionViewPager
+        android:id="@+id/topPager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/promoHeight"
+        android:layout_below="@id/rlheader"
+        />
+
+    <com.teli.sonyset.views.CirclePageIndicator
+        android:id="@+id/circleIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@id/rlheader"
+        />
+
+    <include layout="@layout/custom_tab"
+        android:id="@+id/customTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topPager"
+        android:background="#2E2E2E"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/bottomPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customTab"/>
+
+</RelativeLayout>

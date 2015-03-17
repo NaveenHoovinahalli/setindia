@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/color_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#666666"/>
+
+    <ImageView
+        android:id="@+id/show_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/color_code_view"
+        android:src="@drawable/place_holder"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
+        android:background="#30FFFFFF">
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/show_name"
+            style="@style/textView"
+            android:layout_above="@+id/end_layout"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <LinearLayout android:id="@+id/end_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+           >
+
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/show_time"
+                style="@style/textView"
+                android:text="Date"
+                android:textStyle="bold"/>
+
+            <com.teli.sonyset.views.SonyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/upcoming_new_tv"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Upcoming"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView android:id="@+id/show_logo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+      />
+    <!--android:src="@drawable/ic_launcher"-->
+</RelativeLayout>

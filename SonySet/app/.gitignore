@@ -1,0 +1,4 @@
+/build
+/build/intermediates/model_data.bin
+.idea/workspace.xml
+app/.gitignore

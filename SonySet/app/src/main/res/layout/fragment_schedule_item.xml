@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginTop="10dp"-->
+
+   <LinearLayout
+       android:orientation="horizontal" android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+         android:background="@drawable/border">
+
+        <View
+            android:id="@+id/colorCode"
+            android:layout_width="4dp"
+            android:layout_height="130dp"
+            android:background="#666666" />
+
+    <ImageView
+        android:id="@+id/imageThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/place_holder"
+        android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/showTiming"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="5:30PM"
+            android:textColor="#848484"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <com.teli.sonyset.views.SonyTextView
+            android:id="@+id/showTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Bharat Ka Veer Puttra Maharana Prathap"
+            android:textColor="#000000"/>
+        <ImageView
+            android:id="@+id/setReminder"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/set_reminder"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="5dp"
+             />
+
+
+    </LinearLayout>
+   </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginBottom="10dp"
+        />
+
+    <!--android:background="#848484"-->
+
+
+</LinearLayout>

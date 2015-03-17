@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MenuSlideOutNavigation/MenuSlideOutNavigation.iml" filepath="$PROJECT_DIR$/MenuSlideOutNavigation/MenuSlideOutNavigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SonySet.iml" filepath="$PROJECT_DIR$/SonySet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-sdk-4.3.4/android-sdk-4.3.4.iml" filepath="$PROJECT_DIR$/android-sdk-4.3.4/android-sdk-4.3.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gama_carousel_v1.0/gama_carousel_v1.0.iml" filepath="$PROJECT_DIR$/gama_carousel_v1.0/gama_carousel_v1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phoicAudioLib/phoicAudioLib.iml" filepath="$PROJECT_DIR$/phoicAudioLib/phoicAudioLib.iml" />
+    </modules>
+  </component>
+</project>
+
