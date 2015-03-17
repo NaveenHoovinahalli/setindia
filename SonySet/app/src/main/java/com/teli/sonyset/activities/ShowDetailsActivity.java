@@ -1,5 +1,6 @@
 package com.teli.sonyset.activities;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
+import com.teli.sonyset.adapters.ShowDetailsStripAdapter;
 import com.teli.sonyset.fragments.CastFragment;
 import com.teli.sonyset.fragments.ConceptFragment;
 import com.teli.sonyset.fragments.ShowDetailHomeFragment;
@@ -36,7 +38,6 @@ import com.teli.sonyset.models.ShowMain;
 import com.teli.sonyset.models.ShowVideo;
 import com.teli.sonyset.models.Synopsis;
 import com.teli.sonyset.models.Video;
-import com.teli.sonyset.views.CustomTabLayout;
 import com.teli.sonyset.views.SonyTextView;
 
 import org.json.JSONArray;
@@ -77,8 +78,17 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     @InjectView(R.id.colorCodeText)
     TextView mColorCode;
 
-    @InjectView(R.id.custom_tab_layout)
-    CustomTabLayout mTabLayout;
+    public ShowDetailsStripAdapter adapter;
+    public ViewPager pager;
+
+    public final static int PAGES = 5;
+    // You can choose a bigger number for LOOPS, but you know, nobody will fling
+    // more than 1000 times just in order to test your "infinite" ViewPager :D
+    public final static int LOOPS = 1000;
+    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+    public final static float BIG_SCALE = 0.75f;
+    public final static float SMALL_SCALE = 0.75f;
+    public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
 
  /*   @InjectView(R.id.carousel)
     Carousel mCarousel;*/
@@ -117,10 +127,19 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
             Toast.makeText(getApplicationContext(), "Sorry! No Internet Connection", Toast.LENGTH_SHORT).show();
+            mprogress.setVisibility(View.GONE);
             return;
         }
 
         if(getIntent().hasExtra(SHOW_ID)){
+
+            pager = (ViewPager) findViewById(R.id.myviewpager);
+            adapter = new ShowDetailsStripAdapter(this, this.getSupportFragmentManager());
+            pager.setAdapter(adapter);
+            pager.setOnPageChangeListener(horizontalListener);
+            pager.setCurrentItem(FIRST_PAGE);
+            pager.setOffscreenPageLimit(15);
+            pager.setPageMargin(-860);
 
             String showId =   getIntent().getStringExtra(SHOW_ID);
             String countryId = SonyDataManager.init(this).getCountryId();
@@ -131,6 +150,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         }else {
             mNoContent.setVisibility(View.VISIBLE);
             mNoContent.setText("No Content Available!");
+            mprogress.setVisibility(View.GONE);
         }
 
         if (getIntent().hasExtra(SHOW_COLOR_CODE)){
@@ -211,12 +231,12 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         // setUpcarousel();
 
-        mPagerAdapter = new NavigationAdapter(getSupportFragmentManager());
+        mPagerAdapter = new NavigationAdapter(getSupportFragmentManager(), ShowDetailsActivity.this);
         mBottomPager.setAdapter(mPagerAdapter);
         //   mBottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
         mBottomPager.setOnPageChangeListener(this);
-        mBottomPager.setCurrentItem(2);
-        mTabLayout.setViewPager(mBottomPager);
+        mBottomPager.setCurrentItem(FIRST_PAGE);
+        mBottomPager.setOffscreenPageLimit(15);
     }
 
     @Override
@@ -226,7 +246,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     @Override
     public void onPageSelected(int position) {
-
+        pager.setCurrentItem(mBottomPager.getCurrentItem());
     }
 
     @Override
@@ -234,168 +254,44 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     }
 
-  /*  private void setUpcarousel() {
-        mCarousel.setType(100);
-        mCarousel.setInfiniteScrollEnabled(true);
-        mCarousel.setItemRearrangeEnabled(true);
-        adapter1 = new ImageAdapter(this);
-        mCarousel.setAdapter(adapter1);
-       // mCarousel.setCenterPosition(2);
-        mCarousel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int id = view.getId();
-                Toast.makeText(ShowDetailsActivity.this, "clicked" + i, Toast.LENGTH_SHORT).show();
-                Log.d("MyActivity","item clicked" + i);
-
-              //  mPager.setCurrentItem(i);
-            }
-        });
-
-        mCarousel.setOnItemSelectionUpdatedListener(new Carousel.OnItemSelectionUpdatedListener() {
-            @Override
-            public void onItemSelectionUpdated(AdapterView<?> adapterView, View view, int i) {
-                Log.d("MyActivity","item selection update" + i);
-                //  carousel.setCenterPosition(i-1);
-              //  mPager.setCurrentItem(i);
-            }
-        });
-    }*/
-
-  /*  public class ImageAdapter extends BaseAdapter {
-        private Context mContext;
-        private int[] musicCover = { R.drawable.ic_launcher, R.drawable.cal,
-                R.drawable.filter, R.drawable.star, R.drawable.tv};
-
-        public ImageAdapter(Context c)
-        {
-            mContext = c;
-        }
-
-        @Override
-        public int getCount() {
-            return musicCover.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return musicCover[position];
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view = convertView;
-            if (view == null) {
-                view = LayoutInflater.from(mContext).inflate(R.layout.carousel_item, parent, false);
-                view.setLayoutParams(new Carousel.LayoutParams(250, 250));
-
-                ViewHolder holder = new ViewHolder();
-                holder.imageView = (ImageView)view.findViewById(R.id.itemImage);
-
-                view.setTag(holder);
-            }
-
-            ViewHolder holder = (ViewHolder)view.getTag();
-            holder.imageView.setImageResource(musicCover[position]);
-
-            return view;
-        }
-
-        private class ViewHolder {
-            ImageView imageView;
-        }
-    }*/
-
-    /*public class ImageAdapter extends BaseAdapter {
-        private Context mContext;
-        private String[] names = {"CAST","CONCEPT","HOME","EPISODES","SYNOPSIS"};
-        private int[] musicCover = { R.drawable.ic_launcher, R.drawable.cal,
-                R.drawable.filter, R.drawable.star, R.drawable.tv};
-
-        public ImageAdapter(Context c)
-        {
-            mContext = c;
-        }
-
-        @Override
-        public int getCount() {
-            return musicCover.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return musicCover[position];
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view = convertView;
-            if (view == null) {
-                view = LayoutInflater.from(mContext).inflate(R.layout.carousel_item_text, parent, false);
-                view.setLayoutParams(new Carousel.LayoutParams(250, 250));
-
-                ViewHolder holder = new ViewHolder();
-                holder.imageView = (ImageView)view.findViewById(R.id.home_image);
-                holder.mTitle = (TextView)view.findViewById(R.id.cast_title);
-
-                view.setTag(holder);
-            }
-
-            ViewHolder holder = (ViewHolder)view.getTag();
-            holder.imageView.setImageResource(musicCover[position]);
-
-            holder.mTitle.setText(names[position]);
-            return view;
-        }
-
-        private class ViewHolder {
-            ImageView imageView;
-            TextView mTitle;
-        }
-    }*/
-
     private static class NavigationAdapter extends FragmentStatePagerAdapter {
 
+        FragmentManager fm;
+        Activity context;
+
         private String[] names = {"CAST","CONCEPT","HOME","EPISODES","SYNOPSIS"};
-        public NavigationAdapter(FragmentManager fm) {
+        public NavigationAdapter(FragmentManager fm, Activity context) {
             super(fm);
+            this.fm = fm;
+            this.context = context;
         }
 
         @Override
         public Fragment getItem(int position) {
-            Fragment f = new Fragment();
+            Fragment f = null;
 
             //  final int pattern = position % 5;
+            position = position % 5;
             switch (position) {
 
                 case 0:
-                    f = new CastFragment();
-                    break;
-
-                case 1:
-                    f = new ConceptFragment();
-                    break;
-
-                case 2:
                     f = new ShowDetailHomeFragment();
                     break;
 
-                case 3:
+                case 1:
                     f = new ShowEpisodeFragment();
                     break;
 
-                case 4:
+                case 2:
                     f = new SynopsisFragment();
+                    break;
+
+                case 3:
+                    f = new CastFragment();
+                    break;
+
+                case 4:
+                    f = new ConceptFragment();
                     break;
 
             }
@@ -404,7 +300,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         @Override
         public int getCount() {
-            return 5;
+            return 5 * LOOPS;
         }
 
         @Override
@@ -503,5 +399,25 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     public void onBackPressed() {
         finish();
         super.onBackPressed();
+    }
+
+    ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i2) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            mBottomPager.setCurrentItem(pager.getCurrentItem());
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+        }
+    };
+
+    public void setSelectedIten(int position) {
+        pager.setCurrentItem(position);
     }
 }

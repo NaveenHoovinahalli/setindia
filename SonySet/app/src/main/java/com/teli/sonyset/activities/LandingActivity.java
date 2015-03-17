@@ -147,7 +147,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
-        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
+//        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
+        pager.setPageMargin(-860);
 
         countryId = SonyDataManager.init(this).getCountryId();
 

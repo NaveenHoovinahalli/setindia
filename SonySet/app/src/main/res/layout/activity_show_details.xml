@@ -29,6 +29,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp" />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -67,27 +68,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.teli.sonyset.views.CustomTabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/custom_tab_layout"
-        android:layout_below="@+id/middle_layout"
-        android:background="#1A1A1A"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myviewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="#353535"
+        android:layout_below="@+id/middle_layout"/>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/bottomPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/custom_tab_layout"
+        android:layout_below="@+id/myviewpager"
         >
-
-        <!-- <android.support.v4.view.PagerTitleStrip
-             android:id="@+id/titlestrip"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:background="#353535"
-             android:textColor="#767676"
-             />-->
 
     </android.support.v4.view.ViewPager>
     <!-- android:layout_below="@+id/carousel"-->
@@ -95,7 +89,8 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <com.teli.sonyset.views.SonyTextView
         android:id="@+id/noContent"

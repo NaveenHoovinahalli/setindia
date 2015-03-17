@@ -288,25 +288,30 @@ public class ShowDetailHomeFragment extends Fragment {
 
                 promoTime1.setBackgroundResource(R.drawable.rounded_text_box);
                 promoNum1.setText(value.get(i + 1).getEpisodeNumber());
-                if (mColorcode.equalsIgnoreCase("R")){
-                    colorCode1.setBackgroundColor(Color.parseColor("#CD2E2E"));
-                }else if (mColorcode.equalsIgnoreCase("G")){
-                    colorCode1.setBackgroundColor(Color.parseColor("#38A92C"));
-                }else if (mColorcode.equalsIgnoreCase("B")){
-                    colorCode1.setBackgroundColor(Color.parseColor("#4A67D6"));
-                }
 
+                if (mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
+                   colorCode1.setVisibility(View.VISIBLE);
+                    if (mColorcode.equalsIgnoreCase("R")) {
+                        colorCode1.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                    } else if (mColorcode.equalsIgnoreCase("G")) {
+                        colorCode1.setBackgroundColor(Color.parseColor("#38A92C"));
+                    } else if (mColorcode.equalsIgnoreCase("B")) {
+                        colorCode1.setBackgroundColor(Color.parseColor("#4A67D6"));
+                    }
+                }
                 promoIv1.setTag(i+1);
             }
 
-            if (mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null"))
-                if (mColorcode.equalsIgnoreCase("R")){
+            if (mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
+                colorCode.setVisibility(View.VISIBLE);
+                if (mColorcode.equalsIgnoreCase("R")) {
                     colorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-                }else if (mColorcode.equalsIgnoreCase("G")){
+                } else if (mColorcode.equalsIgnoreCase("G")) {
                     colorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-                }else if (mColorcode.equalsIgnoreCase("B")){
+                } else if (mColorcode.equalsIgnoreCase("B")) {
                     colorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
                 }
+            }
             mShowsImages.addView(view);
             // view.setTag(i);
 
@@ -321,16 +326,17 @@ public class ShowDetailHomeFragment extends Fragment {
                 }
             });
 
-            promoIv1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int i = (int) promoIv1.getTag();
+            if (promoIv1!=null)
+                promoIv1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int i = (int) promoIv1.getTag();
 
-                    Log.d("ShowDetailsFragment","onClicklistener" + i);
+                        Log.d("ShowDetailsFragment","onClicklistener" + i);
 
-                    loadVideoActivity(value.get(i).getBrightCoveId() , i);
-                }
-            });
+                        loadVideoActivity(value.get(i).getBrightCoveId() , i);
+                    }
+                });
         }
     }
 

@@ -26,14 +26,15 @@
         android:textColor="#767676"
         android:layout_alignBaseline="@+id/episode_number"/>
 
-    <com.teli.sonyset.views.SonyTextView
+    <com.teli.sonyset.views.ExpandableTextView
         android:id="@+id/episode_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Episode 18"
         android:textColor="#767676"
         android:layout_margin="15dp"
-        android:maxLines="3"
+        android:paddingBottom="30dp"
+        android:background="@drawable/arrow_bottom_right_bg"
         android:layout_below="@+id/episode_number"/>
 
     <ImageView android:id="@+id/full_episode"
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/episode_detail"
         android:src="@drawable/down_arrow_circle"
+        android:visibility="gone"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
         />

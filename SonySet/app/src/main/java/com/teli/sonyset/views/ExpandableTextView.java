@@ -6,6 +6,7 @@ package com.teli.sonyset.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.util.AttributeSet;
 import android.view.View;
@@ -43,6 +44,7 @@ public class ExpandableTextView extends TextView {
             public void onClick(View v) {
                 trim = !trim;
                 setText();
+                setBackgroundColor(Color.parseColor("#ffffff"));
                 requestFocusFromTouch();
             }
         });
