@@ -743,19 +743,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     };
 
     public void setSelectedIten(int position) {
-        pagerCount++;
-        if(pagerCount>0 && pagerCount <5){
-            pager.setCurrentItem(2500 + position);
-        }else if(pagerCount>=5 && pagerCount <10){
-            pager.setCurrentItem(2500  + 5 + position);
-        }else if(pagerCount>=10 && pagerCount <15){
-            pager.setCurrentItem(2500 + 10 + position);
-
-        }
-//        pager.setCurrentItem(2500 + position);
+        pager.setCurrentItem(position);
     }
 
-    private int pagerCount;
     ViewPager.OnPageChangeListener bottomPagerListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {

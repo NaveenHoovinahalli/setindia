@@ -26,9 +26,9 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int position)
 	{
-        Log.d("LandingActivity", "AdapterPositionMy" + position);
+        int count = position;
         position = position % LandingActivity.PAGES;
-        return MyFragment.newInstance(context, position, 0.5f);
+        return MyFragment.newInstance(context, position, 0.5f, count);
 	}
 
 	@Override

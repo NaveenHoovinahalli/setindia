@@ -36,12 +36,14 @@ public class MyFragment extends Fragment {
     };
     private int pos;
     private LinearLayout strip_container;
+    private int mCount;
 
     public static Fragment newInstance(LandingActivity context, int pos,
-                                       float scale) {
+                                       float scale, int count) {
         mPosition = pos;
         Bundle b = new Bundle();
         b.putInt("pos", pos);
+        b.putInt("count", count);
         b.putFloat("scale", scale);
         return Fragment.instantiate(context, MyFragment.class.getName(), b);
     }
@@ -57,6 +59,7 @@ public class MyFragment extends Fragment {
                 inflater.inflate(R.layout.horiz_bar_fragment, container, false);
 
         pos = this.getArguments().getInt("pos");
+        mCount = this.getArguments().getInt("count");
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
         View view = (View) linearLayout.findViewById(R.id.strip);
@@ -71,7 +74,7 @@ public class MyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Position" + pos, Toast.LENGTH_SHORT).show();
-                ((LandingActivity)getActivity()).setSelectedIten(pos);
+                ((LandingActivity)getActivity()).setSelectedIten(mCount);
             }
         });
 
