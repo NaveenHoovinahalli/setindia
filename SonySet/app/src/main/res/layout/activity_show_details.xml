@@ -83,14 +83,6 @@
         android:layout_below="@+id/myviewpager"
         >
 
-        <!-- <android.support.v4.view.PagerTitleStrip
-             android:id="@+id/titlestrip"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:background="#353535"
-             android:textColor="#767676"
-             />-->
-
     </android.support.v4.view.ViewPager>
     <!-- android:layout_below="@+id/carousel"-->
     <ProgressBar

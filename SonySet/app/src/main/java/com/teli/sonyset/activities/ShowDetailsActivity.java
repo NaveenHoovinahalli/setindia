@@ -235,8 +235,8 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         mBottomPager.setAdapter(mPagerAdapter);
         //   mBottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
         mBottomPager.setOnPageChangeListener(this);
-        pager.setCurrentItem(FIRST_PAGE);
-        pager.setOffscreenPageLimit(15);
+        mBottomPager.setCurrentItem(FIRST_PAGE);
+        mBottomPager.setOffscreenPageLimit(15);
     }
 
     @Override
@@ -258,6 +258,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         FragmentManager fm;
         Activity context;
+
         private String[] names = {"CAST","CONCEPT","HOME","EPISODES","SYNOPSIS"};
         public NavigationAdapter(FragmentManager fm, Activity context) {
             super(fm);
@@ -267,7 +268,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         @Override
         public Fragment getItem(int position) {
-            Fragment f = new Fragment();
+            Fragment f = null;
 
             //  final int pattern = position % 5;
             position = position % 5;
