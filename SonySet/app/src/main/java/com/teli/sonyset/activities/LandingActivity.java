@@ -42,7 +42,6 @@ import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
 import com.teli.sonyset.fragments.ExclusiveFragment;
-import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;

@@ -33,7 +33,7 @@
         jar="/home/naveen/Documents/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b6d1b8be609c2b0abc7288e0d7a8dcf42e177fc9">
+        sha1="17c70781b2c645a7a2a1a2d62c085da0208eb9c1">
         <dex dex="/home/naveen/Documents/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-7f11ec51ef8e929c32ccff25d3e32a0ada0cc9ca.jar" />
     </item>
     <item
@@ -96,7 +96,7 @@
         jar="/home/naveen/Documents/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="c3844f52baa948577a15abc463257ea24b1bc737">
+        sha1="4f74df81bd163c44476463cee8882dc39f1998a4">
         <dex dex="/home/naveen/Documents/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-2935b3dfbcf4cfd94575e1708fa9c56e76cba0fd.jar" />
     </item>
     <item

@@ -239,7 +239,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View headerView = layoutInflater.inflate(R.layout.fragment_header_item, null);
 
-            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.promoHeight)));
+            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
 

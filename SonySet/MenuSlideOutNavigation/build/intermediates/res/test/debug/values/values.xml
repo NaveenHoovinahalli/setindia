@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/home/naveen/Documents/set_india_android/SonySet/MenuSlideOutNavigation/build/intermediates/bundles/debug/res/values/values.xml -->
-    <eat-comment/>
-    <string name="app_name">Mamlakati</string>
-    <string name="hello">Hello World, MamlakatiActivity!</string>
-</resources>

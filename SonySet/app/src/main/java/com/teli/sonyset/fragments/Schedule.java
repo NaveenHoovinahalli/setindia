@@ -152,13 +152,13 @@ public class Schedule extends Fragment {
     }
 
     private void setSD() {
-       String cId=SonyDataManager.init(getActivity()).getConutryCode();
+       String cId=SonyDataManager.init(getActivity()).getCountryId();
 
 
 
         String url = String.format(Constants.SCHEDULE_SD, cId);
 
-        Log.d("URL","url-"+url);
+        Log.d("URLSCHEDULE","url-"+url);
 
         sdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
         hdBtn.setBackgroundColor(Color.parseColor("#323232"));
@@ -170,10 +170,10 @@ public class Schedule extends Fragment {
 
     private void setHD() {
 
-        String cId= SonyDataManager.init(getActivity()).getConutryCode();
+        String cId= SonyDataManager.init(getActivity()).getCountryId();
 
-        String url = String.format(Constants.SCHEDULE_HD, cId);
-        Log.d("URL","url-"+url);
+        String url = String.format(Constants.SCHEDULE_HD,cId);
+        Log.d("URLSCHEDULE","url-"+url);
 
         hdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
         sdBtn.setBackgroundColor(Color.parseColor("#323232"));
