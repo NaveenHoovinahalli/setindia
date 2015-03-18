@@ -8,6 +8,7 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="tabHeightShow">45dp</dimen>
     <dimen name="promoHeight">230dp</dimen>
+    <dimen name="carosalmargintop">215dp</dimen>
     <dimen name="actionBarHeight">17sp</dimen>
     <dimen name="loopPagerMargin">-285dp</dimen>
     <dimen name="menucentertext">120dp</dimen>
