@@ -1,5 +1,6 @@
 package com.teli.sonyset.adapters;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,12 +16,10 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     private HorizontalLinearLayout cur = null;
     private HorizontalLinearLayout next = null;
-    private LandingActivity context;
+    private Activity context;
     private FragmentManager fm;
-    MyFragment myFragment;
-    private float scale;
 
-    public MyPagerAdapter(LandingActivity context, FragmentManager fm) {
+    public MyPagerAdapter(Activity context, FragmentManager fm) {
         super(fm);
         this.fm = fm;
         this.context = context;
@@ -30,13 +29,11 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         int count = position;
         position = position % LandingActivity.PAGES;
-        myFragment = (MyFragment) myFragment.newInstance(context, position, 0.5f, count);
-        return myFragment;
+        return MyFragment.newInstance(context, position, 0.5f, count);
     }
 
     @Override
     public int getCount() {
         return LandingActivity.PAGES * LandingActivity.LOOPS;
     }
-
 }

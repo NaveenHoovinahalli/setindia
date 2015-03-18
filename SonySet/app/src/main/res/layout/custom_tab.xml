@@ -31,7 +31,7 @@
             <ImageView android:id="@+id/iv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/episodes_unsel"
+                android:src="@drawable/episodes_details_unsel"
                 android:layout_gravity="center"/>
 
             <TextView android:id="@+id/tv1"

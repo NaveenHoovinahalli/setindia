@@ -80,6 +80,8 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     public ShowDetailsStripAdapter adapter;
     public ViewPager pager;
+    private int previousItem;
+    private boolean isFirst;
 
     public final static int PAGES = 5;
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
@@ -131,10 +133,15 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             return;
         }
 
+        if (getIntent().hasExtra(SHOW_COLOR_CODE)){
+            colorCode =  getIntent().getStringExtra(SHOW_COLOR_CODE);
+            Log.d("ShowDetailsAcivity","colorcode" + colorCode);
+        }
+
         if(getIntent().hasExtra(SHOW_ID)){
 
             pager = (ViewPager) findViewById(R.id.myviewpager);
-            adapter = new ShowDetailsStripAdapter(this, this.getSupportFragmentManager());
+            adapter = new ShowDetailsStripAdapter(this, this.getSupportFragmentManager(), colorCode);
             pager.setAdapter(adapter);
             pager.setOnPageChangeListener(horizontalListener);
             pager.setCurrentItem(FIRST_PAGE);
@@ -153,10 +160,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             mprogress.setVisibility(View.GONE);
         }
 
-        if (getIntent().hasExtra(SHOW_COLOR_CODE)){
-            colorCode =  getIntent().getStringExtra(SHOW_COLOR_CODE);
-            Log.d("ShowDetailsAcivity","colorcode" + colorCode);
-        }
+
 
         super.onCreate(savedInstanceState);
     }
@@ -403,13 +407,28 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int i, float v, int i2) {
-
-        }
+        public void onPageScrolled(int i, float v, int i2) {}
 
         @Override
         public void onPageSelected(int i) {
+            if (isFirst) {
+                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
+                View previousView = previousFragment.getView();
+                LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                previousLayout.setSelected(false);
+//                pDividerLayout.setVisibility(View.VISIBLE);
+
+                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+                View currentView = currentFragment.getView();
+                LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                LinearLayout cDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+//                cDividerLayout.setVisibility(View.GONE);
+                currentLayout.setSelected(true);
+            }
+            isFirst = true;
             mBottomPager.setCurrentItem(pager.getCurrentItem());
+            previousItem = pager.getCurrentItem();
         }
 
         @Override

@@ -23,6 +23,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/divider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -30,13 +31,13 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="2dp"
                     android:layout_height="90dp"
                     android:background="#474747"
                     android:gravity="left" />
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="2dp"
                     android:layout_height="90dp"
                     android:background="#1e1e1e"
                     android:gravity="right" />

@@ -30,18 +30,45 @@ public class ShowDetailsStripFragment extends Fragment {
             "CAST",
             "CONCEPT"
     };
+
+    int[] blue = new int[]{
+            R.drawable.show_detail_home_blue_selector,
+            R.drawable.show_detail_episodes_blue_selector,
+            R.drawable.show_detail_synopsis_blue_selector,
+            R.drawable.show_detail_cast_blue_selector,
+            R.drawable.show_detail_concept_blue_selector
+    };
+
+    int[] red = new int[]{
+            R.drawable.show_detail_home_red_selector,
+            R.drawable.show_detail_episodes_red_selector,
+            R.drawable.show_detail_synopsis_red_selector,
+            R.drawable.show_detail_cast_red_selector,
+            R.drawable.show_detail_concept_red_selector
+    };
+
+    int[] green = new int[]{
+            R.drawable.show_detail_home_green_selector,
+            R.drawable.show_detail_episodes_green_selector,
+            R.drawable.show_detail_synopsis_green_selector,
+            R.drawable.show_detail_cast_green_selector,
+            R.drawable.show_detail_concept_green_selector
+    };
+
     private int pos;
     private LinearLayout strip_container;
     static ArrayList<Fragment> fragments = new ArrayList<>();
     private int mCount;
+    private String mColor;
 
     public static Fragment newInstance(Activity context, int pos,
-                                       float scale, int count) {
+                                       float scale, int count, String color) {
         mPosition = pos;
         Bundle b = new Bundle();
         b.putInt("pos", pos);
         b.putInt("count", count);
         b.putFloat("scale", scale);
+        b.putString("color", color);
         Fragment fragment = Fragment.instantiate(context, ShowDetailsStripFragment.class.getName(), b);
         fragments.add(fragment);
         return fragment;
@@ -58,26 +85,29 @@ public class ShowDetailsStripFragment extends Fragment {
                 inflater.inflate(R.layout.show_details_bar_fragment, container, false);
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
+        mColor = this.getArguments().getString("color");
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
-        strip_container.setTag(pos);
-        TextView tv = (TextView) linearLayout.findViewById(R.id.text);
-        ImageView iv = (ImageView) linearLayout.findViewById(R.id.imageview);
-        tv.setText(names[pos]);
+        if (mColor.toLowerCase().equals("b"))
+            strip_container.setBackgroundResource(blue[pos]);
+        else if (mColor.toLowerCase().equals("g"))
+            strip_container.setBackgroundResource(green[pos]);
+        else
+        strip_container.setBackgroundResource(red[pos]);
 
-        if(pos==0){
+        strip_container.setTag(pos);
+
+        if (mCount == 2500) {
             strip_container.setSelected(true);
-            tv.setVisibility(View.GONE);
-            iv.setVisibility(View.VISIBLE);
-            iv.setImageResource(R.drawable.home);
         }
+
         strip_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(getActivity(), "Position" + pos, Toast.LENGTH_SHORT).show();
-                ((ShowDetailsActivity)getActivity()).setSelectedIten(mCount);
-                for(int i=0; i<fragments.size();i++){
+                ((ShowDetailsActivity) getActivity()).setSelectedIten(mCount);
+                for (int i = 0; i < fragments.size(); i++) {
                     View v = fragments.get(i).getView();
-                    if(v!=null){
+                    if (v != null) {
                         LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
                         layout.setSelected(false);
                     }
@@ -92,17 +122,6 @@ public class ShowDetailsStripFragment extends Fragment {
         root.setScaleBoth(scale);
 
         return linearLayout;
-    }
-
-    private void setSelected(View view) {
-
-    }
-
-    public LinearLayout getFragmentLayout() {
-        if (linearLayout != null)
-            return linearLayout;
-
-        return null;
     }
 }
 
