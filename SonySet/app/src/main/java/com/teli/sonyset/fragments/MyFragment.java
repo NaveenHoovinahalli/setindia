@@ -1,5 +1,6 @@
 package com.teli.sonyset.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,7 +44,7 @@ public class MyFragment extends Fragment {
     static ArrayList<Fragment> fragments = new ArrayList<>();
     private int previousItem;
 
-    public static Fragment newInstance(LandingActivity context, int pos,
+    public static Fragment newInstance(Activity context, int pos,
                                        float scale, int count) {
         mPosition = pos;
         Bundle b = new Bundle();
@@ -81,7 +82,6 @@ public class MyFragment extends Fragment {
             public void onClick(View view) {
                 ((LandingActivity) getActivity()).setSelectedItem(mCount);
                 for (int i = 0; i < fragments.size(); i++) {
-                    Log.d("MainActivity", "PageSelectedView::" + fragments.size());
                     View v = fragments.get(i).getView();
                     if (v != null) {
                         LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);

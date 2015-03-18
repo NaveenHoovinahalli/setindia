@@ -15,20 +15,20 @@ public class ShowDetailsStripAdapter extends FragmentPagerAdapter {
 	private HorizontalLinearLayout next = null;
 	private Activity context;
 	private FragmentManager fm;
-	private float scale;
+	private String mColor;
 
-	public ShowDetailsStripAdapter(Activity context, FragmentManager fm) {
+	public ShowDetailsStripAdapter(Activity context, FragmentManager fm, String color) {
 		super(fm);
 		this.fm = fm;
 		this.context = context;
+        this.mColor = color;
 	}
 
 	@Override
-	public Fragment getItem(int position)
-	{
+	public Fragment getItem(int position){
         int count = position;
         position = position % LandingActivity.PAGES;
-        return ShowDetailsStripFragment.newInstance(context, position, 0.5f, count);
+        return ShowDetailsStripFragment.newInstance(context, position, 0.5f, count, mColor);
 	}
 
 	@Override

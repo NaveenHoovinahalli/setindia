@@ -772,11 +772,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
                 View previousView = previousFragment.getView();
                 LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
                 previousLayout.setSelected(false);
+//                pDividerLayout.setVisibility(View.VISIBLE);
 
                 Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
                 View currentView = currentFragment.getView();
                 LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                LinearLayout cDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+//                cDividerLayout.setVisibility(View.GONE);
                 currentLayout.setSelected(true);
             }
             isFirst = true;

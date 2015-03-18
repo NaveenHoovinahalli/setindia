@@ -214,29 +214,33 @@ public class Schedule extends Fragment {
 
     private void initAdapter(JSONArray json) {
 
-        Gson gson=new Gson();
+        try {
+            Gson gson = new Gson();
 
-        days = gson.fromJson(json.toString(), new TypeToken<List<ScheduleDayDetail>>() {
-        }.getType());
+            days = gson.fromJson(json.toString(), new TypeToken<List<ScheduleDayDetail>>() {
+            }.getType());
 
-        if(days.size()>0){
-            if(previousNameView!=null && previousdateView!=null) {
-                previousView.setBackgroundColor(Color.parseColor("#323232"));
-                previousdateView.setTextColor(Color.parseColor("#848484"));
-                previousNameView.setTextColor(Color.parseColor("#848484"));
+            if (days.size() > 0) {
+                if (previousNameView != null && previousdateView != null) {
+                    previousView.setBackgroundColor(Color.parseColor("#323232"));
+                    previousdateView.setTextColor(Color.parseColor("#848484"));
+                    previousNameView.setTextColor(Color.parseColor("#848484"));
+                }
+                date1.setVisibility(View.VISIBLE);
+                date1.setBackgroundColor(Color.parseColor("#000000"));
+                day11.setTextColor(Color.parseColor("#496BB4"));
+                dayN11.setTextColor(Color.parseColor("#ffffff"));
+                previousView = date1;
+                previousdateView = day11;
+                previousNameView = dayN11;
+
+                setlinearlayout1();
+                setList(0);
+            } else {
+                Toast.makeText(getActivity(), "Sorry...Data not found", Toast.LENGTH_SHORT).show();
             }
-            date1.setVisibility(View.VISIBLE);
-            date1.setBackgroundColor(Color.parseColor("#000000"));
-            day11.setTextColor(Color.parseColor("#496BB4"));
-            dayN11.setTextColor(Color.parseColor("#ffffff"));
-            previousView=date1;
-            previousdateView=day11;
-            previousNameView=dayN11;
-
-            setlinearlayout1();
-            setList(0);
-        }else {
-            Toast.makeText(getActivity(),"Sorry...Data not found",Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
