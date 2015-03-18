@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,10 +19,10 @@ import com.teli.sonyset.R;
 import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SonyDataManager;
+import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.activities.ShowDetailsActivity;
 import com.teli.sonyset.adapters.ShowAdapter;
 import com.teli.sonyset.models.ShowDetail;
-import com.teli.sonyset.Utils.SonyRequest;
 
 import org.json.JSONArray;
 
@@ -47,14 +46,14 @@ public class ShowFragment extends Fragment implements AdapterView.OnItemClickLis
     private String countryId;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shows,null);
         ButterKnife.inject(this,view);
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         if(!AndroidUtils.isNetworkOnline(mContext)){

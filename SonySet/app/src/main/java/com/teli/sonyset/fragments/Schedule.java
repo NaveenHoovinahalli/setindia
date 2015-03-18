@@ -152,7 +152,14 @@ public class Schedule extends Fragment {
     }
 
     private void setSD() {
-        String url = String.format(Constants.SCHEDULE_SD, 1);
+       String cId=SonyDataManager.init(getActivity()).getConutryCode();
+
+
+
+        String url = String.format(Constants.SCHEDULE_SD, cId);
+
+        Log.d("URL","url-"+url);
+
         sdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
         hdBtn.setBackgroundColor(Color.parseColor("#323232"));
         sdBtn.setTextColor(Color.parseColor("#ffffff"));
@@ -162,7 +169,11 @@ public class Schedule extends Fragment {
     }
 
     private void setHD() {
-        String url = String.format(Constants.SCHEDULE_HD, 1);
+
+        String cId= SonyDataManager.init(getActivity()).getConutryCode();
+
+        String url = String.format(Constants.SCHEDULE_HD, cId);
+        Log.d("URL","url-"+url);
 
         hdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
         sdBtn.setBackgroundColor(Color.parseColor("#323232"));
@@ -407,7 +418,7 @@ public class Schedule extends Fragment {
 
         view.setBackgroundColor(Color.parseColor("#4A67D6"));
         if(previousView!=null)
-            previousView.setBackgroundColor(Color.parseColor("#323232"));
+            previousView.setBackgroundColor(Color.parseColor("#191919"));
         previousView=view;
 
     }
@@ -435,7 +446,7 @@ public class Schedule extends Fragment {
 
     public void setPreviousView(){
         if(previousNameView!=null && previousdateView!=null) {
-            previousView.setBackgroundColor(Color.parseColor("#323232"));
+            previousView.setBackgroundColor(Color.parseColor("#191919"));
             previousdateView.setTextColor(Color.parseColor("#848484"));
             previousNameView.setTextColor(Color.parseColor("#848484"));
         }

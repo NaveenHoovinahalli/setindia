@@ -57,9 +57,9 @@ public class WebViewActivity extends Activity {
         }
 
         aliasMap = new LinkedHashMap<String, String>();
-        aliasMap.put("banner", "c1986d14s378");
+        aliasMap.put("banner", "c406d19s1");
 
-        ZedoAndroidSdk.init(getApplicationContext(), "480", aliasMap);
+        ZedoAndroidSdk.init(getApplicationContext(), "1408", aliasMap);
 
         if (getIntent().hasExtra(WEB_TEXT_HEADER)){
             relativeLayout.setVisibility(View.VISIBLE);

@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
 import com.teli.sonyset.fragments.ExclusiveFragment;
+import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;
@@ -134,6 +136,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             R.drawable.ripple_9, R.drawable.ripple_10, R.drawable.ripple_11, R.drawable.ripple_12,
             R.drawable.ripple_13, R.drawable.ripple_14, R.drawable.ripple_15, R.drawable.ripple_16
     };
+    private Runnable mStartAnimation;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,8 +151,25 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
-//        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
-        pager.setPageMargin(-860);
+
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+        Log.d("Screen","width"+width);
+        if(width==540){
+            Log.d("Screen inside if","width"+width);
+            pager.setPageMargin(-426);
+        }else if (width==800) {
+            mTopPager.setMinimumHeight(600);
+            pager.setPageMargin(-616);
+
+        }else {
+            pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
+
+        }
+//        pager.setPageMargin(-860);
 
         countryId = SonyDataManager.init(this).getCountryId();
 
@@ -169,17 +190,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(1);
+            bottomPager.setCurrentItem(2504);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(1);
+            bottomPager.setCurrentItem(2504);
+            SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
-            bottomPager.setCurrentItem(3);
+            bottomPager.setCurrentItem(2502);
         } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
-            bottomPager.setCurrentItem(3);
+            SonyDataManager.init(this).savePrecapsIsFromMenu(false);
+            bottomPager.setCurrentItem(2502);
         } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
-            bottomPager.setCurrentItem(0);
+            bottomPager.setCurrentItem(2503);
         }
 
         receiver = new ResponseReceiver();
@@ -543,7 +566,18 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @OnClick(R.id.secondScreen)
     public void secondScreenClicked() {
 
+        if (timer!=null)
+            timer.cancel();
+
+        if (mHandler!=null)
+            mHandler.removeCallbacks(mUpdateResults);
+
+        if(mHandler1!=null)
+            mHandler1.removeCallbacks(mStartAnimation);
+
         if (programLink != null && !programLink.isEmpty()) {
+
+            mSecondScreen.setVisibility(View.GONE);
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
@@ -646,16 +680,16 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     String response = bundle.getString(BackgroundService.RESPONSE_KEY);
 
                     if (response != null && !response.isEmpty())
-
+                        mSecondScreen.setVisibility(View.VISIBLE);
                         detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
 
                     final int delay = 4000;
-                    final Timer timer = new Timer();
+                     timer = new Timer();
                     i = 0;
                     count = 1;
 
 
-                    final Runnable mStartAnimation = new Runnable() {
+                    mStartAnimation = new Runnable() {
                         public void run() {
                             isPausedBool = false;
                         }
@@ -676,6 +710,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                     i = 0;
                                     mHandler1.postDelayed(mStartAnimation, 5000);
                                 }
+
 
                                 mSecondScreen.setBackgroundResource(IMAGE_IDS[i]);
                                 i++;
@@ -720,6 +755,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     }
 
 
+    private int previousItem = FIRST_PAGE;
     ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {
@@ -728,12 +764,22 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
-//            Log.d("MainActivity","PageSelected::" + pager.getCurrentItem()%5);
+//            MyFragment fragment = (MyFragment) adapter.getItem(previousItem);
+//            fragment.unSelectLayout(pager.getCurrentItem());
+//            fragment.selectLayout(pager.getCurrentItem());
+//            adapter.unSetSelection(previousItem);
+//            adapter.setSelection(pager.getCurrentItem());
 
-//            bottomPager.setCurrentItem(pager.getCurrentItem() % 5);
+            int index = pager.getCurrentItem();
+            MyPagerAdapter adapter = ((MyPagerAdapter)pager.getAdapter());
+            MyFragment fragment = adapter.getFragment(index);
+
+
+//            Log.d("MainActivity", "PageSelectedView::" + fragment.getView());
+//            Log.d("MainActivity", "PageSelectedFragment::" + fragment.getTag());
+
             bottomPager.setCurrentItem(pager.getCurrentItem());
-            adapter.selectedItem(pager.getCurrentItem());
-
+            previousItem = pager.getCurrentItem();
         }
 
         @Override
@@ -741,7 +787,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }
     };
 
-    public void setSelectedIten(int position) {
+    public void setSelectedItem(int position) {
         pager.setCurrentItem(position);
     }
 

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +42,7 @@ import java.util.HashMap;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by madhuri on 12/3/15.
@@ -109,7 +109,7 @@ public class ShowDetailHomeFragment extends Fragment {
     private ArrayList<String> brightCoveListOld = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_show_detail_home,null);
         ButterKnife.inject(this,view);
         return view;
@@ -122,7 +122,7 @@ public class ShowDetailHomeFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         if(!AndroidUtils.isNetworkOnline(mContext)){
             return;
         }
@@ -353,4 +353,17 @@ public class ShowDetailHomeFragment extends Fragment {
         Log.d("TestActivity","brightCoveThumbnailsOld" + brightCoveIds);
 
     }
+
+    @OnClick(R.id.read_more_btn)
+    public void readMoreClicked(){
+        ((ShowDetailsActivity)mContext).setBottomPagerToConcept();
+    }
+
+
+    @OnClick(R.id.view_all_btn)
+    public void viewAllClicked(){
+        ((ShowDetailsActivity)mContext).setBottomPagerToCast();
+    }
+
+
 }

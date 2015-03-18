@@ -14,32 +14,32 @@
             android:background="@android:color/transparent">
         <LinearLayout
                 android:id="@+id/strip_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="149dp"
+                android:layout_height="120dp"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:paddingBottom="20dp"
                 android:background="@drawable/strip_selector">
-            <View
-                    android:id="@+id/strip"
-                    android:layout_width="fill_parent"
-                    android:layout_height="4dp"
-                    android:background="#FF00FF"
-                    android:visibility="gone"/>
             <ImageView
-                    android:id="@+id/imageview"
-                    android:layout_width="70dp"
-                    android:paddingTop="20dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/ic_launcher">
-            </ImageView>
+                android:id="@+id/imageview"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_launcher"
+                android:visibility="gone"/>
+
             <TextView
-                    android:id="@+id/text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
-                    android:text="item"/>
+                android:id="@+id/text"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="item"
+                android:paddingTop="15dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/sony_grey"
+                android:textSize="25sp" />
+
         </LinearLayout>
     </com.teli.sonyset.views.HorizontalLinearLayout>
 </LinearLayout>

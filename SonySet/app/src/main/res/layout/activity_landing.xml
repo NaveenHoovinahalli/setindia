@@ -26,19 +26,17 @@
             android:layout_marginLeft="5dp"
             />
 
-        <TextView
+        <com.teli.sonyset.views.SonyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SONY ENTERTAINMENT TELEVISION"
             android:textColor="@android:color/white"
             android:textSize="@dimen/actionBarHeight"
             android:layout_centerInParent="true"
+            android:textStyle="bold"
             />
 
-        <ImageView android:id="@+id/secondScreen"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
 
 
@@ -80,5 +78,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/myviewpager"/>
+
+
+    <ImageView android:id="@+id/secondScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

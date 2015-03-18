@@ -16,18 +16,12 @@ import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.activities.ShowDetailsActivity;
 import com.teli.sonyset.views.HorizontalLinearLayout;
 
+import java.util.ArrayList;
+
 public class ShowDetailsStripFragment extends Fragment {
 
     public static int mPosition;
     private LinearLayout linearLayout;
-    int[] images = new int[]{
-            R.drawable.shows_unsel,
-            R.drawable.exclusive_unsel,
-            R.drawable.videos_unsel,
-            R.drawable.episodes_unsel,
-            R.drawable.schedule_unsel
-
-    };
 
     String[] names = new String[]{
             "Home",
@@ -38,6 +32,7 @@ public class ShowDetailsStripFragment extends Fragment {
     };
     private int pos;
     private LinearLayout strip_container;
+    static ArrayList<Fragment> fragments = new ArrayList<>();
     private int mCount;
 
     public static Fragment newInstance(Activity context, int pos,
@@ -47,7 +42,9 @@ public class ShowDetailsStripFragment extends Fragment {
         b.putInt("pos", pos);
         b.putInt("count", count);
         b.putFloat("scale", scale);
-        return Fragment.instantiate(context, ShowDetailsStripFragment.class.getName(), b);
+        Fragment fragment = Fragment.instantiate(context, ShowDetailsStripFragment.class.getName(), b);
+        fragments.add(fragment);
+        return fragment;
     }
 
     @Override
@@ -59,24 +56,33 @@ public class ShowDetailsStripFragment extends Fragment {
 
         linearLayout = (LinearLayout)
                 inflater.inflate(R.layout.show_details_bar_fragment, container, false);
-
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
-        View view = (View) linearLayout.findViewById(R.id.strip);
         TextView tv = (TextView) linearLayout.findViewById(R.id.text);
         ImageView iv = (ImageView) linearLayout.findViewById(R.id.imageview);
         tv.setText(names[pos]);
-        iv.setImageResource(images[pos]);
+
         if(pos==0){
             strip_container.setSelected(true);
+            tv.setVisibility(View.GONE);
+            iv.setVisibility(View.VISIBLE);
+            iv.setImageResource(R.drawable.home);
         }
         strip_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Position" + pos, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Position" + pos, Toast.LENGTH_SHORT).show();
                 ((ShowDetailsActivity)getActivity()).setSelectedIten(mCount);
+                for(int i=0; i<fragments.size();i++){
+                    View v = fragments.get(i).getView();
+                    if(v!=null){
+                        LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
+                        layout.setSelected(false);
+                    }
+                }
+                strip_container.setSelected(true);
             }
         });
 
