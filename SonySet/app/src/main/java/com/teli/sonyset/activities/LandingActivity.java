@@ -725,6 +725,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
 
     private int previousItem = FIRST_PAGE;
+    private boolean isFirst;
     ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {
@@ -733,19 +734,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
-//            MyFragment fragment = (MyFragment) adapter.getItem(previousItem);
-//            fragment.unSelectLayout(pager.getCurrentItem());
-//            fragment.selectLayout(pager.getCurrentItem());
-//            adapter.unSetSelection(previousItem);
-//            adapter.setSelection(pager.getCurrentItem());
 
-            int index = pager.getCurrentItem();
-            MyPagerAdapter adapter = ((MyPagerAdapter)pager.getAdapter());
-            MyFragment fragment = adapter.getFragment(index);
+            if (isFirst) {
+                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
+                View previousView = previousFragment.getView();
+                LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                previousLayout.setSelected(false);
 
-
-            Log.d("MainActivity", "PageSelectedView::" + fragment.getView());
-//            Log.d("MainActivity", "PageSelectedFragment::" + fragment.getTag());
+                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+                View currentView = currentFragment.getView();
+                LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                currentLayout.setSelected(true);
+            }
+            isFirst = true;
 
             bottomPager.setCurrentItem(pager.getCurrentItem());
             previousItem = pager.getCurrentItem();
@@ -762,21 +763,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     ViewPager.OnPageChangeListener bottomPagerListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int i, float v, int i2) {
-            Log.d("MainActivity", "PageScrolled::" + i);
-        }
+        public void onPageScrolled(int i, float v, int i2) {}
 
         @Override
         public void onPageSelected(int i) {
-//            Log.d("MainActivity","PageSelected::" + pager.getCurrentItem()%5);
-            Log.d("MainActivity", "PageSelected::" + i);
             pager.setCurrentItem(bottomPager.getCurrentItem());
         }
 
         @Override
-        public void onPageScrollStateChanged(int i) {
-            Log.d("MainActivity", "PageScrollStateChanged::" + i);
-        }
+        public void onPageScrollStateChanged(int i) {}
     };
 }
 

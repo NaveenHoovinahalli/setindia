@@ -39,14 +39,4 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         return LandingActivity.PAGES * LandingActivity.LOOPS;
     }
 
-    public MyFragment getFragment(int key) {
-        return null;
-    }
-
-    public void setSelection(int position) {
-    }
-
-    public void unSetSelection(int position) {
-    }
-
 }
