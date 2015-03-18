@@ -39,8 +39,6 @@ public class MyFragment extends Fragment {
     private LinearLayout strip_container;
     private HorizontalLinearLayout rootLayout;
     private int mCount;
-    private View previousView;
-    private int oldPos;
 
     static ArrayList<Fragment> fragments = new ArrayList<>();
     private int previousItem;
@@ -74,9 +72,8 @@ public class MyFragment extends Fragment {
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         strip_container.setTag(pos);
         strip_container.setBackgroundResource(images[pos]);
-        if (pos == 0) {
+        if (mCount == 2500) {
             strip_container.setSelected(true);
-            previousItem = 0;
         }
 
         strip_container.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +81,7 @@ public class MyFragment extends Fragment {
             public void onClick(View view) {
                 ((LandingActivity) getActivity()).setSelectedItem(mCount);
                 for (int i = 0; i < fragments.size(); i++) {
+                    Log.d("MainActivity", "PageSelectedView::" + fragments.size());
                     View v = fragments.get(i).getView();
                     if (v != null) {
                         LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
@@ -100,29 +98,6 @@ public class MyFragment extends Fragment {
         root.setScaleBoth(scale);
 
         return linearLayout;
-    }
-
-    public void selectLayout(int position) {
-    }
-
-    public void unSelectLayout(int position) {
-//        for (int i = 0; i < fragments.size(); i++) {
-//            View v = fragments.get(i).getView();
-//            if (v != null) {
-//                LinearLayout layout = (LinearLayout) v.findViewById(R.id.strip_item);
-//                if(i!=position) {
-//                    layout.setSelected(false);
-//                }else if(i==position){
-//                    layout.setSelected(true);
-//                }
-//            }
-//        }
-    }
-
-    public LinearLayout getFragmentLayout() {
-        if (linearLayout != null)
-            return linearLayout;
-        return null;
     }
 }
 
