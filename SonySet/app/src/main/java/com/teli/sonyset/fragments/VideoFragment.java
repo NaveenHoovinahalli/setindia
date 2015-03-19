@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,9 +28,9 @@ import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.SonyDataManager;
+import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.activities.VideoDetailsActivity;
 import com.teli.sonyset.adapters.VideoAdapter;
-import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.views.SonyTextView;
 
@@ -77,7 +76,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     private ArrayList<Video> promos = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video,null);
         ButterKnife.inject(this,view);
         return view;
@@ -90,7 +89,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         if(!AndroidUtils.isNetworkOnline(mContext)){
             return;
         }
@@ -240,7 +239,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View headerView = layoutInflater.inflate(R.layout.fragment_header_item, null);
 
-            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300));
+            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
 

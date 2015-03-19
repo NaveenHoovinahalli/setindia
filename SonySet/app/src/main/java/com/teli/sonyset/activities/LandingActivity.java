@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -41,7 +42,6 @@ import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
 import com.teli.sonyset.fragments.ExclusiveFragment;
-import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;
@@ -136,6 +136,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             R.drawable.ripple_9, R.drawable.ripple_10, R.drawable.ripple_11, R.drawable.ripple_12,
             R.drawable.ripple_13, R.drawable.ripple_14, R.drawable.ripple_15, R.drawable.ripple_16
     };
+    private Runnable mStartAnimation;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +151,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
-        pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
+//        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
+//        pager.setPageMargin(-860);
+
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+        Log.d("Screen","width"+width);
+        if(width==540){
+            Log.d("Screen inside if","width"+width);
+            pager.setPageMargin(-426);
+        }else if (width==800) {
+            mTopPager.setMinimumHeight(600);
+            pager.setPageMargin(-616);
+
+        }else {
+            pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
+
+        }
 //        pager.setPageMargin(-860);
 
         countryId = SonyDataManager.init(this).getCountryId();
@@ -547,7 +568,18 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @OnClick(R.id.secondScreen)
     public void secondScreenClicked() {
 
+        if (timer!=null)
+            timer.cancel();
+
+        if (mHandler!=null)
+            mHandler.removeCallbacks(mUpdateResults);
+
+        if(mHandler1!=null)
+            mHandler1.removeCallbacks(mStartAnimation);
+
         if (programLink != null && !programLink.isEmpty()) {
+
+            mSecondScreen.setVisibility(View.GONE);
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
@@ -650,16 +682,16 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     String response = bundle.getString(BackgroundService.RESPONSE_KEY);
 
                     if (response != null && !response.isEmpty())
-
+                        mSecondScreen.setVisibility(View.VISIBLE);
                         detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
 
                     final int delay = 4000;
-                    final Timer timer = new Timer();
+                     timer = new Timer();
                     i = 0;
                     count = 1;
 
 
-                    final Runnable mStartAnimation = new Runnable() {
+                    mStartAnimation = new Runnable() {
                         public void run() {
                             isPausedBool = false;
                         }
@@ -680,6 +712,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                     i = 0;
                                     mHandler1.postDelayed(mStartAnimation, 5000);
                                 }
+
 
                                 mSecondScreen.setBackgroundResource(IMAGE_IDS[i]);
                                 i++;

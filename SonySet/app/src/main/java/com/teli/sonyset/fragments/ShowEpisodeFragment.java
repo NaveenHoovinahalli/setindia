@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,7 +57,7 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
     private ArrayList<String> brightCoveThumbnails = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.show_episode_list,null);
         ButterKnife.inject(this,view);
         return view;
@@ -71,7 +70,7 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         if(!AndroidUtils.isNetworkOnline(mContext)){
             return;
         }
@@ -89,8 +88,8 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
             }*/
 
             Log.d("EpisodeFragment", "episodes empty : " + episodes);
-            mNoContent.setVisibility(View.VISIBLE);
-            mNoContent.setText("No Episodes Found!");
+//            mNoContent.setVisibility(View.VISIBLE);
+//            mNoContent.setText("No Episodes Found!");
 
         }else {
             Log.d("EpisodeFragment", "episodes empty : " + episodes);

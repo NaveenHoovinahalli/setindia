@@ -46,6 +46,9 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
         ButterKnife.inject(this);
 
         String countryCode = getCountryCode();
+        Log.d("Country Code test-splash", " code::" + countryCode);
+
+
         String versionCode = getVersionNumber();
 
         if(countryCode.isEmpty()){

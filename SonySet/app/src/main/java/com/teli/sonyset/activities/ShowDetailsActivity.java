@@ -439,4 +439,13 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     public void setSelectedIten(int position) {
         pager.setCurrentItem(position);
     }
+
+    public void setBottomPagerToConcept(){
+        mBottomPager.setCurrentItem(2504);
+    }
+
+    public void setBottomPagerToCast(){
+        mBottomPager.setCurrentItem(2503);
+    }
+
 }
