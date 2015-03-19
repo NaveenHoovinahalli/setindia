@@ -7,7 +7,7 @@
     <ImageView android:id="@+id/promo_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher"/>
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:textAllCaps="true"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/promo_name"
             style="@style/textView"
             android:text="Promo title"

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -456,7 +458,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             SonyTextView promoTitle = (SonyTextView) itemView.findViewById(R.id.promo_title);
             promoTitle.setText(promos.get(position).getShowTitle());
 
-            SonyTextView promoName = (SonyTextView) itemView.findViewById(R.id.promo_name);
+            TextView promoName = (TextView) itemView.findViewById(R.id.promo_name);
+
+            Typeface tf = Typeface.createFromAsset(getAssets(), "sonyregularplain.ttf");
+            promoName.setTypeface(tf);
             promoName.setText(promos.get(position).getShowName());
 
             imageView.setOnClickListener(new View.OnClickListener() {
