@@ -14,26 +14,14 @@
 
     <ImageView
         android:id="@+id/episode_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY"
         android:layout_toRightOf="@+id/color_code_view"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/place_holder"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
         />
-
-    <!--android:layout_height="@dimen/videoheaderheight"-->
-
-
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/color_code_view"
-        android:layout_alignParentTop="true"
-        android:background="#BF000000"
-       />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,30 +32,21 @@
         >
 
         <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/episode_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Time"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-
-            />
-
-        <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/episode_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Episode"
-            />
-
-        <com.teli.sonyset.views.SonyTextView
             android:id="@+id/episode_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Title"
+            android:textAllCaps="true"
+            />
+
+        <TextView
+            android:id="@+id/episode_show_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="Title"
+            android:textAllCaps="true"
             />
     </LinearLayout>
 
@@ -75,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/play_btn_big"
+        android:src="@drawable/play_btn_small"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:paddingBottom="15dp"

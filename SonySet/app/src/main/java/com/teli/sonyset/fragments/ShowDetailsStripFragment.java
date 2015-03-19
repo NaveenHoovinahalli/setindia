@@ -6,13 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.teli.sonyset.R;
-import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.activities.ShowDetailsActivity;
 import com.teli.sonyset.views.HorizontalLinearLayout;
 
@@ -82,7 +78,7 @@ public class ShowDetailsStripFragment extends Fragment {
         }
 
         linearLayout = (LinearLayout)
-                inflater.inflate(R.layout.show_details_bar_fragment, container, false);
+                inflater.inflate(R.layout.show_detail_bar_fragment, container, false);
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
         mColor = this.getArguments().getString("color");

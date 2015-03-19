@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -237,28 +238,27 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             mGridView.removeHeaderView(oldHeaderView);
 
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            View headerView = layoutInflater.inflate(R.layout.fragment_header_item, null);
+            View headerView = layoutInflater.inflate(R.layout.video_fragment_header_item, null);
 
             headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
 
             SonyTextView episodeTitle = (SonyTextView) headerView.findViewById(R.id.episode_title);
-            SonyTextView episodeNumber = (SonyTextView) headerView.findViewById(R.id.episode_num);
-            TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
-            TextView duration = (TextView) headerView.findViewById(R.id.duration);
+            TextView episodeShowName = (TextView) headerView.findViewById(R.id.episode_showName);
 
+            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "sonyregularplain.ttf");
+
+            TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
             if (brightCoveThumbnails.size() != 0)
                 if (!brightCoveThumbnails.get(0).equals("null")){
                     Picasso.with(mContext).load(Uri.parse(brightCoveThumbnails.get(0))).placeholder(R.drawable.place_holder).into(episodeImage);
                 }else {
-                    //  Picasso.with(mContext).load(Uri.parse(brightCoveThumbnails.get(0))).into(episodeImage);
                     episodeImage.setImageResource(R.drawable.place_holder);
                 }
 
-            episodeTitle.setText(videos.get(0).getShowName());
-            episodeNumber.setText(videos.get(0).getEpisodeNumber());
-            duration.setText(videos.get(0).getDuration());
+            episodeTitle.setText(videos.get(0).getShowTitle());
+            episodeShowName.setText(videos.get(0).getShowName());
 
             String color = videos.get(0).getColorCode();
             if (color.equals("R")){

@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/textviewgradient">
 
     <TextView
         android:id="@+id/color_code_view"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="4dp"
         android:background="#666666"/>
 
     <ImageView
         android:id="@+id/show_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/color_code_view"
+
+        />
+
+   <!-- <ImageView
+        android:id="@+id/card_gradient"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:layout_below="@+id/color_code_view"
-        android:src="@drawable/place_holder"
-        />
+        android:src="@drawable/card_gradient"
+        />-->
 
     <ImageView android:id="@+id/show_logo_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
+        android:layout_marginTop="5dp"
         />
 
     <LinearLayout
@@ -46,16 +55,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:alpha="0.9"
-           >
+            android:alpha="0.9">
 
-            <com.teli.sonyset.views.SonyTextView
+            <TextView
                 android:id="@+id/show_time"
                 style="@style/textView"
                 android:text="Date"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textAllCaps="true"/>
 
-            <com.teli.sonyset.views.SonyTextView
+            <!--<com.teli.sonyset.views.SonyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/upcoming_new_tv"
@@ -64,12 +73,18 @@
                 android:text="Upcoming"
                 android:gravity="center"
                 android:layout_marginLeft="5dp"
+                android:textSize="10sp"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/>-->
+
+            <ImageView android:id="@+id/upcoming_new_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="5dp"
+                />
 
         </LinearLayout>
     </LinearLayout>
-
-
     <!--android:src="@drawable/ic_launcher"-->
 </RelativeLayout>

@@ -26,7 +26,7 @@ public class ShowMain implements Parcelable{
     String showLogo;
 
     @SerializedName("episodess")
-    ArrayList<ShowVideo> episodess = new ArrayList<>();
+    ArrayList<Video> episodess = new ArrayList<>();
 
     @SerializedName("promos")
     ArrayList<Video> promos = new ArrayList<>();
@@ -61,11 +61,11 @@ public class ShowMain implements Parcelable{
         this.concept = concept;
     }
 
-    public ArrayList<ShowVideo> getEpisodess() {
+    public ArrayList<Video> getEpisodess() {
         return episodess;
     }
 
-    public void setEpisodess(ArrayList<ShowVideo> episodess) {
+    public void setEpisodess(ArrayList<Video> episodess) {
         this.episodess = episodess;
     }
 
@@ -137,7 +137,7 @@ public class ShowMain implements Parcelable{
         this.concept = in.readParcelable(Concept.class.getClassLoader());
         this.banner = in.readString();
         this.showLogo = in.readString();
-        this.episodess = (ArrayList<ShowVideo>) in.readSerializable();
+        this.episodess = (ArrayList<Video>) in.readSerializable();
         this.promos = (ArrayList<Video>) in.readSerializable();
         this.casts = (ArrayList<Cast>) in.readSerializable();
         this.synopsises = (ArrayList<Synopsis>) in.readSerializable();

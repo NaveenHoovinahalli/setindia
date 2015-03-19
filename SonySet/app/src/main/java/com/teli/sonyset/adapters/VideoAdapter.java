@@ -57,25 +57,21 @@ public class VideoAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.fragment_episode_item,null);
+            view = inflater.inflate(R.layout.fragment_video_item,null);
 
             viewHolder = new ViewHolder();
             viewHolder.mColorCode = (TextView) view.findViewById(R.id.color_code_view);
             viewHolder.episodeImage = (ImageView) view.findViewById(R.id.episode_iv);
-            viewHolder.episodeTime = (SonyTextView) view.findViewById(R.id.episode_time);
-            viewHolder.episodeNum = (SonyTextView) view.findViewById(R.id.episode_num);
             viewHolder.episodeTitle = (SonyTextView) view.findViewById(R.id.episode_title);
-            viewHolder.duration = (SonyTextView) view.findViewById(R.id.duration);
+            viewHolder.episodeShowName = (TextView) view.findViewById(R.id.episode_show_name);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
             view.forceLayout();
         }
 
-        viewHolder.episodeTitle.setText(episodes.get(i).getShowName());
-        viewHolder.episodeTime.setText(episodes.get(i).getOnAirDate());
-        viewHolder.duration.setText(episodes.get(i).getDuration());
-        viewHolder.duration.setBackgroundResource(R.drawable.rounded_text_box);
+        viewHolder.episodeTitle.setText(episodes.get(i).getShowTitle());
+        viewHolder.episodeShowName.setText(episodes.get(i).getShowName());
 
         if (!brightCoveThumbnails.get(i).equals("null")){
             Picasso.with(mContext).load(Uri.parse(brightCoveThumbnails.get(i))).placeholder(R.drawable.place_holder).into(viewHolder.episodeImage);
@@ -96,17 +92,14 @@ public class VideoAdapter extends BaseAdapter {
             }
         }
 
-        viewHolder.episodeNum.setText(episodes.get(i).getEpisodeNumber());
         return view;
     }
 
     private class ViewHolder{
         TextView mColorCode;
         ImageView episodeImage;
-        SonyTextView episodeTime;
-        SonyTextView episodeNum;
         SonyTextView episodeTitle;
-        SonyTextView duration;
+        TextView episodeShowName;
     }
 }
 

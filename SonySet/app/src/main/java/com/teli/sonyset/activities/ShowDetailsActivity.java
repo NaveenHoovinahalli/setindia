@@ -35,7 +35,6 @@ import com.teli.sonyset.models.Cast;
 import com.teli.sonyset.models.Concept;
 import com.teli.sonyset.models.ConceptValue;
 import com.teli.sonyset.models.ShowMain;
-import com.teli.sonyset.models.ShowVideo;
 import com.teli.sonyset.models.Synopsis;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.views.SonyTextView;
@@ -108,7 +107,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     private static ArrayList<Cast> casts = new ArrayList<>();
     private ArrayList<Synopsis> synopsises = new ArrayList<>();
-    private ArrayList<ShowVideo> episodes = new ArrayList<>();
+    private ArrayList<Video> episodes = new ArrayList<>();
     private String banner;
     private String title;
     private ArrayList<Video> promos = new ArrayList<>();
@@ -323,7 +322,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         return synopsises;
     }
 
-    public ArrayList<ShowVideo> getEpisodes(){
+    public ArrayList<Video> getEpisodes(){
         return episodes;
     }
 

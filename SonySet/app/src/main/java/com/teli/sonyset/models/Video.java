@@ -78,7 +78,7 @@ public class Video implements Parcelable {
     }
 
     public String getEpisodeNumber() {
-        return episodeNumber == null ? "no data" : episodeNumber;
+        return episodeNumber == null ? "" : episodeNumber;
     }
 
     public void setEpisodeNumber(String episodeNumber) {
@@ -86,7 +86,7 @@ public class Video implements Parcelable {
     }
 
     public String getOnAirDate() {
-        return onAirDate == null ? "no data" : onAirDate;
+        return onAirDate == null ? "" : onAirDate;
     }
 
     public void setOnAirDate(String onAirDate) {

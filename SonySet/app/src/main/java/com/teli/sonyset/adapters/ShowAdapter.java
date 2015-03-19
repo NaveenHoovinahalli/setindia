@@ -2,6 +2,7 @@ package com.teli.sonyset.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,8 +58,8 @@ public class ShowAdapter extends BaseAdapter {
             viewHolder.mColorCode = (TextView) view.findViewById(R.id.color_code_view);
             viewHolder.showLogo = (ImageView) view.findViewById(R.id.show_logo_iv);
             viewHolder.showTitle = (SonyTextView) view.findViewById(R.id.show_name);
-            viewHolder.showDate = (SonyTextView) view.findViewById(R.id.show_time);
-            viewHolder.upcomingNew = (SonyTextView) view.findViewById(R.id.upcoming_new_tv);
+            viewHolder.showDate = (TextView) view.findViewById(R.id.show_time);
+            viewHolder.upcomingNew = (ImageView) view.findViewById(R.id.upcoming_new_tv);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -69,13 +70,17 @@ public class ShowAdapter extends BaseAdapter {
         viewHolder.showTitle.setText(shows.get(i).getShowTitle());
 
         Log.d("ShowAdapter", "show name" + shows.get(i).getShowTitle());
+
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "sonyregularplain.ttf");
+        viewHolder.showDate.setTypeface(tf);
+
         viewHolder.showDate.setText(shows.get(i).getShowDate());
-        viewHolder.upcomingNew.setText(shows.get(i).getShowUpcomingNew());
+       // viewHolder.upcomingNew.setText(shows.get(i).getShowUpcomingNew());
 
         if (shows.get(i).getShowUpcomingNew().equalsIgnoreCase("UPCOMING")){
-            viewHolder.upcomingNew.setBackgroundResource(R.drawable.rounded_text_box_red);
+            viewHolder.upcomingNew.setImageResource(R.drawable.upcoming);
         }else if (shows.get(i).getShowUpcomingNew().equalsIgnoreCase("New")){
-            viewHolder.upcomingNew.setBackgroundResource(R.drawable.rounded_text_box_green);
+            viewHolder.upcomingNew.setImageResource(R.drawable.newnew);
         }
 
         String color = shows.get(i).getColorCode();
@@ -95,7 +100,7 @@ public class ShowAdapter extends BaseAdapter {
         TextView mColorCode;
         ImageView showLogo;
         SonyTextView showTitle;
-        SonyTextView showDate;
-        SonyTextView upcomingNew;
+        TextView showDate;
+        ImageView upcomingNew;
     }
 }

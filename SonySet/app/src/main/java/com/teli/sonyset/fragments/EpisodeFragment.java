@@ -210,13 +210,14 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
             duration.setText(episodes.get(0).getDuration());
 
             String color = episodes.get(0).getColorCode();
-            if (color.toLowerCase().equals("r")){
-                colorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-            }else if (color.toLowerCase().equals("g")){
-                colorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-            }else if (color.toLowerCase().equals("b")){
-                colorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
-            }
+            if (!color.equalsIgnoreCase("null"))
+                if (color.toLowerCase().equalsIgnoreCase("r")){
+                    colorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                }else if (color.toLowerCase().equalsIgnoreCase("g")){
+                    colorCode.setBackgroundColor(Color.parseColor("#38A92C"));
+                }else if (color.toLowerCase().equalsIgnoreCase("b")){
+                    colorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
+                }
 
             episodesOld = episodes;
             brightCoveThumbnailsOld = brightCoveThumbnails;

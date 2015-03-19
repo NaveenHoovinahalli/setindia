@@ -22,6 +22,7 @@
             android:text="Promo title"
             android:textSize="18sp"
             android:layout_above="@+id/promo_name"
+            android:textAllCaps="true"
             />
 
         <com.teli.sonyset.views.SonyTextView
@@ -29,6 +30,7 @@
             style="@style/textView"
             android:text="Promo title"
             android:layout_marginBottom="30dp"
+            android:textAllCaps="true"
             />
 
     </LinearLayout>

@@ -6,8 +6,12 @@ package com.teli.sonyset.Utils;
 public class Constants {
 
     public static final String BRIGHT_COVE_TOKEN = "KOXTTwEYaBxRZp9AhnsUME6jrgN8qslgoeNj-zn3m5xzLsBoWSMSQA..";
+    public static final String BRIGHT_COVE_TOKEN_EPISODE = "pJgVx7pOTpXw5m8_D8Rk2yHwym1XqPnjRRmfjnWMxZRo80GMSna1QQ..";
     public static final String BRIGHT_COVE_THUMBNAIL = "http://api.brightcove.com/services/library?" +
             "command=find_video_by_id&video_id=%s&video_fields=videoStillURL&media_delivery=http&token="+BRIGHT_COVE_TOKEN;
+
+    public static final String BRIGHT_COVE_EPISODE_THUMBNAIL = "http://api.brightcove.com/services/library?" +
+            "command=find_video_by_id&video_id=%s&video_fields=videoStillURL&media_delivery=http&token="+BRIGHT_COVE_TOKEN_EPISODE;
 
     public static final String EPG_BASE_URL = "http://appcms.setindia.com";
 

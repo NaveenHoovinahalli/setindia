@@ -157,8 +157,9 @@ public class ShowDetailHomeFragment extends Fragment {
         if (promos!=null && !promos.isEmpty() && promos.size()!=0){
             fetchBrightCoveID(promos);
         }else {
+            mProgress.setVisibility(View.GONE);
             noContent.setVisibility(View.VISIBLE);
-            noContent.setText("No Cast Found!");
+            noContent.setText("No Details Found!");
         }
         super.onActivityCreated(savedInstanceState);
     }
@@ -218,125 +219,128 @@ public class ShowDetailHomeFragment extends Fragment {
     }
 
     private void initAdapter(final ArrayList<Video> value, HashMap<Integer, String> brightCoveThumbnails) {
-        Picasso.with(mContext).load(Uri.parse(brightCoveThumbnails.get(0))).into(mFirstShowImageView);
-        mFirstShowTime.setText(value.get(0).getOnAirDate());
-        mFirstShowTitle.setText(value.get(0).getShowTitle());
-        mFirstShowTopTitle.setText(value.get(0).getShowName());
-        mDuration.setText(value.get(0).getDuration());
 
-        if(mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null"))
-            if (mColorcode.equals("R")){
-                mFirstColorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-            }else if (mColorcode.equals("G")){
-                mFirstColorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-            }else if (mColorcode.equals("B")){
-                mFirstColorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
-            }
+        if (value!=null && !value.toString().isEmpty() && value.size()!=0) {
+            Picasso.with(mContext).load(Uri.parse(brightCoveThumbnails.get(0))).into(mFirstShowImageView);
+            mFirstShowTime.setText(value.get(0).getOnAirDate());
+            mFirstShowTitle.setText(value.get(0).getShowTitle());
+            mFirstShowTopTitle.setText(value.get(0).getShowName());
+            mDuration.setText(value.get(0).getDuration());
 
-        mFirstShowImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadVideoActivity(brightCoveIds.get(0) , 0);
-            }
-        });
-
-        valueOld = value;
-        brightCoveThumbnailsOld = brightCoveThumbnails;
-
-        ArrayList<String> brightCoveList = new ArrayList<String>(brightCoveThumbnails.values());
-
-        for (int i = 0 ; i<brightCoveList.size();i++)
-            brightCoveListOld.add(brightCoveList.get(i));
-
-        value.remove(0);
-        brightCoveList.remove(0);
-
-        mProgress.setVisibility(View.GONE);
-
-        for (int i = 0; i<value.size();i = i+2){
-            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            View view = layoutInflater.inflate(R.layout.dynamic_layout, null);
-
-            final ImageView promoIv = (ImageView) view.findViewById(R.id.episode_iv);
-            SonyTextView promoTime = (SonyTextView) view.findViewById(R.id.episode_time);
-            SonyTextView promoNum = (SonyTextView) view.findViewById(R.id.episode_num);
-            SonyTextView promoTitle = (SonyTextView) view.findViewById(R.id.episode_title);
-            TextView colorCode = (TextView) view.findViewById(R.id.color_code_view);
-            SonyTextView duration = (SonyTextView) view.findViewById(R.id.duration);
-
-            final ImageView promoIv1 = (ImageView) view.findViewById(R.id.episode_iv1);
-            SonyTextView promoTime1 = (SonyTextView) view.findViewById(R.id.episode_time1);
-            SonyTextView promoNum1 = (SonyTextView) view.findViewById(R.id.episode_num1);
-            SonyTextView promoTitle1 = (SonyTextView) view.findViewById(R.id.episode_title1);
-            TextView colorCode1 = (TextView) view.findViewById(R.id.color_code_view1);
-            SonyTextView duration1 = (SonyTextView) view.findViewById(R.id.duration);
-
-            Picasso.with(mContext).load(Uri.parse(brightCoveList.get(i))).placeholder(R.drawable.place_holder).into(promoIv);
-            promoTitle.setText(value.get(i).getShowTitle());
-            promoTime.setText(value.get(i).getOnAirDate());
-            promoTime.setBackgroundResource(R.drawable.rounded_text_box);
-            promoNum.setText(value.get(i).getEpisodeNumber());
-            duration.setText(value.get(i).getDuration());
-
-            promoIv.setTag(i);
-
-            if (i+1 < value.size()) {
-                Picasso.with(mContext).load(Uri.parse(brightCoveList.get(i + 1))).placeholder(R.drawable.place_holder).into(promoIv1);
-                promoTitle1.setText(value.get(i + 1).getShowTitle());
-                promoTime1.setText(value.get(i + 1).getOnAirDate());
-                duration1.setText(value.get(i+1).getDuration());
-
-                promoTime1.setBackgroundResource(R.drawable.rounded_text_box);
-                promoNum1.setText(value.get(i + 1).getEpisodeNumber());
-
-                if (mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
-                   colorCode1.setVisibility(View.VISIBLE);
-                    if (mColorcode.equalsIgnoreCase("R")) {
-                        colorCode1.setBackgroundColor(Color.parseColor("#CD2E2E"));
-                    } else if (mColorcode.equalsIgnoreCase("G")) {
-                        colorCode1.setBackgroundColor(Color.parseColor("#38A92C"));
-                    } else if (mColorcode.equalsIgnoreCase("B")) {
-                        colorCode1.setBackgroundColor(Color.parseColor("#4A67D6"));
-                    }
+            if (mColorcode != null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null"))
+                if (mColorcode.equals("R")) {
+                    mFirstColorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                } else if (mColorcode.equals("G")) {
+                    mFirstColorCode.setBackgroundColor(Color.parseColor("#38A92C"));
+                } else if (mColorcode.equals("B")) {
+                    mFirstColorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
                 }
-                promoIv1.setTag(i+1);
-            }
 
-            if (mColorcode!=null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
-                colorCode.setVisibility(View.VISIBLE);
-                if (mColorcode.equalsIgnoreCase("R")) {
-                    colorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-                } else if (mColorcode.equalsIgnoreCase("G")) {
-                    colorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-                } else if (mColorcode.equalsIgnoreCase("B")) {
-                    colorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
-                }
-            }
-            mShowsImages.addView(view);
-            // view.setTag(i);
-
-            promoIv.setOnClickListener(new View.OnClickListener() {
+            mFirstShowImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int i = (int) promoIv.getTag();
-
-                    Log.d("ShowDetailsFragment","onClicklistener" + i);
-
-                    loadVideoActivity(value.get(i).getBrightCoveId() , i);
+                    loadVideoActivity(brightCoveIds.get(0), 0);
                 }
             });
 
-            if (promoIv1!=null)
-                promoIv1.setOnClickListener(new View.OnClickListener() {
+            valueOld = value;
+            brightCoveThumbnailsOld = brightCoveThumbnails;
+
+            ArrayList<String> brightCoveList = new ArrayList<String>(brightCoveThumbnails.values());
+
+            for (int i = 0; i < brightCoveList.size(); i++)
+                brightCoveListOld.add(brightCoveList.get(i));
+
+            value.remove(0);
+            brightCoveList.remove(0);
+
+            mProgress.setVisibility(View.GONE);
+
+            for (int i = 0; i < value.size(); i = i + 2) {
+                LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+                View view = layoutInflater.inflate(R.layout.dynamic_layout, null);
+
+                final ImageView promoIv = (ImageView) view.findViewById(R.id.episode_iv);
+                SonyTextView promoTime = (SonyTextView) view.findViewById(R.id.episode_time);
+                SonyTextView promoNum = (SonyTextView) view.findViewById(R.id.episode_num);
+                SonyTextView promoTitle = (SonyTextView) view.findViewById(R.id.episode_title);
+                TextView colorCode = (TextView) view.findViewById(R.id.color_code_view);
+                SonyTextView duration = (SonyTextView) view.findViewById(R.id.duration);
+
+                final ImageView promoIv1 = (ImageView) view.findViewById(R.id.episode_iv1);
+                SonyTextView promoTime1 = (SonyTextView) view.findViewById(R.id.episode_time1);
+                SonyTextView promoNum1 = (SonyTextView) view.findViewById(R.id.episode_num1);
+                SonyTextView promoTitle1 = (SonyTextView) view.findViewById(R.id.episode_title1);
+                TextView colorCode1 = (TextView) view.findViewById(R.id.color_code_view1);
+                SonyTextView duration1 = (SonyTextView) view.findViewById(R.id.duration);
+
+                Picasso.with(mContext).load(Uri.parse(brightCoveList.get(i))).placeholder(R.drawable.place_holder).into(promoIv);
+                promoTitle.setText(value.get(i).getShowTitle());
+                promoTime.setText(value.get(i).getOnAirDate());
+                promoTime.setBackgroundResource(R.drawable.rounded_text_box);
+                promoNum.setText(value.get(i).getEpisodeNumber());
+                duration.setText(value.get(i).getDuration());
+
+                promoIv.setTag(i);
+
+                if (i + 1 < value.size()) {
+                    Picasso.with(mContext).load(Uri.parse(brightCoveList.get(i + 1))).placeholder(R.drawable.place_holder).into(promoIv1);
+                    promoTitle1.setText(value.get(i + 1).getShowTitle());
+                    promoTime1.setText(value.get(i + 1).getOnAirDate());
+                    duration1.setText(value.get(i + 1).getDuration());
+
+                    promoTime1.setBackgroundResource(R.drawable.rounded_text_box);
+                    promoNum1.setText(value.get(i + 1).getEpisodeNumber());
+
+                    if (mColorcode != null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
+                        colorCode1.setVisibility(View.VISIBLE);
+                        if (mColorcode.equalsIgnoreCase("R")) {
+                            colorCode1.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                        } else if (mColorcode.equalsIgnoreCase("G")) {
+                            colorCode1.setBackgroundColor(Color.parseColor("#38A92C"));
+                        } else if (mColorcode.equalsIgnoreCase("B")) {
+                            colorCode1.setBackgroundColor(Color.parseColor("#4A67D6"));
+                        }
+                    }
+                    promoIv1.setTag(i + 1);
+                }
+
+                if (mColorcode != null && !mColorcode.isEmpty() && !mColorcode.equalsIgnoreCase("null")) {
+                    colorCode.setVisibility(View.VISIBLE);
+                    if (mColorcode.equalsIgnoreCase("R")) {
+                        colorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                    } else if (mColorcode.equalsIgnoreCase("G")) {
+                        colorCode.setBackgroundColor(Color.parseColor("#38A92C"));
+                    } else if (mColorcode.equalsIgnoreCase("B")) {
+                        colorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
+                    }
+                }
+                mShowsImages.addView(view);
+                // view.setTag(i);
+
+                promoIv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        int i = (int) promoIv1.getTag();
+                        int i = (int) promoIv.getTag();
 
-                        Log.d("ShowDetailsFragment","onClicklistener" + i);
+                        Log.d("ShowDetailsFragment", "onClicklistener" + i);
 
-                        loadVideoActivity(value.get(i).getBrightCoveId() , i);
+                        loadVideoActivity(value.get(i).getBrightCoveId(), i);
                     }
                 });
+
+                if (promoIv1 != null)
+                    promoIv1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            int i = (int) promoIv1.getTag();
+
+                            Log.d("ShowDetailsFragment", "onClicklistener" + i);
+
+                            loadVideoActivity(value.get(i).getBrightCoveId(), i);
+                        }
+                    });
+            }
         }
     }
 

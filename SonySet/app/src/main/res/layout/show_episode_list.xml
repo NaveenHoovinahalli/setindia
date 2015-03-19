@@ -12,7 +12,7 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:numColumns="2"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         />
 
     <com.teli.sonyset.views.SonyTextView
@@ -23,4 +23,9 @@
         android:layout_centerInParent="true"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
+
+    <ProgressBar android:id="@+id/exclusiveProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

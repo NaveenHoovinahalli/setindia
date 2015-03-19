@@ -1,6 +1,7 @@
 package com.teli.sonyset.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
-import com.teli.sonyset.models.ShowVideo;
+import com.teli.sonyset.models.Video;
 import com.teli.sonyset.views.SonyTextView;
 
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ import java.util.ArrayList;
 public class ShowEpisodeAdapter extends BaseAdapter {
 
     Context mContext;
-    ArrayList<ShowVideo> episodes = new ArrayList<>();
+    ArrayList<Video> episodes = new ArrayList<>();
     ArrayList<String> brightCoveThumbnails = new ArrayList<>();
     private ViewHolder viewHolder;
 
-    public ShowEpisodeAdapter(Context mContext, ArrayList<ShowVideo> episodes, ArrayList<String> brightCoveThumbnails) {
+    public ShowEpisodeAdapter(Context mContext, ArrayList<Video> episodes, ArrayList<String> brightCoveThumbnails) {
         this.mContext = mContext;
         this.episodes = episodes;
         this.brightCoveThumbnails = brightCoveThumbnails;
@@ -65,7 +66,7 @@ public class ShowEpisodeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
             view.forceLayout();
         }
-       // viewHolder.episodeTitle.setText(episodes.get(i).getShowName());
+         viewHolder.episodeTitle.setText(episodes.get(i).getShowName());
         viewHolder.episodeTime.setText(episodes.get(i).getOnAirDate());
 
         if (!brightCoveThumbnails.get(i).equals("null")){
@@ -74,18 +75,19 @@ public class ShowEpisodeAdapter extends BaseAdapter {
             viewHolder.episodeImage.setImageResource(R.drawable.ic_launcher);
         }
 
-      //  String color = episodes.get(i).getColorCode();
-      //  Log.d("EpisodeAdapter", "color code" + color);
+        String color = episodes.get(i).getColorCode();
+        //  Log.d("EpisodeAdapter", "color code" + color);
 
-       /* if (color!=null && !color.isEmpty()) {
-            if (color.equals("R")) {
-                viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-            } else if (color.equals("G")) {
-                viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-            } else if (color.equals("B")) {
-                viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
-            }
-        }*/
+        if (color!=null && !color.isEmpty()) {
+            if (color.equalsIgnoreCase("null"))
+                if (color.equals("R")) {
+                    viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
+                } else if (color.equals("G")) {
+                    viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#38A92C"));
+                } else if (color.equals("B")) {
+                    viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
+                }
+        }
 
         viewHolder.episodeNum.setText(episodes.get(i).getEpisodeNumber());
         return view;

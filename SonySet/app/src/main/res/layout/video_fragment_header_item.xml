@@ -26,14 +26,7 @@
     <!--android:layout_height="@dimen/videoheaderheight"-->
 
 
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/color_code_view"
-        android:layout_alignParentTop="true"
-        android:background="#BF000000"
-       />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,30 +37,23 @@
         >
 
         <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/episode_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Time"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-
-            />
-
-        <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/episode_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Episode"
-            />
-
-        <com.teli.sonyset.views.SonyTextView
             android:id="@+id/episode_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Title"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/episode_showName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:text="Title"
+            android:textSize="12sp"
             />
     </LinearLayout>
 
