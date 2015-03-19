@@ -46,12 +46,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" description="*/" line="84" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/horiz_bar_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/show_details_bar_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/show_details_bar_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="" />
     <ignored path="SonySet.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,8 +71,8 @@
       <file leaf-file-name="ShowDetailsStripFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/ShowDetailsStripFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22037652" vertical-offset="1025" max-vertical-offset="2142">
-              <caret line="84" column="67" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.43964562" vertical-offset="701" max-vertical-offset="2142">
+              <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -2396,7 +2391,11 @@
       <created>1426687571082</created>
       <updated>1426687571082</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Bug fixed">
+      <created>1426744924134</created>
+      <updated>1426744924134</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2483,7 +2482,8 @@
     <MESSAGE value="Added selection for click" />
     <MESSAGE value="Selection Working" />
     <MESSAGE value="Selection Working and Dividers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Selection Working and Dividers" />
+    <MESSAGE value="Bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2899,8 +2899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/ShowDetailsStripFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22037652" vertical-offset="1025" max-vertical-offset="2142">
-          <caret line="84" column="67" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.43964562" vertical-offset="701" max-vertical-offset="2142">
+          <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
           <folding />
         </state>
       </provider>
