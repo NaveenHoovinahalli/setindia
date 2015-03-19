@@ -16,7 +16,7 @@
         android:id="@+id/episode_iv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:layout_toRightOf="@+id/color_code_view"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentRight="true"
@@ -25,16 +25,13 @@
 
     <!--android:layout_height="@dimen/videoheaderheight"-->
 
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        >
+        android:layout_marginBottom="10dp">
 
         <com.teli.sonyset.views.SonyTextView
             android:id="@+id/episode_title"
@@ -44,6 +41,7 @@
             android:text="Title"
             android:textAllCaps="true"
             android:textSize="14sp"
+            android:layout_marginBottom="3dp"
             />
 
         <TextView

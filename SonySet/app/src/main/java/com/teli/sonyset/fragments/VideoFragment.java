@@ -65,6 +65,12 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     @InjectView(R.id.precaps)
     SonyTextView mPrecaps;
 
+    @InjectView(R.id.topColor1)
+    TextView mColorTop1;
+
+    @InjectView(R.id.topColor2)
+    TextView mColorTop2;
+
     private Context mContext;
     private ArrayList<String> brightCoveIds = new ArrayList<String>();
     private HashMap<Integer,String> thumbnailsBrightCove = new HashMap<>();
@@ -247,7 +253,8 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             SonyTextView episodeTitle = (SonyTextView) headerView.findViewById(R.id.episode_title);
             TextView episodeShowName = (TextView) headerView.findViewById(R.id.episode_showName);
 
-            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "sonyregularplain.ttf");
+            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
+            episodeShowName.setTypeface(tf);
 
             TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
             if (brightCoveThumbnails.size() != 0)

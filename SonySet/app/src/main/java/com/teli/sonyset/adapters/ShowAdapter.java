@@ -71,7 +71,7 @@ public class ShowAdapter extends BaseAdapter {
 
         Log.d("ShowAdapter", "show name" + shows.get(i).getShowTitle());
 
-        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "sonyregularplain.ttf");
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
         viewHolder.showDate.setTypeface(tf);
 
         viewHolder.showDate.setText(shows.get(i).getShowDate());

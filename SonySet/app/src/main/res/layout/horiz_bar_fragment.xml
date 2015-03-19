@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/strip_item"
-            android:layout_width="150dp"
+            android:layout_width="161dp"
             android:layout_height="120dp"
             android:gravity="center"
             android:background="@drawable/strip_selector"
@@ -34,12 +34,14 @@
                 android:orientation="horizontal">
 
                 <View
+                    android:id="@+id/left_divider"
                     android:layout_width="2dp"
                     android:layout_height="90dp"
                     android:background="#474747"
                     android:gravity="left" />
 
                 <View
+                    android:id="@+id/right_divider"
                     android:layout_width="2dp"
                     android:layout_height="90dp"
                     android:background="#1e1e1e"

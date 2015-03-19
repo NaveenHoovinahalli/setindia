@@ -153,6 +153,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
+
 //        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
 //        pager.setPageMargin(-860);
 
@@ -164,7 +165,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         Log.d("Screen","width"+width);
         if(width==540){
             Log.d("Screen inside if","width"+width);
-            pager.setPageMargin(-426);
+            pager.setPageMargin(-420);
         }else if (width==800) {
             mTopPager.setMinimumHeight(600);
             pager.setPageMargin(-616);
@@ -460,7 +461,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
             TextView promoName = (TextView) itemView.findViewById(R.id.promo_name);
 
-            Typeface tf = Typeface.createFromAsset(getAssets(), "sonyregularplain.ttf");
+            Typeface tf = Typeface.createFromAsset(getAssets(), "klavikamedium_plain_webfont.ttf");
             promoName.setTypeface(tf);
             promoName.setText(promos.get(position).getShowName());
 
@@ -778,15 +779,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 View previousView = previousFragment.getView();
                 LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
                 LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                pDividerLayout.setVisibility(View.VISIBLE);
                 previousLayout.setSelected(false);
-//                pDividerLayout.setVisibility(View.VISIBLE);
+
+                Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
+                View xView = xFragment.getView();
+                LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
+                xDividerLayout.setVisibility(View.VISIBLE);
 
                 Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
                 View currentView = currentFragment.getView();
                 LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
-                LinearLayout cDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-//                cDividerLayout.setVisibility(View.GONE);
+                LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
+                cDividerLayout.setVisibility(View.GONE);
                 currentLayout.setSelected(true);
+
+                int nextItem = pager.getCurrentItem() + 1;
+                Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
+                View nextView = nextFragment.getView();
+                LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
+                nDividerLayout.setVisibility(View.GONE);
             }
             isFirst = true;
 

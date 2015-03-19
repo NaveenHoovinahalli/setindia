@@ -3,12 +3,10 @@ package com.teli.sonyset.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.activities.LandingActivity;
@@ -71,10 +69,15 @@ public class MyFragment extends Fragment {
         rootLayout = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
         rootLayout.setTag(mCount);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
+        LinearLayout divider_container = (LinearLayout) linearLayout.findViewById(R.id.divider);
         strip_container.setTag(pos);
         strip_container.setBackgroundResource(images[pos]);
         if (mCount == 2500) {
             strip_container.setSelected(true);
+            divider_container.setVisibility(View.GONE);
+        }
+        if (mCount == 2501) {
+            divider_container.setVisibility(View.GONE);
         }
 
         strip_container.setOnClickListener(new View.OnClickListener() {

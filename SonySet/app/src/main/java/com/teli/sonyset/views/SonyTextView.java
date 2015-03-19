@@ -25,7 +25,7 @@ public class SonyTextView extends TextView {
     }
 
     public void setFont(){
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "sonymediumplain.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "klavikaregular_plain_webfont.ttf");
         setTypeface(tf);
     }
 }

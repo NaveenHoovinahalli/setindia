@@ -11,27 +11,55 @@
         android:weightSum="2"
         android:orientation="horizontal">
 
-        <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/promos"
-            style="@style/textView"
-            android:text="@string/promos"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#101010"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-        <com.teli.sonyset.views.SonyTextView
-            android:id="@+id/precaps"
-            style="@style/textView"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:text="@string/precaps"
-            android:gravity="center"
-            android:background="#323232"
-            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/topColor1"
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:background="@android:color/holo_blue_dark"/>
 
+            <com.teli.sonyset.views.SonyTextView
+                android:id="@+id/promos"
+                style="@style/textView"
+                android:layout_width="match_parent"
+                android:text="@string/promos"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#101010"
+                android:textStyle="bold"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/topColor2"
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:background="@android:color/holo_green_dark"/>
+
+            <com.teli.sonyset.views.SonyTextView
+                android:layout_width="match_parent"
+                android:id="@+id/precaps"
+                style="@style/textView"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="@string/precaps"
+                android:gravity="center"
+                android:background="#323232"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <jp.co.recruit_mp.android.widget.HeaderFooterGridView
         android:id="@+id/videos_gv"

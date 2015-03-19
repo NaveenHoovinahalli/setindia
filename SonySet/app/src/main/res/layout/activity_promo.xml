@@ -8,19 +8,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/ic_launcher"
+        />
+
+    <ImageView android:id="@+id/placeHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/promo_gradient"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/titleMargin"
+        android:layout_marginLeft="10dp">
 
         <com.teli.sonyset.views.SonyTextView
             android:id="@+id/promo_title"
             style="@style/textView"
-            android:text="Promo title"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_above="@+id/promo_name"
             android:textAllCaps="true"
             />
@@ -28,9 +36,9 @@
         <TextView
             android:id="@+id/promo_name"
             style="@style/textView"
-            android:text="Promo title"
             android:layout_marginBottom="30dp"
             android:textAllCaps="true"
+            android:textSize="12sp"
             />
 
     </LinearLayout>
@@ -39,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:src="@drawable/play_btn_big"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="35dp"/>
+        android:layout_marginTop="@dimen/titleMargin"
+        android:layout_marginRight="10dp"/>
 
 </RelativeLayout>
