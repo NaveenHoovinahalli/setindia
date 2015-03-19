@@ -166,15 +166,14 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_item_el, null);
         }
 
-        SonyTextView tvNU= (SonyTextView) convertView.findViewById(R.id.tvUNdesc);
+       ImageView tvNU= (ImageView) convertView.findViewById(R.id.tvUNdesc);
         if(groupPosition==0){
             tvNU.setVisibility(View.VISIBLE);
 
-            tvNU.setText(showDetails.get(childPosition).getShowUpcomingNew());
             if(showDetails.get(childPosition).getShowUpcomingNew().equalsIgnoreCase("UPCOMING")) {
-                tvNU.setBackgroundResource(R.drawable.rounded_text_box_red);
+                tvNU.setImageResource(R.drawable.upcoming);
             }else if(showDetails.get(childPosition).getShowUpcomingNew().equalsIgnoreCase("NEW")) {
-                tvNU.setBackgroundResource(R.drawable.rounded_text_box_green);
+                tvNU.setImageResource(R.drawable.newnew);
             }else tvNU.setVisibility(View.INVISIBLE);
         }else {
             tvNU.setVisibility(View.INVISIBLE);

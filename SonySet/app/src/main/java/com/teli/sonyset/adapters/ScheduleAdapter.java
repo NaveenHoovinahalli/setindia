@@ -84,7 +84,10 @@ public class ScheduleAdapter extends BaseAdapter {
         setShowTimingView(showTiming,position);
 
 
-        final String showName=scheduleDetails.get(position).getTitle();
+        String showName;
+        showName=scheduleDetails.get(position).getTitle();
+        if(showName.isEmpty())
+            showName=scheduleDetails.get(position).getProgramTitle();
         title.setText(showName);
         Log.d("Title",""+showName);
 
@@ -137,13 +140,14 @@ public class ScheduleAdapter extends BaseAdapter {
 
             }else {
                 reminder.setImageResource(R.drawable.set_reminder);
+                final String finalShowName = showName;
                 reminder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         SonyDataManager.init(context).saveScheduledId(String.valueOf(episodeId), episodeId);
                         reminder.setImageResource(R.drawable.reminder_set);
                         ScheduleAlarm alarm = new ScheduleAlarm();
-                        alarm.setAlarm(context, episodeId, showName, scheduleDetails.get(position).getScheduleItemDateTime());
+                        alarm.setAlarm(context, episodeId, finalShowName, scheduleDetails.get(position).getScheduleItemDateTime());
                         Log.d("Adapter", "Position" + position);
                     }
                 });
