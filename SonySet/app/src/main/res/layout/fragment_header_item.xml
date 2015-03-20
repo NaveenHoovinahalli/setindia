@@ -16,7 +16,7 @@
         android:id="@+id/episode_iv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:layout_toRightOf="@+id/color_code_view"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentRight="true"
@@ -32,7 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/color_code_view"
         android:layout_alignParentTop="true"
-        android:background="#BF000000"
+        android:background="@android:color/black"
+        android:text="00:39:00 duration"
+        android:textColor="#323232"
+        android:padding="3dp"
        />
 
     <LinearLayout
@@ -49,9 +52,9 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Time"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-
+           android:padding="3dp"
+            android:textSize="9sp"
+            android:background="@drawable/rounded_text_box"
             />
 
         <com.teli.sonyset.views.SonyTextView
@@ -60,21 +63,23 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Episode"
+            android:textSize="18sp"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/episode_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Title"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
             />
     </LinearLayout>
 
     <ImageView android:id="@+id/play_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:src="@drawable/play_btn_big"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"

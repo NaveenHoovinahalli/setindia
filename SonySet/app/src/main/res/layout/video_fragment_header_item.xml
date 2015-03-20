@@ -40,7 +40,7 @@
             android:textColor="@android:color/white"
             android:text="Title"
             android:textAllCaps="true"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:layout_marginBottom="3dp"
             />
 
@@ -51,14 +51,13 @@
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:text="Title"
-            android:textSize="12sp"
+            android:textSize="10sp"
             />
     </LinearLayout>
 
     <ImageView android:id="@+id/play_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:src="@drawable/play_btn_big"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"

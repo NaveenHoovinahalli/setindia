@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.models.ShowDetail;
@@ -82,6 +83,10 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_groups, null);
         }
+        TextView textHeader= (TextView) convertView.findViewById(R.id.lblListHeader);
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "klavikaregular_plain_webfont.ttf");
+        textHeader.setTypeface(tf);
+        textHeader.setText(listDataHeader.get(groupPosition));
         View colorcode=(View) convertView.findViewById(R.id.colorcodemenu);
         imageView= (ImageView) convertView.findViewById(R.id.menuImage);
         ImageView expandableplusminus= (ImageView) convertView.findViewById(R.id.expandableplusminus);
@@ -148,10 +153,10 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
                 imageView.setImageResource(R.drawable.misc_unsel_b);
         }
 
-        SonyTextView lblListHeader = (SonyTextView) convertView
-                .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setText(headerTitle);
+//        SonyTextView lblListHeader = (SonyTextView) convertView
+//                .findViewById(R.id.lblListHeader);
+//        lblListHeader.setTypeface(null, Typeface.BOLD);
+//        lblListHeader.setText(headerTitle);
 
         return convertView;
     }

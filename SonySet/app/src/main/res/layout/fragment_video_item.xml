@@ -22,6 +22,13 @@
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"/>
 
+    <!--<ImageView android:id="@+id/placeHolder"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@drawable/showpage_mid_gradient"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--/>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,9 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Title"
             android:textAllCaps="true"
-            android:layout_marginBottom="3dp"
+            android:textSize="12sp"
             />
 
         <TextView
@@ -45,16 +51,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Title"
             android:textAllCaps="true"
+            android:textSize="10sp"
+            android:layout_marginBottom="5dp"
             />
     </LinearLayout>
 
     <ImageView android:id="@+id/play_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/play_btn_small"
+        android:src="@drawable/small_play"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:paddingBottom="15dp"

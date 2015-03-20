@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainRelativeLayour">
+    android:id="@+id/mainRelativeLayour"
+    android:background="@color/sony_grey">
 
     <RelativeLayout
         android:id="@+id/rlheader"
@@ -24,8 +25,6 @@
             android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
-
-
 
     <com.teli.sonyset.views.MotionViewPager
         android:id="@+id/topPager"

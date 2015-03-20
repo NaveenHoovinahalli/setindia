@@ -48,11 +48,13 @@
                 android:layout_gravity="center"/>
             </LinearLayout>
             <View
+                android:visibility="gone"
+                android:id="@+id/divider1"
                 android:layout_width="1dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_height="fill_parent"
-                android:background="#848484" />
+                android:background="#323232" />
 
             <LinearLayout
                 android:id="@+id/lldate2"
@@ -84,11 +86,13 @@
         </LinearLayout>
 
             <View
+                android:id="@+id/divider2"
                 android:layout_width="1dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_height="fill_parent"
-                android:background="#848484" />
+                android:background="#323232"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/lldate3"
@@ -118,11 +122,13 @@
                  android:layout_gravity="center"/>
             </LinearLayout>
             <View
+                android:id="@+id/divider3"
                 android:layout_width="1dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_height="fill_parent"
-                android:background="#848484" />
+                android:background="#323232"
+                android:visibility="gone"/>
             <LinearLayout
                 android:id="@+id/lldate4"
                 android:layout_width="wrap_content"
@@ -151,6 +157,15 @@
                     android:layout_gravity="center"/>
             </LinearLayout>
 
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#323232"
+                android:visibility="gone"/>
+
             <LinearLayout
                 android:id="@+id/lldate5"
                 android:layout_width="wrap_content"
@@ -178,6 +193,15 @@
                     android:textColor="#848484"
                     android:layout_gravity="center"/>
             </LinearLayout>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#323232"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/lldate6"
@@ -234,6 +258,15 @@
                     android:layout_gravity="center"/>
             </LinearLayout>
 
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent"
+                android:background="#323232"
+                android:visibility="gone"/>
+
             </LinearLayout>
 
         <LinearLayout
@@ -241,6 +274,7 @@
             android:layout_height="match_parent"
             android:gravity="right"
             android:layout_marginRight="2dp"
+            android:background="#191919"
             >
 
             <com.teli.sonyset.views.SonyTextView

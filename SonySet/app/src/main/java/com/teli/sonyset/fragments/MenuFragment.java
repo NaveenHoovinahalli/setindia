@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MenuFragment extends Fragment implements ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener {
+public class MenuFragment extends Fragment implements ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener {
 
     @InjectView(R.id.lvExp)
     ExpandableListView expListViev;
@@ -47,6 +47,7 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
     ArrayList<ShowDetail> showsDetails;
     private Context mContext;
     private SlideoutHelper slideOut;
+    private int lastExpandedPosition = -1;
 
     @InjectView(R.id.bottomsocial)
     RelativeLayout socialButtonRL;
@@ -97,6 +98,7 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
         expListViev.setAdapter(listAdapter);
         expListViev.setOnChildClickListener(this);
         expListViev.setOnGroupClickListener(this);
+        expListViev.setOnGroupExpandListener(this);
 //        expListViev.setGroupIndicator(null);
     }
 
@@ -300,4 +302,13 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
     }
 
 
+    @Override
+    public void onGroupExpand(int groupPosition) {
+
+        if(lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
+            expListViev.collapseGroup(lastExpandedPosition);
+        }
+        lastExpandedPosition=groupPosition;
+
+    }
 }

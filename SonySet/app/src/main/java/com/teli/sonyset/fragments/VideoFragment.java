@@ -60,10 +60,10 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     ProgressBar videoBar;
 
     @InjectView(R.id.promos)
-    SonyTextView mPromos;
+    TextView mPromos;
 
     @InjectView(R.id.precaps)
-    SonyTextView mPrecaps;
+    TextView mPrecaps;
 
     @InjectView(R.id.topColor1)
     TextView mColorTop1;
@@ -97,6 +97,11 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onActivityCreated( Bundle savedInstanceState) {
+
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
+        mPrecaps.setTypeface(tf);
+        mPromos.setTypeface(tf);
+
         if(!AndroidUtils.isNetworkOnline(mContext)){
             return;
         }
@@ -105,6 +110,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             SonyDataManager.init(mContext).savePrecapsIsFromMenu(false);
             String url = String.format(Constants.ALL_PROMOS, 1);
             mPromos.setBackgroundColor(Color.parseColor("#191919"));
+            mColorTop1.setBackgroundColor(Color.parseColor("#2D2D2D"));
             fetchData(url);
         }else {
             precaps();
@@ -133,6 +139,10 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
         videoBar.setVisibility(View.VISIBLE);
         mPromos.setBackgroundColor(Color.parseColor("#191919"));
         mPrecaps.setBackgroundColor(Color.parseColor("#323232"));
+
+        mColorTop1.setBackgroundColor(Color.parseColor("#2D2D2D"));
+        mColorTop2.setBackgroundColor(Color.parseColor("#737373"));
+
         fetchData(url);
         type = "promo";
     }
@@ -142,6 +152,9 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
         String url = String.format(Constants.ALL_VIDEOS, 1);
         mPrecaps.setBackgroundColor(Color.parseColor("#191919"));
         mPromos.setBackgroundColor(Color.parseColor("#323232"));
+
+        mColorTop1.setBackgroundColor(Color.parseColor("#737373"));
+        mColorTop2.setBackgroundColor(Color.parseColor("#2D2D2D"));
         videoBar.setVisibility(View.VISIBLE);
         fetchData(url);
         type = "video";
@@ -246,7 +259,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View headerView = layoutInflater.inflate(R.layout.video_fragment_header_item, null);
 
-            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
+            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.videoImageheaderheight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
 
@@ -297,7 +310,6 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             headerView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("EpisodeFragment", "clicked header" +videosOld.get(0).getBrightCoveId());
 
                     Intent openVideoActivity = new Intent(mContext, VideoDetailsActivity.class);
                     openVideoActivity.putExtra(Constants.POSITION, "" + 0);
@@ -316,11 +328,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Log.d("EpisodeFragment", "item clicked");
 
-        Video item = (Video) adapterView.getItemAtPosition(i);
         i = i-1;
-
-        Log.d("EpisodeFragment", "OnItemClicked");
-        Log.d("EpisodeFragment", "OnItemClicked getBrightCoveId" + item.getBrightCoveId());
 
         Intent openVideoActivity = new Intent(mContext, VideoDetailsActivity.class);
         openVideoActivity.putExtra(Constants.POSITION, "" + i);

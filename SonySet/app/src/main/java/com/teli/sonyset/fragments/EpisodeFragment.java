@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -187,14 +188,17 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View headerView = layoutInflater.inflate(R.layout.fragment_header_item, null);
 
-            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
+            headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.videoImageheaderheight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
-            SonyTextView episodeTitle = (SonyTextView) headerView.findViewById(R.id.episode_title);
+            TextView episodeTitle = (TextView) headerView.findViewById(R.id.episode_title);
             SonyTextView episodeNumber = (SonyTextView) headerView.findViewById(R.id.episode_num);
             SonyTextView episodeTime = (SonyTextView) headerView.findViewById(R.id.episode_time);
             TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
             TextView duration = (TextView) headerView.findViewById(R.id.duration);
+
+            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
+            episodeTitle.setTypeface(tf);
 
             if (brightCoveThumbnails.size() != 0)
                 if (!brightCoveThumbnails.get(0).equals("null")){
@@ -205,9 +209,20 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 }
 
             episodeTitle.setText(episodes.get(0).getShowName());
-            episodeNumber.setText(episodes.get(0).getEpisodeNumber());
+
             episodeTime.setText(episodes.get(0).getOnAirDate());
-            duration.setText(episodes.get(0).getDuration());
+
+            if (!episodes.get(0).getDuration().isEmpty()){
+                duration.setText(episodes.get(0).getDuration());
+            }else {
+                duration.setVisibility(View.GONE);
+            }
+
+            if (!episodes.get(0).getEpisodeNumber().isEmpty()){
+                episodeTime.setText(episodes.get(0).getEpisodeNumber());
+            }else {
+                episodeTime.setVisibility(View.GONE);
+            }
 
             String color = episodes.get(0).getColorCode();
             if (!color.equalsIgnoreCase("null"))

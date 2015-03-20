@@ -195,10 +195,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(2505);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(2503);
             SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);

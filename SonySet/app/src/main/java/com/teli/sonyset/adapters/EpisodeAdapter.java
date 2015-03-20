@@ -79,6 +79,19 @@ public class EpisodeAdapter extends BaseAdapter {
             viewHolder.episodeImage.setImageResource(R.drawable.place_holder);
         }
 
+
+        if (!episodes.get(0).getDuration().isEmpty()){
+            viewHolder.mDuration.setText(episodes.get(0).getDuration());
+        }else {
+            viewHolder.mDuration.setVisibility(View.GONE);
+        }
+
+        if (!episodes.get(0).getEpisodeNumber().isEmpty()){
+            viewHolder.episodeTime.setText(episodes.get(0).getEpisodeNumber());
+        }else {
+            viewHolder.episodeTime.setVisibility(View.GONE);
+        }
+
         String color = episodes.get(i).getColorCode();
         Log.d("EpisodeAdapter", "color code" + color);
 
