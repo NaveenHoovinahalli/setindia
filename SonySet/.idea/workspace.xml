@@ -42,114 +42,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_10.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_11.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_12.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_13.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_14.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_15.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/second_screen_header.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/second_screen_header.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/second_screen_header.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/second_screen_header.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/sidebar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/sidebar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/sidebar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/sidebar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/tv_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tv_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/tv_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/tv_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/SecondScreen.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_second_screen.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/initial_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MenuSlideOutNavigation/MenuSlideOutNavigation.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SonySet.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android-sdk-4.3.4/android-sdk-4.3.4.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gama_carousel_v1.0/gama_carousel_v1.0.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/phoicAudioLib/phoicAudioLib.iml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_11.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_11.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_11.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_11.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_12.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_12.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_12.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_12.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_13.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_13.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_13.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_13.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_14.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_14.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_14.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_14.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_14.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_14.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_15.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_15.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_15.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_15.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_15.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_15.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_16.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_16.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_16.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/services/BackgroundService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/services/BackgroundService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_HeaderFooterGridView_0_2_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_HeaderFooterGridView_0_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_sdk_4_3_4_unspecified.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_sdk_4_3_4_unspecified.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_groups.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_groups.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_18_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/vpi__attrs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/vpi__attrs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SonySet.iws" />
@@ -176,8 +68,8 @@
       <file leaf-file-name="LandingActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5536332" vertical-offset="9256" max-vertical-offset="15354">
-              <caret line="641" column="0" selection-start-line="641" selection-start-column="0" selection-end-line="641" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7404844" vertical-offset="9256" max-vertical-offset="15354">
+              <caret line="647" column="17" selection-start-line="647" selection-start-column="17" selection-end-line="647" selection-end-column="17" />
               <folding>
                 <element signature="e#6994#7046#0" expanded="true" />
                 <element signature="e#10872#11086#0" expanded="true" />
@@ -2709,7 +2601,11 @@
       <created>1426766885982</created>
       <updated>1426766885982</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="second Screen changes">
+      <created>1426858092284</created>
+      <updated>1426858092284</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2829,7 +2725,8 @@
     <MESSAGE value="landingactivity UI" />
     <MESSAGE value="Ui changes" />
     <MESSAGE value="Ui changes made" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ui changes made" />
+    <MESSAGE value="second Screen changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="second Screen changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3234,8 +3131,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5536332" vertical-offset="9256" max-vertical-offset="15354">
-          <caret line="641" column="0" selection-start-line="641" selection-start-column="0" selection-end-line="641" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7404844" vertical-offset="9256" max-vertical-offset="15354">
+          <caret line="647" column="17" selection-start-line="647" selection-start-column="17" selection-end-line="647" selection-end-column="17" />
           <folding>
             <element signature="e#6994#7046#0" expanded="true" />
             <element signature="e#10872#11086#0" expanded="true" />
