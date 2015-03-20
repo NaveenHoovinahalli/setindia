@@ -76,7 +76,6 @@ public class BackgroundService extends Service {
 
             super.audioDetectedResponse(response, statuscode);
 
-
             if (channelIds!=null && !channelIds.toString().isEmpty()){
                 hdChannelId = channelIds.getHdId();
                 sdChannelId =   channelIds.getSdId();
@@ -86,7 +85,7 @@ public class BackgroundService extends Service {
             DetectedAudio detectedAudio = new Gson().fromJson(response, DetectedAudio.class);
 
             String channelId = detectedAudio.getId();
-
+            //channelId = "256";
             if (!previousChannelId.equals(channelId)){
                 if (channelId.equals(hdChannelId) || channelId.equals(sdChannelId)){
                     Log.d("Sercvice","Call intent");

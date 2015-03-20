@@ -90,6 +90,25 @@
     <ImageView android:id="@+id/secondScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/close_btn"
         android:layout_alignParentRight="true"/>
+
+
+    <FrameLayout
+        android:id="@+id/second_screen_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/sec_screen_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/close_btn"/>
 
 </RelativeLayout>
