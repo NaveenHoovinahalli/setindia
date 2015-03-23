@@ -48,39 +48,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.teli.sonyset" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/Pushwoosh.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/klavikalight-plain-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Pushwoosh.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/SonySet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_feedback.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/app_tracker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/ecommerce_tracker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/global_tracker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_6_5_87.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_white.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ripple_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_white.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ripple_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_white.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ripple_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_white.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ripple_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/sony_logo.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/sony_logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/Utils/AndroidUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/Utils/AndroidUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/Utils/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/Utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/LandingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/SecondScreen.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/fragments/SecondScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/ShowDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/ShowDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/SplashActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/VideoDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teli/sonyset/activities/VideoDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_landing.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_second_screen.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_second_screen.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/menu_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ad07b9fb-1796-4896-b9de-f51e56a94e91" name="Default" comment="" />
     <ignored path="SonySet.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2178,7 +2146,11 @@
       <created>1427095068895</created>
       <updated>1427095068895</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="ga screen wise">
+      <created>1427122771249</created>
+      <updated>1427122771249</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2300,7 +2272,8 @@
     <MESSAGE value="Ui changes made" />
     <MESSAGE value="sahana point tv menu" />
     <MESSAGE value="Monfreshcommit(withsecScreen)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Monfreshcommit(withsecScreen)" />
+    <MESSAGE value="ga screen wise" />
+    <option name="LAST_COMMIT_MESSAGE" value="ga screen wise" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
