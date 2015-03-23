@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.teli.sonyset.R;
+
+import java.util.Locale;
 
 /**
  * Created by madhuri on 5/3/15.
@@ -113,4 +116,39 @@ public class AndroidUtils {
                 context.getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getDeviceId();
     }
+
+
+    public static String getAppVersionCode(Context context) {
+        return getAppVersionCode(context, null);
+    }
+
+    public static String getAppVersionCode(Context context, String packageName) {
+        String versionCode;
+
+        if (packageName == null) {
+            packageName = context.getPackageName();
+        }
+
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            versionCode = Integer.toString(packageInfo.versionCode);
+        } catch (Exception e) {
+            versionCode = "";
+        }
+
+        return versionCode;
+    }
+
+
+    public static String getUniqueId(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+    }
+
+    public static String getDeviceLanguage() {
+        return Locale.getDefault().getLanguage();
+    }
+
+
 }

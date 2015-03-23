@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes">
+
+    <string name="ga_trackingId">UA-59581041-1</string>
+    <string name="ga_sampleFrequency">100.0</string>
+
+    <!-- Enable automatic Activity measurement -->
+    <bool name="ga_autoActivityTracking">true</bool>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+
+    <integer name="ga_sessionTimeout">300</integer>
+
+    <!-- The screen names that will appear in reports -->
+
+    <screenName name="com.teli.sonyset.activities.LandingActivity">
+        Landing Screen
+    </screenName>
+
+    <screenName name="com.teli.sonyset.activities.ShowDetailsActivity">
+        Show Details Screen
+    </screenName>
+
+    <screenName name="com.teli.sonyset.activities.VideoDetailsActivity">
+        Video Details Screen
+    </screenName>
+
+
+
+
+
+</resources>

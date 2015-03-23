@@ -49,4 +49,11 @@ public class Constants {
     public static final String VIDEO_URL_1 = "http://api.brightcove.com/services/library?command=find_video_by_id&video_id=";
     public static final String VIDEO_URL_2 = "&video_fields=FLVURL&media_delivery=http&token=";
     public static final String POSITION = "position";
+
+
+    //Constants for GA
+    public static final String LANDING_SCREEN = "Landing Screen";
+    public static final String CLICK = "ui_click";
+    public static final String SHOW_DETAILS_SCREEN = "Show Details Screen";
+    public static final String VIDEO_DETAILS_SCREEN = "Video Details Screen";
 }
