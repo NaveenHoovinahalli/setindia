@@ -90,7 +90,7 @@
     <ImageView android:id="@+id/secondScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/close_btn"
+        android:background="@drawable/ripple_white"
         android:layout_alignParentRight="true"/>
 
 
@@ -110,5 +110,10 @@
         android:visibility="gone"
         android:layout_marginLeft="10dp"
         android:src="@drawable/close_btn"/>
+
+    <include android:id="@+id/initial_dialog"
+        layout="@layout/initial_dialog"
+        />
+
 
 </RelativeLayout>

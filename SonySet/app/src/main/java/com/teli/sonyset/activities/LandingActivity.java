@@ -6,7 +6,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,6 +114,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @InjectView(R.id.sec_screen_close)
     ImageView secScreenClose;
 
+    @InjectView(R.id.initial_dialog)
+    View initialDialog;
+
+    @InjectView(R.id.mainRelativeLayour)
+    RelativeLayout relLayout;
+
     public final static int PAGES = 5;
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
@@ -150,6 +159,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             R.drawable.ripple_9, R.drawable.ripple_10, R.drawable.ripple_11, R.drawable.ripple_12,
             R.drawable.ripple_13, R.drawable.ripple_14, R.drawable.ripple_15, R.drawable.ripple_16
     };
+
+    private int[] IMAGE_IDS_SMALL = {
+            R.drawable.ripple_small1, R.drawable.ripple_small2,
+            R.drawable.ripple_small3, R.drawable.ripple_small4,
+    };
+
     private Runnable mStartAnimation;
     private Timer timer;
     private int num_images = 15;
@@ -167,6 +182,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
+
+        initialDialog.setVisibility(View.GONE);
 
 //        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
 //        pager.setPageMargin(-860);
@@ -609,7 +626,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         if (programLink != null && !programLink.isEmpty()) {
 
-            mSecondScreen.setBackgroundResource(IMAGE_IDS[4]);
+            mSecondScreen.setBackgroundResource(IMAGE_IDS_SMALL[3]);
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
@@ -649,7 +666,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             });
             secondScreenFrag.setAnimation(animFrameLayout);
             secondScreenFrag.setVisibility(View.VISIBLE);
-            //reLayout.setBackgroundColor(Color.parseColor("#323232"));
+            relLayout.setBackgroundColor(Color.parseColor("#323232"));
         }
 
     }
@@ -670,7 +687,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             secondScreenFrag.setAnimation(animFrameLayout);
             secondScreenFrag.setVisibility(View.GONE);
             secScreenClose.setVisibility(View.GONE);
-            //reLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            relLayout.setBackgroundColor(Color.parseColor("#00000000"));
 
         }
 
@@ -750,8 +767,6 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             if (s != null) {
                 Log.d("MainActivity", "Landing response in pot execute" + s.toString());
 
-                //showDialogForSeconScreen();
-
                 NowPlayingResponse nowPlayingResponse = new Gson().fromJson(s.toString(), NowPlayingResponse.class);
                 programLink = nowPlayingResponse.getProgramLink();
             }
@@ -761,10 +776,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void showDialogForSeconScreen() {
 
-        Dialog dialog = new Dialog(this);
+       /* Dialog dialog = new Dialog(this,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.initial_dialog);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
+        if(!isFinishing())
+            dialog.show();*/
+
+        initialDialog.setVisibility(View.VISIBLE);
+        ImageView okImage = (ImageView)initialDialog.findViewById(R.id.ok_img);
+        ImageView arrow = (ImageView)initialDialog.findViewById(R.id.arrow_img);
+        okImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initialDialog.setVisibility(View.GONE);
+            }
+        });
+
+        arrow.setBackgroundResource(R.drawable.arrow_drawable);
+        AnimationDrawable frameAnimation = (AnimationDrawable) arrow.getBackground();
+        frameAnimation.start();
 
     }
 
@@ -825,7 +856,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                 if (count == 4) {
                                     isIteration3 = true;
                                     //count = 1;
-                                    num_images = 4;
+                                    num_images = IMAGE_IDS_SMALL.length;
                                     i=0;
                                    /* timer1.scheduleAtFixedRate(new TimerTask() {
 
@@ -839,11 +870,11 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                             }else{
 
-                                if (i > num_images) {
+                                if (i >= num_images) {
                                     i = 0;
                                     count++;
                                 }
-                                mSecondScreen.setBackgroundResource(IMAGE_IDS[i]);
+                                mSecondScreen.setBackgroundResource(IMAGE_IDS_SMALL[i]);
                                 i++;
 
                             }
@@ -861,8 +892,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                         return;
                     }
 
-                    new SonyPostRequest("256").execute();
-                    //new SonyPostRequest(detectedAudio.getId()).execute();
+                    //new SonyPostRequest("256").execute();
+                    new SonyPostRequest(detectedAudio.getId()).execute();
+                    showDialogForSeconScreen();
                 }
             } catch (Exception e) {
 
@@ -951,6 +983,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         @Override
         public void onPageScrollStateChanged(int i) {}
     };
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(initialDialog.getVisibility()==View.VISIBLE){
+            initialDialog.setVisibility(View.GONE);
+        }else{
+            super.onBackPressed();
+
+        }
+
+    }
 }
 
 

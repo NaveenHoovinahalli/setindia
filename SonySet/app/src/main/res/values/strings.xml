@@ -22,7 +22,7 @@ Android gives you a world-class platform for creating apps and games for Android
     </string>
 
     <string name="experience">
-        Click here to experience\n\t\t\t\t\tSecond Screen
+        Click here to experience\n\t\t\tSecond Screen
     </string>
 
 </resources>

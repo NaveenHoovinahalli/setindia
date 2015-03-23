@@ -22,12 +22,13 @@
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"/>
 
-    <!--<ImageView android:id="@+id/placeHolder"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:src="@drawable/showpage_mid_gradient"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--/>-->
+    <ImageView android:id="@+id/placeHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/videosmallgradient"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
