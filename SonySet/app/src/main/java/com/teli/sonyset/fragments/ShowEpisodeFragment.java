@@ -154,7 +154,7 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
             headerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.promoHeight)));
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
-            SonyTextView episodeTitle = (SonyTextView) headerView.findViewById(R.id.episode_title);
+            TextView episodeTitle = (TextView) headerView.findViewById(R.id.episode_title);
             SonyTextView episodeNumber = (SonyTextView) headerView.findViewById(R.id.episode_num);
             SonyTextView episodeTime = (SonyTextView) headerView.findViewById(R.id.episode_time);
             TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);

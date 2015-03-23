@@ -1,11 +1,14 @@
 package com.teli.sonyset.activities;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,8 +25,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +53,7 @@ import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
 import com.teli.sonyset.fragments.ExclusiveFragment;
 import com.teli.sonyset.fragments.Schedule;
+import com.teli.sonyset.fragments.SecondScreen;
 import com.teli.sonyset.fragments.ShowFragment;
 import com.teli.sonyset.fragments.VideoFragment;
 import com.teli.sonyset.models.DetectedAudio;
@@ -99,6 +108,18 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @InjectView(R.id.secondScreen)
     ImageView mSecondScreen;
 
+    @InjectView(R.id.second_screen_frag)
+    FrameLayout secondScreenFrag;
+
+    @InjectView(R.id.sec_screen_close)
+    ImageView secScreenClose;
+
+    @InjectView(R.id.initial_dialog)
+    View initialDialog;
+
+    @InjectView(R.id.mainRelativeLayour)
+    RelativeLayout relLayout;
+
     public final static int PAGES = 5;
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
@@ -128,7 +149,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private DetectedAudio detectedAudio;
     private int i;
     private int count;
-    private boolean isPausedBool;
+    private boolean isIteration3;
     private Runnable mUpdateResults;
     private Handler mHandler1 = new Handler();
     private Handler mHandler = new Handler();
@@ -138,8 +159,16 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             R.drawable.ripple_9, R.drawable.ripple_10, R.drawable.ripple_11, R.drawable.ripple_12,
             R.drawable.ripple_13, R.drawable.ripple_14, R.drawable.ripple_15, R.drawable.ripple_16
     };
+
+    private int[] IMAGE_IDS_SMALL = {
+            R.drawable.ripple_small1, R.drawable.ripple_small2,
+            R.drawable.ripple_small3, R.drawable.ripple_small4,
+    };
+
     private Runnable mStartAnimation;
     private Timer timer;
+    private int num_images = 15;
+    private boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +182,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
+
+        initialDialog.setVisibility(View.GONE);
 
 //        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
 //        pager.setPageMargin(-860);
@@ -195,10 +226,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(2505);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(2503);
             SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
@@ -226,6 +257,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 checkForSecondScreen();
             }
         super.onCreate(savedInstanceState);
+
+        initSecondScreenFragment();
+
+
+    }
+
+    private void initSecondScreenFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.second_screen_frag,new SecondScreen()).commit();
     }
 /*
     @Subscribe
@@ -254,7 +294,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                 if (onState.equals("true")) {
                                     startServiceForDetection();
                                 } else {
-                                    // layoutMyLayout.mTvBlank.setVisibility(View.GONE);
+                                    mSecondScreen.setVisibility(View.GONE);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -574,6 +614,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @OnClick(R.id.secondScreen)
     public void secondScreenClicked() {
 
+
         if (timer!=null)
             timer.cancel();
 
@@ -585,17 +626,71 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         if (programLink != null && !programLink.isEmpty()) {
 
-            mSecondScreen.setVisibility(View.GONE);
+            mSecondScreen.setBackgroundResource(IMAGE_IDS_SMALL[3]);
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
-        }/*else {
-            if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
+        }else {
+           /* if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
                 return;
             }
 
-            new SonyPostRequest(detectedAudio.getId()).execute();
-        }*/
+            new SonyPostRequest(detectedAudio.getId()).execute();*/
+            mSecondScreen.setBackgroundResource(R.drawable.ripple_white);
+            openInitialSecondScreen();
+
+        }
+    }
+
+    private void openInitialSecondScreen() {
+
+        if(!isOpen){
+            isOpen = true;
+            Animation animFrameLayout = AnimationUtils.loadAnimation(LandingActivity.this, R.anim.slide_in_right);
+            animFrameLayout.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    secScreenClose.setVisibility(View.VISIBLE);
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            secondScreenFrag.setAnimation(animFrameLayout);
+            secondScreenFrag.setVisibility(View.VISIBLE);
+            relLayout.setBackgroundColor(Color.parseColor("#323232"));
+        }
+
+    }
+
+    @OnClick(R.id.sec_screen_close)
+    public void initialSecondScreenClick() {
+
+        closeInitialSecondScreen();
+
+    }
+
+    private void closeInitialSecondScreen() {
+
+        if(isOpen){
+            isOpen = false;
+
+            Animation animFrameLayout = AnimationUtils.loadAnimation(LandingActivity.this,R.anim.slide_out_right);
+            secondScreenFrag.setAnimation(animFrameLayout);
+            secondScreenFrag.setVisibility(View.GONE);
+            secScreenClose.setVisibility(View.GONE);
+            relLayout.setBackgroundColor(Color.parseColor("#00000000"));
+
+        }
+
     }
 
     public class SonyPostRequest extends AsyncTask<String, Void, JSONObject> {
@@ -679,6 +774,31 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }
     }
 
+    private void showDialogForSeconScreen() {
+
+       /* Dialog dialog = new Dialog(this,android.R.style.Theme_Light);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.initial_dialog);
+        dialog.setCancelable(true);
+        if(!isFinishing())
+            dialog.show();*/
+
+        initialDialog.setVisibility(View.VISIBLE);
+        ImageView okImage = (ImageView)initialDialog.findViewById(R.id.ok_img);
+        ImageView arrow = (ImageView)initialDialog.findViewById(R.id.arrow_img);
+        okImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initialDialog.setVisibility(View.GONE);
+            }
+        });
+
+        arrow.setBackgroundResource(R.drawable.arrow_drawable);
+        AnimationDrawable frameAnimation = (AnimationDrawable) arrow.getBackground();
+        frameAnimation.start();
+
+    }
+
     public class ResponseReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -687,58 +807,94 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 if (bundle != null && !bundle.isEmpty()) {
                     String response = bundle.getString(BackgroundService.RESPONSE_KEY);
 
-                    if (response != null && !response.isEmpty())
-                        mSecondScreen.setVisibility(View.VISIBLE);
-                        detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
+                    //if (response != null && !response.isEmpty())
 
-                    final int delay = 4000;
-                     timer = new Timer();
+                    Log.d("LandingActivitySecondScreen","onReceive");
+
+                    closeInitialSecondScreen();
+                    detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
+
+                    final int delay = 5000;
+                    final int period = 200;
+
+                    timer = new Timer();
+                    timer1 = new Timer();
                     i = 0;
                     count = 1;
 
-
                     mStartAnimation = new Runnable() {
                         public void run() {
-                            isPausedBool = false;
+
+                            if(mHandler!=null){
+                                mHandler.removeCallbacks(mUpdateResults);
+                            }
+                            if(timer!=null){
+                                timer.cancel();
+                            }
+
+
+                            //isIteration3 = false;
+                            if (i > num_images) {
+                                i = 0;
+                            }
+                            mSecondScreen.setBackgroundResource(IMAGE_IDS[i]);
+                            i++;
+
                         }
                     };
 
                     mUpdateResults = new Runnable() {
                         public void run() {
 
-                            if (!isPausedBool) {
-                                if (i > 15) {
+                            if (!isIteration3) {
+                                if (i > num_images) {
                                     i = 0;
                                     count++;
                                 }
-
-                                if (count == 3) {
-                                    isPausedBool = true;
-                                    count = 1;
-                                    i = 0;
-                                    mHandler1.postDelayed(mStartAnimation, 5000);
-                                }
-
-
                                 mSecondScreen.setBackgroundResource(IMAGE_IDS[i]);
                                 i++;
+                                if (count == 4) {
+                                    isIteration3 = true;
+                                    //count = 1;
+                                    num_images = IMAGE_IDS_SMALL.length;
+                                    i=0;
+                                   /* timer1.scheduleAtFixedRate(new TimerTask() {
+
+                                        public void run() {
+                                            mHandler1.post(mStartAnimation);
+                                        }
+
+                                    }, delay, 100);*/
+
+                                }
+
+                            }else{
+
+                                if (i >= num_images) {
+                                    i = 0;
+                                    count++;
+                                }
+                                mSecondScreen.setBackgroundResource(IMAGE_IDS_SMALL[i]);
+                                i++;
+
                             }
                         }
                     };
-
                     timer.scheduleAtFixedRate(new TimerTask() {
 
                         public void run() {
                             mHandler.post(mUpdateResults);
                         }
 
-                    }, delay, 100);
+                    }, delay, period);
 
                     if (!AndroidUtils.isNetworkOnline(getApplicationContext())) {
                         return;
                     }
 
+                    //new SonyPostRequest("256").execute();
                     new SonyPostRequest(detectedAudio.getId()).execute();
+                    showDialogForSeconScreen();
                 }
             } catch (Exception e) {
 
@@ -827,6 +983,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         @Override
         public void onPageScrollStateChanged(int i) {}
     };
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(initialDialog.getVisibility()==View.VISIBLE){
+            initialDialog.setVisibility(View.GONE);
+        }else{
+            super.onBackPressed();
+
+        }
+
+    }
 }
 
 

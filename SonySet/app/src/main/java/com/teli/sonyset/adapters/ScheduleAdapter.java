@@ -1,8 +1,11 @@
 package com.teli.sonyset.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +34,8 @@ public class ScheduleAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     ArrayList<ScheduleDetails> scheduleDetails;
+    Typeface tf;
+    public   boolean isReminderSet=false;
 
 
     public ScheduleAdapter(Context context, ArrayList<ScheduleDetails> scheduleDetailsArrayList) {
@@ -58,6 +63,13 @@ public class ScheduleAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
 
+        isReminderSet=false;
+
+
+
+        tf = Typeface.createFromAsset(context.getAssets(), "klavikamedium_plain_webfont.ttf");
+
+
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.fragment_schedule_item, null);
         final ImageView reminder = (ImageView) view.findViewById(R.id.setReminder);
@@ -65,6 +77,8 @@ public class ScheduleAdapter extends BaseAdapter {
         ImageView showThumbnail= (ImageView) view.findViewById(R.id.imageThumbnail);
         SonyTextView title= (SonyTextView) view.findViewById(R.id.showTitle);
         View colorLine=view.findViewById(R.id.colorCode);
+
+        showTiming.setTypeface(tf);
 
         if(scheduleDetails.get(position).getColourcode()!=null && !scheduleDetails.get(position).getColourcode().equals("null") && !scheduleDetails.get(position).getColourcode().isEmpty()){
             Log.d("Color",""+scheduleDetails.get(position).getColourcode());
@@ -132,7 +146,35 @@ public class ScheduleAdapter extends BaseAdapter {
         }
         else if(savedValue!=0) {
             reminder.setImageResource(R.drawable.reminder_set);
+            isReminderSet=true;
             Log.d("Adapter", "saved position" + position + "---" + savedValue);
+            reminder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    if(isReminderSet){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                    dialog.setCancelable(true);
+                    dialog.setTitle("Do you want to cancel the reminder?");
+                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+
+                        }
+                    });
+                    dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            SonyDataManager.init(context).removeSharedPrefrence(String.valueOf(episodeId));
+                            reminder.setImageResource(R.drawable.set_reminder);
+                            ScheduleAlarm alarm = new ScheduleAlarm();
+                            alarm.cancelAlarm(context, episodeId);
+                        }
+                    });
+                    dialog.show();
+//                }
+                }
+            });
 
         }else {
             if(System.currentTimeMillis()>(Long.parseLong(scheduleDetails.get(position).getScheduleItemDateTime())*1000)){
@@ -144,11 +186,32 @@ public class ScheduleAdapter extends BaseAdapter {
                 reminder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SonyDataManager.init(context).saveScheduledId(String.valueOf(episodeId), episodeId);
-                        reminder.setImageResource(R.drawable.reminder_set);
-                        ScheduleAlarm alarm = new ScheduleAlarm();
-                        alarm.setAlarm(context, episodeId, finalShowName, scheduleDetails.get(position).getScheduleItemDateTime());
-                        Log.d("Adapter", "Position" + position);
+//                        if(!isReminderSet){
+                            isReminderSet=true;
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                        dialog.setCancelable(true);
+                        dialog.setTitle("Do you want to set the reminder for this show?");
+                        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        });
+                        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SonyDataManager.init(context).saveScheduledId(String.valueOf(episodeId), episodeId);
+                                reminder.setImageResource(R.drawable.reminder_set);
+                                ScheduleAlarm alarm = new ScheduleAlarm();
+                                alarm.setAlarm(context, episodeId, finalShowName, scheduleDetails.get(position).getScheduleItemDateTime());
+                                Log.d("Adapter", "Position" + position);
+                            }
+                        });
+                        dialog.show();
+//                    }
+
+
                     }
                 });
             }

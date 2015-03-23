@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="android-sdk-1.0.14.2.0-ea">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/android-sdk-1.0.14.2.0-ea.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

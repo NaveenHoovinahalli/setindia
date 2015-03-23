@@ -18,12 +18,13 @@
         android:scaleType="centerCrop"
         />
 
-  <!--  <ImageView android:id="@+id/placeHolder"
+   <ImageView android:id="@+id/placeHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/card_gradient"
-        />-->
+       android:scaleType="fitXY"
+        android:src="@drawable/showpage_mid_gradient"
+       android:layout_alignParentBottom="true"
+        />
 
    <!-- <ImageView
         android:id="@+id/card_gradient"
@@ -35,21 +36,21 @@
         />-->
 
     <ImageView android:id="@+id/show_logo_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:layout_marginTop="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingBottom="5dp"
-
-      >
+         >
        <!-- android:background="@drawable/textviewgradient"-->
         <com.teli.sonyset.views.SonyTextView
             android:id="@+id/show_name"
@@ -95,4 +96,8 @@
         </RelativeLayout>
     </LinearLayout>
     <!--android:src="@drawable/ic_launcher"-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

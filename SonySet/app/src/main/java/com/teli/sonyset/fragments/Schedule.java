@@ -3,6 +3,7 @@ package com.teli.sonyset.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -109,6 +110,20 @@ public class Schedule extends Fragment {
     @InjectView(R.id.dayN7)
     SonyTextView dayN7;
 
+    @InjectView(R.id.divider1)
+     View divider1;
+
+    @InjectView(R.id.divider2)
+    View divider2;
+    @InjectView(R.id.divider3)
+    View divider3;
+    @InjectView(R.id.divider4)
+    View divider4;
+    @InjectView(R.id.divider5)
+    View divider5;
+    @InjectView(R.id.divider6)
+    View divider6;
+
 
     ListAdapter adapter;
 
@@ -121,14 +136,17 @@ public class Schedule extends Fragment {
     SonyTextView previousdateView;
     SonyTextView previousNameView;
     private Context mContext;
+    Typeface tf;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_schedule,null);
         ButterKnife.inject(this,view);
 
-        long currentDateTime = System.currentTimeMillis();
-        Log.d("currenttime",""+currentDateTime);
+     tf = Typeface.createFromAsset(getActivity().getAssets(), "klavikamedium_plain_webfont.ttf");
+
+
+
 
         return view;
     }
@@ -161,7 +179,7 @@ public class Schedule extends Fragment {
         Log.d("URLSCHEDULE","url-"+url);
 
         sdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
-        hdBtn.setBackgroundColor(Color.parseColor("#323232"));
+        hdBtn.setBackgroundColor(Color.parseColor("#191919"));
         sdBtn.setTextColor(Color.parseColor("#ffffff"));
         hdBtn.setTextColor(Color.parseColor("#848484"));
 
@@ -176,7 +194,7 @@ public class Schedule extends Fragment {
         Log.d("URLSCHEDULE","url-"+url);
 
         hdBtn.setBackgroundColor(Color.parseColor("#4A67D6"));
-        sdBtn.setBackgroundColor(Color.parseColor("#323232"));
+        sdBtn.setBackgroundColor(Color.parseColor("#191919"));
         hdBtn.setTextColor(Color.parseColor("#ffffff"));
         sdBtn.setTextColor(Color.parseColor("#848484"));
 
@@ -227,6 +245,8 @@ public class Schedule extends Fragment {
                     previousNameView.setTextColor(Color.parseColor("#848484"));
                 }
                 date1.setVisibility(View.VISIBLE);
+                dayN11.setTypeface(tf);
+                day11.setTypeface(tf);
                 date1.setBackgroundColor(Color.parseColor("#000000"));
                 day11.setTextColor(Color.parseColor("#496BB4"));
                 dayN11.setTextColor(Color.parseColor("#ffffff"));
@@ -255,10 +275,16 @@ public class Schedule extends Fragment {
         int noOfDays= days.size();
         if(noOfDays>6) {
             date7.setVisibility(View.VISIBLE);
+            divider6.setVisibility(View.VISIBLE);
+            day7.setTypeface(tf);
+
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(6).getDate())*1000);
             Log.d("Year","Month"+calendar.get(Calendar.MONTH));
             Log.d("Year","Date"+calendar.get(Calendar.DATE));
+
+            dayN7.setTypeface(tf);
+
 
             day7.setText(calendar.get(Calendar.DATE)+"");
             dayN7.setText((calendar.get(Calendar.MONTH) + "").toUpperCase());
@@ -268,57 +294,78 @@ public class Schedule extends Fragment {
         if(noOfDays>5) {
 
             date6.setVisibility(View.VISIBLE);
+            day6.setTypeface(tf);
+            divider6.setVisibility(View.VISIBLE);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(5).getDate())*1000);
             day6.setText(calendar.get(Calendar.DATE)+"");
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN6.setTypeface(tf);
+
             dayN6.setText((month_name+"").toUpperCase());
         }
         if(noOfDays>4) {
             date5.setVisibility(View.VISIBLE);
+            divider5.setVisibility(View.VISIBLE);
+            day5.setTypeface(tf);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(4).getDate())*1000);
             day5.setText(calendar.get(Calendar.DATE)+"");
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN5.setTypeface(tf);
+
             dayN5.setText((month_name+"").toUpperCase());
         }
         if(noOfDays>3) {
             date4.setVisibility(View.VISIBLE);
+            divider4.setVisibility(View.VISIBLE);
+            day4.setTypeface(tf);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(3).getDate())*1000);
             day4.setText(calendar.get(Calendar.DATE)+"");
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN4.setTypeface(tf);
+
             dayN4.setText((month_name+"").toUpperCase());
         }
         if(noOfDays>2) {
             date3.setVisibility(View.VISIBLE);
+            divider3.setVisibility(View.VISIBLE);
+            day3.setTypeface(tf);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(2).getDate())*1000);
             day3.setText(calendar.get(Calendar.DATE)+"");
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN3.setTypeface(tf);
             dayN3.setText((month_name+"").toUpperCase());
         }
         if(noOfDays>1) {
             date2.setVisibility(View.VISIBLE);
+            divider2.setVisibility(View.VISIBLE);
+            day2.setTypeface(tf);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(1).getDate())*1000);
             day2.setText(calendar.get(Calendar.DATE)+"");
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN2.setTypeface(tf);
             dayN2.setText((month_name+"").toUpperCase());
         }
         if(noOfDays>0) {
             date1.setVisibility(View.VISIBLE);
+            divider1.setVisibility(View.VISIBLE);
+            day11.setTypeface(tf);
             Calendar calendar=Calendar.getInstance();
             calendar.setTimeInMillis(Long.parseLong(days.get(0).getDate())*1000);
             day11.setText(calendar.get(Calendar.DATE)+"");
 
             SimpleDateFormat month_date = new SimpleDateFormat("MMM");
             String month_name = month_date.format(calendar.getTime());
+            dayN11.setTypeface(tf);
             dayN11.setText((month_name+"").toUpperCase());
         }
 

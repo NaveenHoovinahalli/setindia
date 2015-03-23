@@ -107,6 +107,17 @@ public class ScheduleAlarm extends BroadcastReceiver {
         PendingIntent pendingIntent=PendingIntent.getBroadcast(context,id,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
 
+
+    }
+
+    public void cancelAlarm(Context context,int id){
+
+        AlarmManager alarmManager= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent=new Intent(context,ScheduleAlarm.class);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(context,id,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.cancel(pendingIntent);
+
+
     }
 
     private void setNewAlarm(Context context) {

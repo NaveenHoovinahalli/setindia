@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_initial_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8000000"
+    >
+
+    <ImageView
+        android:id="@+id/ripple_dummy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_small4"
+        android:layout_alignParentRight="true"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ripple_dummy"
+        android:layout_toLeftOf="@+id/ripple_dummy"
+        android:id="@+id/arrow_img" />
+
+    <com.teli.sonyset.views.SonyTextView
+        android:id="@+id/experience_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/experience"
+        android:layout_below="@+id/arrow_img"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:layout_alignRight="@+id/arrow_img"
+        android:layout_alignEnd="@+id/arrow_img" />
+
+    <ImageView
+        android:id="@+id/ok_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ok_image"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+
+</RelativeLayout>
