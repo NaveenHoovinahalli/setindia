@@ -19,11 +19,11 @@
 
             <TextView
                 android:id="@+id/topColor1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@android:color/holo_blue_dark"/>
+                android:background="#292929"/>
 
-            <com.teli.sonyset.views.SonyTextView
+            <TextView
                 android:id="@+id/promos"
                 style="@style/textView"
                 android:layout_width="match_parent"
@@ -43,11 +43,11 @@
 
             <TextView
                 android:id="@+id/topColor2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@android:color/holo_green_dark"/>
+                android:background="#747474"/>
 
-            <com.teli.sonyset.views.SonyTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/precaps"
                 style="@style/textView"

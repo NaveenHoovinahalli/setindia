@@ -9,7 +9,7 @@
     <dimen name="tabHeightShow">45dp</dimen>
     <dimen name="promoHeight">200dp</dimen>
     <dimen name="carosalmargintop">215dp</dimen>
-    <dimen name="titleMargin">115dp</dimen>
+    <dimen name="titleMargin">110dp</dimen>
     <dimen name="actionBarHeight">16sp</dimen>
     <dimen name="loopPagerMargin">-280dp</dimen>
     <dimen name="menucentertext">100dp</dimen>
@@ -18,5 +18,5 @@
     <dimen name="menucenterbottomtexttwo">105dp</dimen>
     <dimen name="menucenterline">45dp</dimen>
     <dimen name="videoheaderheight">200dp</dimen>
-
+    <dimen name="videoImageheaderheight">180dp</dimen>
 </resources>

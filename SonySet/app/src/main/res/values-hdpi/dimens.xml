@@ -9,7 +9,7 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="promoHeight">190dp</dimen>
     <dimen name="carosalmargintop">195dp</dimen>
-    <dimen name="titleMargin">105dp</dimen>
+    <dimen name="titleMargin">95dp</dimen>
     <dimen name="actionBarHeight">17sp</dimen>
     <dimen name="loopPagerMargin">-240dp</dimen>
     <dimen name="menucentertext">90dp</dimen>
@@ -18,6 +18,7 @@
     <dimen name="menucenterbottomtexttwo">95dp</dimen>
     <dimen name="menucenterline">35dp</dimen>
     <dimen name="videoheaderheight">200dp</dimen>
+    <dimen name="videoImageheaderheight">170dp</dimen>
 
 
 </resources>
