@@ -64,43 +64,44 @@
     <com.teli.sonyset.views.SonyTextView
         android:id="@+id/textviewone"
         android:layout_marginTop="10dp"
-        android:textSize="10sp"
+        android:textSize="8sp"
         android:layout_below="@id/socialButtonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="©2015,Multi Screen Media Pvt. Ltd."
+        android:text="©2015,Multi Screen Media Pvt. Ltd. All rights reserved "
         android:textColor="#828282"
         android:layout_marginLeft="@dimen/menucenterbottomtext"
         />
 
-    <com.teli.sonyset.views.SonyTextView
+   <!-- <com.teli.sonyset.views.SonyTextView
         android:textSize="10sp"
         android:layout_below="@id/textviewone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All rights reserved "
+        android:text=""
         android:textColor="#828282"
         android:layout_marginLeft="@dimen/menucenterbottomtexttwo"
 
-        />
+        />-->
 
   </RelativeLayout>
 
-    <RelativeLayout
+  <!--  <RelativeLayout
         android:id="@+id/topLayout"
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:background="@drawable/place_holder1">
+        android:background="@drawable/place_holder1">-->
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/sony_logo"
-            android:layout_marginTop="10dp"/>
+            android:layout_alignParentTop="true"
+            android:src="@drawable/menu_header"
+          />
 
-    </RelativeLayout>
-
+  <!--  </RelativeLayout>-->
 
     <ExpandableListView
         android:id="@+id/lvExp"
@@ -114,11 +115,10 @@
         android:background="#222222"
         />
 
-
-  <View
+<!--  <View
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:background="@drawable/sidebar"
-      android:layout_marginRight="40dp"/>
+      android:layout_marginRight="40dp"/>-->
 
 </RelativeLayout>

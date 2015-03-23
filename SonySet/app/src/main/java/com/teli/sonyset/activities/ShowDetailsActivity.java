@@ -159,8 +159,6 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             mprogress.setVisibility(View.GONE);
         }
 
-
-
         super.onCreate(savedInstanceState);
     }
 

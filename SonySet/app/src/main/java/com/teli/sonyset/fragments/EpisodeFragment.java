@@ -33,11 +33,11 @@ import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
 import com.teli.sonyset.activities.VideoDetailsActivity;
 import com.teli.sonyset.adapters.EpisodeAdapter;
+import com.teli.sonyset.models.BrightCoveThumbnail;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.views.SonyTextView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -150,17 +150,17 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                     public void onResponse(JSONObject response) {
                         Log.d("MyActivity", "Thumbnail" + response);
 
-                        if (response != null) {
-                            try {
-                                JSONObject object = new JSONObject(response.toString());
-                                // brightCoveThumbnails.add((String) object.get("videoStillURL"));
-                                thumbnailsBrightCove.put(i,(String) object.get("videoStillURL"));
-                                if (thumbnailsBrightCove.size() == brightCoveIds.size()){
-                                    initAdapter(value , thumbnailsBrightCove);
-                                }
-                                Log.d("pageScrolled", "brightCoveThumbnails" + thumbnailsBrightCove.toString());
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                        if (response != null && !response.toString().isEmpty()) {
+                            BrightCoveThumbnail brightCoveThumbnail = new Gson().fromJson(response.toString(), BrightCoveThumbnail.class);
+
+                            if (!brightCoveThumbnail.getVideoStillUrl().isEmpty()) {
+                                thumbnailsBrightCove.put(i, brightCoveThumbnail.getVideoStillUrl());
+                            } else {
+                                thumbnailsBrightCove.put(i, "null");
+                            }
+
+                            if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                                initAdapter(value, thumbnailsBrightCove);
                             }
                         }
                     }
@@ -168,7 +168,7 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        thumbnailsBrightCove.put(i,"null");
+                       // thumbnailsBrightCove.put(i,"null");
                         Log.d("pageScrolled", "Error" + error);
                     }
                 });

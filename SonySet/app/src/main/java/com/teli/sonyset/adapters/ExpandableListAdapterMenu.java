@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.models.ShowDetail;
@@ -90,6 +93,7 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
         View colorcode=(View) convertView.findViewById(R.id.colorcodemenu);
         imageView= (ImageView) convertView.findViewById(R.id.menuImage);
         ImageView expandableplusminus= (ImageView) convertView.findViewById(R.id.expandableplusminus);
+        CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
 
         if(isExpanded) {
             colorcode.setVisibility(View.VISIBLE);
@@ -117,11 +121,7 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
             }if(groupPosition==4) {
                 colorcode.setBackgroundResource(R.color.sony_green);
                 imageView.setImageResource(R.drawable.misc_sel_b);
-
             }
-
-
-
 
         }else {
             convertView.setBackgroundColor(Color.parseColor("#191919"));
@@ -132,6 +132,14 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
             if (groupPosition == 2)
                 expandableplusminus.setVisibility(View.INVISIBLE);
             else expandableplusminus.setVisibility(View.VISIBLE);
+
+            if (groupPosition == 5)
+                expandableplusminus.setVisibility(View.INVISIBLE);
+            else expandableplusminus.setVisibility(View.VISIBLE);
+
+            if (groupPosition == 5){
+                myCheckBox.setVisibility(View.VISIBLE);
+            }
 
             if (groupPosition == 0) {
                 imageView.setImageResource(R.drawable.shows_unsel_b);
@@ -152,6 +160,13 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
             if (groupPosition == 4)
                 imageView.setImageResource(R.drawable.misc_unsel_b);
         }
+
+        myCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Toast.makeText(context,"Checked",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        SonyTextView lblListHeader = (SonyTextView) convertView
 //                .findViewById(R.id.lblListHeader);
