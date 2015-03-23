@@ -1,8 +1,11 @@
 package com.teli.sonyset.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,6 +40,8 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
     VideoView mVideoView;
 
     HashMap<String,String> menu = new HashMap<>();
+    private boolean alertDisplayed;
+    private CountryInfo countryInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,14 +121,39 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
             return;
         }
 
+        //checkForUpgrade();
         launch();
     }
 
     @Override
     public boolean onError(MediaPlayer mediaPlayer, int i, int i2) {
+        //checkForUpgrade();
         launch();
         return false;
     }
+
+    private void checkForUpgrade() {
+
+        //String playStoreVersion = countryInfo.getData().getVersion();
+
+                        /*if(!currentVersion.equals(playStoreVersion)){*/
+        String forceUpgrade = countryInfo.getForceUpgrade();
+        String message = countryInfo.getMessages().get(0);
+
+
+        if(forceUpgrade.equals("1") && !message.isEmpty()){
+            showDialogForForceUpdate(message);
+            alertDisplayed = true;
+        }else if(forceUpgrade.equals("0") && !message.isEmpty()){
+            alertDisplayed = true;
+            showDialogForUpdate(message);
+        }else if(forceUpgrade.equals("0") && message.isEmpty()){
+            launch();
+        }
+        //}
+
+    }
+
 
     private void launch() {
 
@@ -140,9 +170,10 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
             @Override
             public void onResponse(JSONObject jsonObject) {
                 Log.d("SplashActivityFirstApi","response::"+jsonObject);
+                String currentVersion = AndroidUtils.getAppVersionNumber(SplashActivity.this);
 
                 if(jsonObject!=null){
-                    CountryInfo countryInfo = new Gson().fromJson(jsonObject.toString(),CountryInfo.class);
+                    countryInfo = new Gson().fromJson(jsonObject.toString(),CountryInfo.class);
                     if(countryInfo!=null){
 
                         SonyDataManager.init(SplashActivity.this).saveCountryId(countryInfo.getCcid());
@@ -151,6 +182,7 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
                             SonyDataManager.init(SplashActivity.this).saveMenuItemUrl(countryInfo.getMenuItems().get(i).getTitle(),
                                     countryInfo.getMenuItems().get(i).getUrl());
                         }
+
                     }
                 }
             }
@@ -162,4 +194,63 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
         };
         request.execute();
     }
+
+
+    private void showDialogForForceUpdate(String message) {
+        alertDisplayed = true;
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder.setTitle("Sony SAB Update");
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        navigateToPlayStore();
+                    }
+                });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+    }
+
+    private void navigateToPlayStore() {
+        if (AndroidUtils.isNetworkOnline(SplashActivity.this)) {
+            String sabPlayStoreLink = "https://play.google.com/store/apps/details?id=com.mobicule.sabtv";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sabPlayStoreLink));
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(SplashActivity.this, "Please check your internet connection and try again.", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
+
+
+    private void showDialogForUpdate(String message) {
+
+        alertDisplayed = true;
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder.setTitle("Sony SAB Update");
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        navigateToPlayStore();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                       launch();
+                    }
+                });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+    }
+
 }

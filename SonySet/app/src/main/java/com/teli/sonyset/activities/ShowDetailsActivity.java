@@ -17,10 +17,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
+import com.teli.sonyset.SonySet;
 import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SonyDataManager;
@@ -117,6 +120,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     private String time;
     private String colorCode;
     private String showLogo;
+    private Tracker t;
     //  private ImageAdapter adapter1;
 
     @Override
@@ -125,6 +129,11 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         setContentView(R.layout.activity_show_details);
         ButterKnife.inject(this);
 
+
+        t = ((SonySet) this.getApplication()).getTracker(
+                SonySet.TrackerName.APP_TRACKER);
+        t.setScreenName(Constants.SHOW_DETAILS_SCREEN);
+        t.send(new HitBuilders.ScreenViewBuilder().build());
 
         if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
             Toast.makeText(getApplicationContext(), "Sorry! No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -257,7 +266,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     }
 
-    private static class NavigationAdapter extends FragmentStatePagerAdapter {
+    private class NavigationAdapter extends FragmentStatePagerAdapter {
 
         FragmentManager fm;
         Activity context;
@@ -279,22 +288,27 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
                 case 0:
                     f = new ShowDetailHomeFragment();
+                    trackClicks("home");
                     break;
 
                 case 1:
                     f = new ShowEpisodeFragment();
+                    trackClicks("episode");
                     break;
 
                 case 2:
                     f = new SynopsisFragment();
+                    trackClicks("synopsis");
                     break;
 
                 case 3:
                     f = new CastFragment();
+                    trackClicks("cast");
                     break;
 
                 case 4:
                     f = new ConceptFragment();
+                    trackClicks("concept");
                     break;
 
             }
@@ -312,6 +326,15 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             return names[position];
         }
 
+    }
+
+    private void trackClicks(String tab) {
+        t.send(new HitBuilders.AppViewBuilder().build());
+        t.send(new HitBuilders.EventBuilder()
+                .setCategory(Constants.CLICK)
+                .setAction("clicked "+tab)
+                .setLabel(Constants.SHOW_DETAILS_SCREEN)
+                .build());
     }
 
     public ArrayList<Cast> getCasts(){

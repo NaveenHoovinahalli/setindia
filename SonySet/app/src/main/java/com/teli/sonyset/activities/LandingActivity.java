@@ -39,11 +39,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.korovyansk.android.slideout.SlideoutActivity;
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
+import com.teli.sonyset.SonySet;
 import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
@@ -169,6 +172,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private Timer timer;
     private int num_images = 15;
     private boolean isOpen = false;
+    private Tracker t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +180,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         setContentView(R.layout.activity_landing);
         ButterKnife.inject(this);
         BusProvider.getInstance().register(this);
+
+        t = ((SonySet) this.getApplication()).getTracker(
+                SonySet.TrackerName.APP_TRACKER);
+        t.setScreenName(Constants.LANDING_SCREEN);
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+
         pager = (ViewPager) findViewById(R.id.myviewpager);
         adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -511,6 +521,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     // Toast.makeText(LandingActivity.this, "clicked image", Toast.LENGTH_SHORT).show();
 
                     callVideoActivity(view, position, promos);
+                    trackClicks("promos");
                 }
             });
             container.addView(itemView);
@@ -550,7 +561,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             handler.postDelayed(slidePagerRunnable, SLIDE_INTERVAL);
     }
 
-    private static class NavigationAdapter extends FragmentStatePagerAdapter {
+    private class NavigationAdapter extends FragmentStatePagerAdapter {
 
 //        private static final String[] TITLES = new String[]{"Episodes", "Schedule", "Shows", "Exclusives", "Videos", "Extra"};
 
@@ -573,18 +584,23 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                 case 0:
                     f = new ShowFragment();
+                    trackClicks("shows");
                     break;
                 case 1:
                     f = new ExclusiveFragment();
+                    trackClicks("exclusive");
                     break;
                 case 2:
                     f = new VideoFragment();
+                    trackClicks("videos");
                     break;
                 case 3:
                     f = new EpisodeFragment();
+                    trackClicks("episodes");
                     break;
                 case 4:
                     f = new Schedule();
+                    trackClicks("schedule");
                     break;
             }
             return f;
@@ -609,6 +625,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             final int pattern = position % 6;
             return TITLES[pattern];
         }*/
+    }
+
+    private void trackClicks(String tab) {
+        t.send(new HitBuilders.AppViewBuilder().build());
+        t.send(new HitBuilders.EventBuilder()
+                .setCategory(Constants.CLICK)
+                .setAction("clicked "+tab)
+                .setLabel(Constants.LANDING_SCREEN)
+                .build());
     }
 
     @OnClick(R.id.secondScreen)

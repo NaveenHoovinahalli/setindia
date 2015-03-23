@@ -24,7 +24,10 @@ import com.brightcove.player.event.EventEmitter;
 import com.brightcove.player.media.Catalog;
 import com.brightcove.player.media.VideoListener;
 import com.brightcove.player.model.Video;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.teli.sonyset.R;
+import com.teli.sonyset.SonySet;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.VideoplazaPlugin;
@@ -85,12 +88,19 @@ public class VideoDetailsActivity extends Activity implements AdapterView.OnItem
     private Intent receivedIntent = null;
     private int oldPosition;
     private RelatedVideo nRelatedVideo;
+    private Tracker t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         ButterKnife.inject(this);
+
+        t = ((SonySet) this.getApplication()).getTracker(
+                SonySet.TrackerName.APP_TRACKER);
+        t.setScreenName(Constants.VIDEO_DETAILS_SCREEN);
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+
         eventEmitter = mBCVideoView.getEventEmitter();
         fetchData();
         playVideo();

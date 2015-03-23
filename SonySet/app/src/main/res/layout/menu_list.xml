@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#222222"
 
@@ -28,7 +29,8 @@
         android:text="FOLLOW US ON"
         android:textColor="#828282"
         android:textSize="12sp"
-        android:layout_marginLeft="@dimen/menucentertext"/>
+        android:layout_marginLeft="@dimen/menucentertext"
+        />
     <LinearLayout
         android:id="@+id/socialButtonId"
         android:layout_below="@+id/socialTV"
@@ -89,10 +91,10 @@
     <RelativeLayout
         android:id="@+id/topLayout"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:background="@drawable/place_holder1">
+        android:background="@drawable/place_holder">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,10 +117,12 @@
         />
 
 
-  <View
+  <ImageView
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:background="@drawable/sidebar"
-      android:layout_marginRight="40dp"/>
+      android:layout_alignParentRight="true"
+      android:layout_marginRight="50dp"
+      />
 
 </RelativeLayout>
