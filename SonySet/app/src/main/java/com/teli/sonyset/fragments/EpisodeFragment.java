@@ -168,7 +168,10 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       // thumbnailsBrightCove.put(i,"null");
+                       thumbnailsBrightCove.put(i,"null");
+                        if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                            initAdapter(value, thumbnailsBrightCove);
+                        }
                         Log.d("pageScrolled", "Error" + error);
                     }
                 });

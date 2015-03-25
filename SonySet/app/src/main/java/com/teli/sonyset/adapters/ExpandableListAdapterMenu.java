@@ -7,11 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.teli.sonyset.R;
 import com.teli.sonyset.models.ShowDetail;
@@ -93,7 +90,7 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
         View colorcode=(View) convertView.findViewById(R.id.colorcodemenu);
         imageView= (ImageView) convertView.findViewById(R.id.menuImage);
         ImageView expandableplusminus= (ImageView) convertView.findViewById(R.id.expandableplusminus);
-        CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
+      //  CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
 
         if(isExpanded) {
             colorcode.setVisibility(View.VISIBLE);
@@ -101,26 +98,26 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
             expandableplusminus.setImageResource(R.drawable.btn_square_minus);
             if(groupPosition==0) {
                 colorcode.setBackgroundResource(R.color.sony_red);
-                imageView.setImageResource(R.drawable.shows_sel_b);
+                imageView.setImageResource(R.drawable.shows_sel);
 
             }
             if(groupPosition==1) {
                 colorcode.setBackgroundResource(R.color.sony_blue);
-                imageView.setImageResource(R.drawable.schedule_sel_b);
+                imageView.setImageResource(R.drawable.schedule_sel);
 
             }
             if(groupPosition==2) {
                 colorcode.setBackgroundResource(R.color.sony_green);
-                imageView.setImageResource(R.drawable.episodes_sel_b);
+                imageView.setImageResource(R.drawable.episodes_sel);
 
             }
             if(groupPosition==3) {
                 colorcode.setBackgroundResource(R.color.sony_red);
-                imageView.setImageResource(R.drawable.video_sel_b);
+                imageView.setImageResource(R.drawable.videos_sel);
 
             }if(groupPosition==4) {
                 colorcode.setBackgroundResource(R.color.sony_green);
-                imageView.setImageResource(R.drawable.misc_sel_b);
+                imageView.setImageResource(R.drawable.misc_sel);
             }
 
         }else {
@@ -137,36 +134,36 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
                 expandableplusminus.setVisibility(View.INVISIBLE);
             else expandableplusminus.setVisibility(View.VISIBLE);
 
-            if (groupPosition == 5){
+           /* if (groupPosition == 5){
                 myCheckBox.setVisibility(View.VISIBLE);
-            }
+            }*/
 
             if (groupPosition == 0) {
-                imageView.setImageResource(R.drawable.shows_unsel_b);
+                imageView.setImageResource(R.drawable.shows_unsel);
             }
 
             if (groupPosition == 1) {
-                imageView.setImageResource(R.drawable.schedule_unsel_b);
+                imageView.setImageResource(R.drawable.schedule_unsel);
 
             }
             if (groupPosition == 2) {
-                imageView.setImageResource(R.drawable.episodes_unsel_b);
+                imageView.setImageResource(R.drawable.episodes_unsel);
 
             }
             if (groupPosition == 3) {
-                imageView.setImageResource(R.drawable.video_unsel_b);
+                imageView.setImageResource(R.drawable.videos_unsel);
             }
 
             if (groupPosition == 4)
-                imageView.setImageResource(R.drawable.misc_unsel_b);
+                imageView.setImageResource(R.drawable.misc_unsel);
         }
 
-        myCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       /* myCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 Toast.makeText(context,"Checked",Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 //        SonyTextView lblListHeader = (SonyTextView) convertView
 //                .findViewById(R.id.lblListHeader);

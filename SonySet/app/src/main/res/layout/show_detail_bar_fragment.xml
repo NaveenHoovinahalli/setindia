@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:id="@+id/strip_item"
-            android:layout_width="151dp"
+            android:layout_width="160dp"
             android:layout_height="120dp"
             android:gravity="center"
             android:background="@drawable/strip_selector"

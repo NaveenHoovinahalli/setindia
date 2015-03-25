@@ -71,7 +71,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/myviewpager"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="55dp"
         android:background="#1e1e1e"
         android:layout_below="@+id/middle_layout"/>
 
@@ -81,10 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/myviewpager"
-        >
+        />
 
-    </android.support.v4.view.ViewPager>
-    <!-- android:layout_below="@+id/carousel"-->
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
@@ -143,12 +141,7 @@
         android:gravity="right"
         android:orientation="horizontal"
         android:padding="5dp">
-        <!-- <ImageView
-             android:id="@+id/btnAlarm"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:src="@drawable/schedule_sel"
-             android:layout_marginRight="10dp"/>-->
+
         <ImageView
             android:id="@+id/btnSetting"
             android:layout_width="wrap_content"

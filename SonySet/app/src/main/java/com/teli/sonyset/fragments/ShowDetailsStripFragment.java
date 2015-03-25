@@ -19,14 +19,6 @@ public class ShowDetailsStripFragment extends Fragment {
     public static int mPosition;
     private LinearLayout linearLayout;
 
-    String[] names = new String[]{
-            "Home",
-            "EPISODES",
-            "SYNOPSIS",
-            "CAST",
-            "CONCEPT"
-    };
-
     int[] blue = new int[]{
             R.drawable.show_detail_home_blue_selector,
             R.drawable.show_detail_episodes_blue_selector,
@@ -82,6 +74,7 @@ public class ShowDetailsStripFragment extends Fragment {
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
         mColor = this.getArguments().getString("color");
+        LinearLayout divider_container = (LinearLayout) linearLayout.findViewById(R.id.divider);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         if (mColor.toLowerCase().equals("b"))
             strip_container.setBackgroundResource(blue[pos]);
@@ -94,6 +87,11 @@ public class ShowDetailsStripFragment extends Fragment {
 
         if (mCount == 2500) {
             strip_container.setSelected(true);
+            divider_container.setVisibility(View.GONE);
+        }
+
+        if (mCount == 2501) {
+            divider_container.setVisibility(View.GONE);
         }
 
         strip_container.setOnClickListener(new View.OnClickListener() {
