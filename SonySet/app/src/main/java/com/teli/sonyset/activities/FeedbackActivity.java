@@ -112,17 +112,17 @@ public class FeedbackActivity extends Activity {
 
     private void initializeRelatedToSpinner() {
 
-        Log.d(getClass().getSimpleName(),"initializeRelatedTo"+showTitle);
+        Log.d(getClass().getSimpleName(), "initializeRelatedTo" + showTitle);
 
-        if(!showTitle.isEmpty()){
-            for (int i = 0; i<relatedToList.size();i++){
-                Log.d(getClass().getSimpleName(),"listof shows"+relatedToList.get(i));
-                if(relatedToList.get(i).equalsIgnoreCase(showTitle)){
-                    Log.d(getClass().getSimpleName(),"equals"+relatedToList.get(i));
+        if (!showTitle.isEmpty()) {
+            for (int i = 0; i < relatedToList.size(); i++) {
+                Log.d(getClass().getSimpleName(), "listof shows" + relatedToList.get(i));
+                if (relatedToList.get(i).equalsIgnoreCase(showTitle)) {
+                    Log.d(getClass().getSimpleName(), "equals" + relatedToList.get(i));
                     relatedToSpinner.setSelection(i);
                 }
             }
-        }else {
+        } else {
             relatedToSpinner.setSelection(0);
         }
 
@@ -219,12 +219,12 @@ public class FeedbackActivity extends Activity {
     }
 
     @OnClick(R.id.backBtn)
-    public void backPressed(){
+    public void backPressed() {
         super.onBackPressed();
     }
 
-    @OnClick(R.id.submit_btn)
-    public void resetClicked(){
+    @OnClick(R.id.reset_btn)
+    public void resetClicked() {
         relatedToSpinner.setSelection(0);
         occupationSpinner.setSelection(0);
         ageSpinner.setSelection(0);
@@ -238,26 +238,26 @@ public class FeedbackActivity extends Activity {
 
 
     @OnClick(R.id.submit_btn)
-    public void submitClicked(){
+    public void submitClicked() {
 
         boolean isValid = validateEntries();
 
-        if(!isValid)
+        if (!isValid)
             return;
 
         String showId = SonyDataManager.init(this).getShowId();
         String showNid = SonyDataManager.init(this).getShowNid();
         String countryId = SonyDataManager.init(this).getCountryId();
 
-        String url = String.format(Constants.SUBMIT_FEEDBACK,showNid,showId,countryId,
+        String url = String.format(Constants.SUBMIT_FEEDBACK, showNid, showId, countryId,
                 fullName.getText().toString().replace(" ", "%20"),
                 emailId.getText().toString().replace(" ", "%20"),
                 contact.getText().toString().replace(" ", "%20"),
-                message.getText().toString().replace(" ","%20"));
+                message.getText().toString().replace(" ", "%20"));
 
         Log.d(getClass().getSimpleName(), "URL POST::" + url);
 
-        SonyRequest request = new SonyRequest(this , url) {
+        SonyRequest request = new SonyRequest(this, url) {
             @Override
             public void onResponse(JSONArray s) {
                 Log.d(getClass().getSimpleName(), "Feedback response" + s);
@@ -296,11 +296,11 @@ public class FeedbackActivity extends Activity {
 
     private boolean validateEntries() {
 
-        if(!AndroidUtils.isNetworkOnline(this)){
-            Toast.makeText(this,"Please check your internet connection and try again.",Toast.LENGTH_SHORT).show();
-        }else{
+        if (!AndroidUtils.isNetworkOnline(this)) {
+            Toast.makeText(this, "Please check your internet connection and try again.", Toast.LENGTH_SHORT).show();
+        } else {
 
-            if(AndroidUtils.isValidName(fullName.getText().toString())) {
+            if (AndroidUtils.isValidName(fullName.getText().toString())) {
 
                 if (AndroidUtils.isValidEmail(emailId.getText())) {
 
@@ -309,12 +309,16 @@ public class FeedbackActivity extends Activity {
                         if (AndroidUtils.isValidName(city.getText().toString())) {
 
                             if (!relatedToSpinner.getSelectedItem().toString().contains("-Select-")) {
+
                                 if (!occupationSpinner.getSelectedItem().toString().contains("-Select-")) {
+
                                     if (!ageSpinner.getSelectedItem().toString().contains("-Select-")) {
+
                                         if (!genderSpinner.getSelectedItem().toString().contains("-Select-")) {
+
                                             if (!countrySpinner.getSelectedItem().toString().contains("-Select-")) {
                                                 return true;
-                                            }else {
+                                            } else {
                                                 Toast.makeText(this, "Please select a country.", Toast.LENGTH_SHORT).show();
                                             }
                                         } else {
@@ -338,12 +342,12 @@ public class FeedbackActivity extends Activity {
                 } else {
                     Toast.makeText(this, "Invalid email Id", Toast.LENGTH_SHORT).show();
                 }
-            }else {
+            } else {
                 Toast.makeText(this, "Invalid name", Toast.LENGTH_SHORT).show();
             }
+
         }
         return false;
     }
-
 
 }
