@@ -17,7 +17,6 @@ public class MenuActivity extends FragmentActivity {
 	    getSupportFragmentManager().beginTransaction().add(com.korovyansk.android.slideout.R.id.slideout_placeholder, new MenuFragment(), "menu").commit();
 	    mSlideoutHelper.open();
 
-
 	}
 
 	

@@ -53,7 +53,6 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
     RelativeLayout socialButtonRL;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.menu_list,null);

@@ -8,7 +8,7 @@
 
     <string name="ga_logLevel">verbose</string>
 
-    <string name="ga_trackingId">UA-59581041-1</string>
+    <string name="ga_trackingId">sss</string>
 
     <bool name="ga_reportUncaughtExceptions">true</bool>
 

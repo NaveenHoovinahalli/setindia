@@ -131,7 +131,7 @@
         jar="/home/nith/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="42abd74515fffbf9851b7f453d7dc9ea482205ab">
+        sha1="94a9a9c87f2a2ee64223d26824a9961c1937dc52">
         <dex dex="/home/nith/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-45fe12bc2b37ec014493f81ed1b2cac3f184b643.jar" />
     </item>
     <item
@@ -159,7 +159,7 @@
         jar="/home/nith/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2cf8f6f356beb362b5a1242825bb6a4fc625ef4a">
+        sha1="c4401c019980f0e56ab63eec1c3f70f412ae9c9e">
         <dex dex="/home/nith/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-beb4b4c38184984ca1547abdcb082920495572a0.jar" />
     </item>
 
