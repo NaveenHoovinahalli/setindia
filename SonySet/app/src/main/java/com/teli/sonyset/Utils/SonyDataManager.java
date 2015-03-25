@@ -100,4 +100,28 @@ public class SonyDataManager {
     public boolean getIsPointTv(){
         return msharedpreference.getBoolean(POINTTV,false);
     }
+
+    public void saveShowTitle(String title) {
+        msharedpreference.edit().putString(Constants.SHOW_TITLE,title).apply();
+    }
+
+    public String getShowTitle(){
+        return msharedpreference.getString(Constants.SHOW_TITLE,"");
+    }
+
+    public void saveShowNid(String nid) {
+        msharedpreference.edit().putString(Constants.SHOW_NID,nid).apply();
+    }
+
+    public String getShowNid(){
+        return msharedpreference.getString(Constants.SHOW_NID,"");
+    }
+
+    public void saveShowId(String showId) {
+        msharedpreference.edit().putString(Constants.SHOW_ID,showId).apply();
+    }
+
+    public String getShowId(){
+        return msharedpreference.getString(Constants.SHOW_ID,"");
+    }
 }

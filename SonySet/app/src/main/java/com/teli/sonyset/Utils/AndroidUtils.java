@@ -8,7 +8,9 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -148,6 +150,31 @@ public class AndroidUtils {
 
     public static String getDeviceLanguage() {
         return Locale.getDefault().getLanguage();
+    }
+
+
+    public static boolean isValidEmail(CharSequence email) {
+        if (!TextUtils.isEmpty(email)) {
+            return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
+        return false;
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            if(phoneNumber.matches("\\d{10}"))
+                return Patterns.PHONE.matcher(phoneNumber).matches();
+        }
+        return false;
+    }
+
+    public static boolean isValidName(String name){
+        if(!name.isEmpty()){
+            if(name.matches("^[a-zA-Z\\s]+$")){
+                return true;
+            }
+        }
+        return false;
     }
 
 

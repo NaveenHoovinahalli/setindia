@@ -123,6 +123,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @InjectView(R.id.mainRelativeLayour)
     RelativeLayout relLayout;
 
+    @InjectView(R.id.menu_button)
+    ImageView menuClose;
+
     public final static int PAGES = 5;
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
@@ -174,6 +177,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private boolean isOpen = false;
     private static long backPressed;
     private Tracker t;
+    private boolean isMenuOpen;
     private String secondScreenMessage;
 
     @Override
@@ -261,13 +265,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         countryCode = SonyDataManager.init(this).getConutryCode();
 
         Log.d("LandingAcitivity", "countrycode" + countryCode);
-        if (countryCode != null && !countryCode.isEmpty())
-            if (!countryCode.equals("in")) {
-                return;
-            } else {
-                Log.d("LandingAcitivity", "countrycode india" + countryCode);
-                checkForSecondScreen();
-            }
+
         super.onCreate(savedInstanceState);
 
         initSecondScreenFragment();
@@ -309,7 +307,11 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                 String onState = onOffState.getOnState();
 
                                 if (onState.equals("true")) {
-                                    startServiceForDetection();
+
+                                    /*if(SonyDataManager.init(LandingActivity.this).getOnState()){*/
+                                        startServiceForDetection();
+                                    //}
+
                                 } else {
                                     mSecondScreen.setVisibility(View.GONE);
                                 }
@@ -390,16 +392,21 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         overridePendingTransition(0, 0);
 
-//
-//        if(!isMenuOpen) {
-//            menuBtn.setImageResource(R.drawable.close_btn);
-//            isMenuOpen=true;
-//            Toast.makeText(this,"close",Toast.LENGTH_SHORT).show();
-//        }else {
-//            menuBtn.setImageResource(R.drawable.sony_menu);
-//            isMenuOpen=false;
-//            Toast.makeText(this,"Open",Toast.LENGTH_SHORT).show();
-//        }
+        isMenuOpen = true;
+
+        //menuClose.setVisibility(View.VISIBLE);
+
+        /*if(!isMenuOpen) {
+            //menuClose.setImageResource(R.drawable.close_btn);
+            //menuClose.setVisibility(View.VISIBLE);
+            isMenuOpen=true;
+            Toast.makeText(this,"close",Toast.LENGTH_SHORT).show();
+        }else {
+            //menuBtn.setImageResource(R.drawable.sony_menu);
+            //menuClose.setVisibility(View.GONE);
+            isMenuOpen=false;
+            Toast.makeText(this,"Open",Toast.LENGTH_SHORT).show();
+        }*/
 
     }
 
@@ -571,6 +578,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         super.onResume();
         if (!promos.isEmpty())
             handler.postDelayed(slidePagerRunnable, SLIDE_INTERVAL);
+
+        if (countryCode != null && !countryCode.isEmpty())
+            if (!countryCode.equals("in")) {
+                return;
+            } else {
+                Log.d("LandingAcitivity", "countrycode india" + countryCode);
+                checkForSecondScreen();
+            }
+
+        Log.d("MenuOpen","Resume");
+
+        //menuClose.setVisibility(View.INVISIBLE);
+
+        //menuClose.setImageDrawable(this.getResources().getDrawable(R.drawable.menu_image));
+
+        /*if(isMenuOpen){
+            isMenuOpen = false;
+            menuClose.setVisibility(View.INVISIBLE);
+        }*/
+
     }
 
     private class NavigationAdapter extends FragmentStatePagerAdapter {

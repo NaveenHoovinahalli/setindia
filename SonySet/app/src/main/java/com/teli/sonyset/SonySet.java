@@ -17,7 +17,7 @@ public class SonySet extends Application {
 
     public static String deviceId, deviceMake, deviceModel, appVersion, deviceImei, language;
 
-    private static final String PROPERTY_ID = "UA-59581041-1";
+    private static final String PROPERTY_ID = "sss";
 
     public enum TrackerName {
         APP_TRACKER, // Tracker used only in this app.

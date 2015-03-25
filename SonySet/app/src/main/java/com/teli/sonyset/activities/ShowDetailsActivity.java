@@ -1,6 +1,7 @@
 package com.teli.sonyset.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -130,6 +131,9 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     private String colorCode;
     private String showLogo;
     private Tracker t;
+    private String nid;
+    private String showId;
+    private String countryId;
     Map<String, String> aliasMap;
     //  private ImageAdapter adapter1;
 
@@ -170,8 +174,8 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             pager.setOffscreenPageLimit(15);
             pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
 
-            String showId =   getIntent().getStringExtra(SHOW_ID);
-            String countryId = SonyDataManager.init(this).getCountryId();
+            showId =   getIntent().getStringExtra(SHOW_ID);
+            countryId = SonyDataManager.init(this).getCountryId();
 
             String url = String.format(Constants.SHOW_DETAILS,showId,countryId,
                     AndroidUtils.getScreenWidth(this),AndroidUtils.getScreenHeight(this));
@@ -218,6 +222,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         ArrayList<ShowMain> showDetails = gson.fromJson(s.toString(), new TypeToken<List<ShowMain>>() {
         }.getType());
 
+
         if (showDetails!=null && !showDetails.isEmpty() && showDetails.size() != 0)
             for (int i = 0 ; i<showDetails.size();i++){
                 banner = showDetails.get(i).getBanner();
@@ -229,6 +234,12 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
                 episodes = showDetails.get(i).getEpisodess();
                 promos = showDetails.get(i).getPromos();
                 concept = showDetails.get(i).getConcept();
+
+                nid = showDetails.get(i).getNid();
+
+                SonyDataManager.init(this).saveShowTitle(title);
+                SonyDataManager.init(this).saveShowNid(nid);
+                SonyDataManager.init(this).saveShowId(showId);
             }
 
         Picasso.with(this).load(Uri.parse(banner)).placeholder(R.drawable.place_holder).into(mShowImage);
@@ -398,7 +409,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     }
 
     @OnClick({R.id.menuConcept,R.id.menuCast,R.id.menuSynopsis,
-            R.id.menuEpisodes,R.id.menuVideos/*,R.id.menuNews,R.id.menuFeedback*/})
+            R.id.menuEpisodes,R.id.menuVideos,R.id.menuFeedback/*,R.id.menuNews,R.id.menuFeedback*/})
     public void menuItemClicked(View view){
 
         switch (view.getId()){
@@ -420,6 +431,11 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
             case R.id.menuVideos :
                 loadPager(2500);
+                break;
+
+            case R.id.menuFeedback :
+                Intent intent = new Intent(ShowDetailsActivity.this,FeedbackActivity.class);
+                startActivity(intent);
                 break;
 
            /* case R.id.menuVideos :
