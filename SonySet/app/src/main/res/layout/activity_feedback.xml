@@ -33,7 +33,7 @@
             android:text="FEEDBACK"
             android:textColor="@android:color/white"
             android:textAllCaps="true"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_centerInParent="true"/>
 
@@ -337,6 +337,7 @@
                 android:minLines="5"
                 android:hint="max 250 characters"
                 android:textColorHint="#a5a5a5"
+                android:padding="10dp"
                 android:textColor="#a5a5a5"
                 android:layout_marginTop="5dp"
                 android:maxLength="250"

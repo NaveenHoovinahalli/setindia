@@ -22,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.pkmmte.view.CircularImageView;
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
 import com.teli.sonyset.Utils.AndroidUtils;
@@ -45,6 +44,7 @@ import java.util.HashMap;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by madhuri on 12/3/15.
@@ -86,13 +86,13 @@ public class ShowDetailHomeFragment extends Fragment {
     ProgressBar mProgress;
 
     @InjectView(R.id.cast_iv1)
-    CircularImageView mCastIv1;
+    CircleImageView mCastIv1;
 
     @InjectView(R.id.cast_iv2)
-    CircularImageView mCastIv2;
+    CircleImageView mCastIv2;
 
     @InjectView(R.id.cast_iv3)
-    CircularImageView mCastIv3;
+    CircleImageView mCastIv3;
 
     @InjectView(R.id.color_code_view)
     SonyTextView mFirstColorCode;

@@ -104,6 +104,12 @@ public class WebViewActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         AdRenderer.showStickyFooter(this, "banner",AdRenderer.ANIMATION_SLIDE_FROM_BOTTOM);

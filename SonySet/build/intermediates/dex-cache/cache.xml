@@ -58,13 +58,6 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/jacocoagent-a3ecf981089195893bd17c5d4f483f93b49fc7e1.jar" />
     </item>
     <item
-        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.pkmmte.view/circularimageview/1.1/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c341a7ad32bc2eef9dcfab239262b77ac60788cc">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-f8e06a2fed7d79707bc6f96bd09f2387eab18926.jar" />
-    </item>
-    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -131,14 +124,21 @@
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="6a5228057b4df9168910a75d17b22894e1863120">
+        sha1="815fa8ef63f03187e0b707cafd3c09bcbbfb63cf">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-7e885b33e6145a9221b544c75c5a35a039e76c02.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="803c4c913beac8f7980d680c725a40835d1d7c77">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-bfeb21b5f34ea0f0256d67f8093c0fdc9e7b38d2.jar" />
     </item>
     <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="92b92bcee2f113b56b2d010f7d4fa2a0ac178d9e">
+        sha1="48374d88b83300535c9e558702107fbf91a414ac">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-6564eb855e6e33489c24a20c0e144e45c1b479f6.jar" />
     </item>
     <item

@@ -181,6 +181,7 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
                     if(countryInfo!=null){
 
                         SonyDataManager.init(SplashActivity.this).saveCountryId(countryInfo.getCcid());
+                        SonyDataManager.init(SplashActivity.this).saveNoCountryId(countryInfo.getCid());
 
                         for (int i = 0; i<countryInfo.getMenuItems().size();i++){
                             SonyDataManager.init(SplashActivity.this).saveMenuItemUrl(countryInfo.getMenuItems().get(i).getTitle(),

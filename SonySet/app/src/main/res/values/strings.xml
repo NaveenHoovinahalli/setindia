@@ -74,7 +74,7 @@ Android gives you a world-class platform for creating apps and games for Android
 
     <string-array name="country_items">
         <item>-Select-</item>
-        <item>Imdia</item>
+        <item>India</item>
         <item>Singapore</item>
         <item>United States</item>
         <item>Australia</item>

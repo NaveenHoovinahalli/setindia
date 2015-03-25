@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/color_code_view"
         android:scaleType="centerCrop"
+        android:src="@drawable/place_holder"
         />
 
  <!--  <ImageView android:id="@+id/placeHolder"

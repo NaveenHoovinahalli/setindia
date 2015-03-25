@@ -434,6 +434,9 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
                 break;
 
             case R.id.menuFeedback :
+
+                if(settingLayout.getVisibility()==View.VISIBLE)
+                    settingLayout.setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(ShowDetailsActivity.this,FeedbackActivity.class);
                 startActivity(intent);
                 break;

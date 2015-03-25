@@ -98,7 +98,7 @@ public class SonyDataManager {
     }
 
     public boolean getIsPointTv(){
-        return msharedpreference.getBoolean(POINTTV,false);
+        return msharedpreference.getBoolean(POINTTV,true);
     }
 
     public void saveShowTitle(String title) {
@@ -123,5 +123,13 @@ public class SonyDataManager {
 
     public String getShowId(){
         return msharedpreference.getString(Constants.SHOW_ID,"");
+    }
+
+    public void saveNoCountryId(String cid) {
+        msharedpreference.edit().putString(Constants.NO_COUNTRY_ID,cid).apply();
+    }
+
+    public String getNoCountryId() {
+        return msharedpreference.getString(Constants.NO_COUNTRY_ID,"");
     }
 }

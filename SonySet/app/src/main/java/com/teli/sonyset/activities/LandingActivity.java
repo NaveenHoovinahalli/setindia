@@ -1,8 +1,10 @@
 package com.teli.sonyset.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -192,6 +194,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         t.setScreenName(Constants.LANDING_SCREEN);
         t.send(new HitBuilders.ScreenViewBuilder().build());
 
+        if(SonyDataManager.init(this).getNoCountryId().equalsIgnoreCase("Sorry SetAsia is not present in your country")){
+            showDialogForCountry();
+        }
+
         pager = (ViewPager) findViewById(R.id.myviewpager);
         adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
         pager.setAdapter(adapter);
@@ -257,10 +263,6 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             bottomPager.setCurrentItem(2503);
         }
 
-        receiver = new ResponseReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(BackgroundService.MY_ACTION);
-        registerReceiver(receiver, intentFilter);
 
         countryCode = SonyDataManager.init(this).getConutryCode();
 
@@ -270,6 +272,24 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         initSecondScreenFragment();
 
+
+    }
+
+    private void showDialogForCountry() {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LandingActivity.this);
+
+        alertDialogBuilder.setTitle("Sony Entertainment Television");
+        alertDialogBuilder
+                .setMessage("Sorry SetAsia is not present in your country.")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 
@@ -306,13 +326,18 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                                 String onState = onOffState.getOnState();
 
+
                                 if (onState.equals("true")) {
+                                    mSecondScreen.setVisibility(View.VISIBLE);
+
+                                    SonyDataManager.init(LandingActivity.this).saveIsPointTvOn(true);
 
                                     /*if(SonyDataManager.init(LandingActivity.this).getOnState()){*/
-                                        startServiceForDetection();
+                                    startServiceForDetection();
                                     //}
 
                                 } else {
+                                    SonyDataManager.init(LandingActivity.this).saveIsPointTvOn(false);
                                     mSecondScreen.setVisibility(View.GONE);
                                 }
 
@@ -334,6 +359,11 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private void startServiceForDetection() {
         Intent intent = new Intent(this, BackgroundService.class);
         startService(intent);
+
+        receiver = new ResponseReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(BackgroundService.MY_ACTION);
+        registerReceiver(receiver, intentFilter);
     }
 
     private void fetchPromos() {
@@ -441,7 +471,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("pageScrolled", "Error" + error);
-                         thumbnailsBrightCove.put(i, "null");
+                        thumbnailsBrightCove.put(i, "null");
 
                         if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
                             setTopPager(promos, thumbnailsBrightCove);
@@ -581,13 +611,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         if (countryCode != null && !countryCode.isEmpty())
             if (!countryCode.equals("in")) {
+                mSecondScreen.setVisibility(View.GONE);
                 return;
             } else {
                 Log.d("LandingAcitivity", "countrycode india" + countryCode);
-                checkForSecondScreen();
+                boolean ispointtv=SonyDataManager.init(LandingActivity.this).getIsPointTv();
+                if(ispointtv) {
+                    checkForSecondScreen();
+                }else {
+                    mSecondScreen.setVisibility(View.GONE);
+
+                    Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
+                    stopService(stopService);
+                    if(receiver!=null)
+                        unregisterReceiver(receiver);
+                }
             }
 
         Log.d("MenuOpen","Resume");
+
+
 
         //menuClose.setVisibility(View.INVISIBLE);
 
@@ -678,6 +721,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @OnClick(R.id.secondScreen)
     public void secondScreenClicked() {
 
+        if(initialDialog.getVisibility() ==View.VISIBLE){
+            initialDialog.setVisibility(View.GONE);
+        }
 
         if (timer!=null)
             timer.cancel();
@@ -978,7 +1024,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
         stopService(stopService);
-        unregisterReceiver(receiver);
+        if(receiver!=null)
+            unregisterReceiver(receiver);
         super.onDestroy();
     }
 

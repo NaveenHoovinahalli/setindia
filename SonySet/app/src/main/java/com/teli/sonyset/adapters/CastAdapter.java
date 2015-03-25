@@ -17,6 +17,8 @@ import com.teli.sonyset.views.SonyTextView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by madhuri on 12/3/15.
  */
@@ -26,7 +28,7 @@ public class CastAdapter extends BaseAdapter {
     ArrayList<Cast> casts = new ArrayList<>();
     private ExpandableTextView mDetail;
     private SonyTextView mTitle;
-    private ImageView mImageView;
+    private CircleImageView mImageView;
     private ImageView mDownImage;
     //   private ViewHolder viewHolder;
 
@@ -58,7 +60,7 @@ public class CastAdapter extends BaseAdapter {
             //  viewHolder = new ViewHolder();
             mDetail = (ExpandableTextView) view.findViewById(R.id.cast_detail);
             mTitle = (SonyTextView) view.findViewById(R.id.cast_title);
-            mImageView = (ImageView) view.findViewById(R.id.cast_iv);
+            mImageView = (CircleImageView) view.findViewById(R.id.cast_iv);
             mDownImage = (ImageView) view.findViewById(R.id.down_image);
             //view.setTag(viewHolder);
       //  }/*else {

@@ -96,7 +96,7 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter impleme
         //  CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
 
         toggleButton = (Switch) convertView.findViewById(R.id.btnToggel);
-        if (groupPosition == 5) {
+        if (groupPosition == 6) {
             toggleButton.setVisibility(View.VISIBLE);
             boolean isPointTv = SonyDataManager.init(context).getIsPointTv();
             if (isPointTv)
@@ -127,9 +127,16 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter impleme
             if (groupPosition == 3) {
                 colorcode.setBackgroundResource(R.color.sony_red);
                 imageView.setImageResource(R.drawable.videos_sel);
-
             }
+
+
             if (groupPosition == 4) {
+                colorcode.setBackgroundResource(R.color.sony_blue);
+                imageView.setImageResource(R.drawable.feedback_sel);
+            }
+
+
+            if (groupPosition == 5) {
                 colorcode.setBackgroundResource(R.color.sony_green);
                 imageView.setImageResource(R.drawable.misc_sel);
             }
@@ -162,10 +169,16 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter impleme
                 imageView.setImageResource(R.drawable.videos_unsel);
             }
 
-            if (groupPosition == 4) {
+            if (groupPosition == 4){
+                expandableplusminus.setVisibility(View.INVISIBLE);
+                imageView.setImageResource(R.drawable.feedback_unsel);
+            }
+
+            if (groupPosition == 5) {
                 imageView.setImageResource(R.drawable.misc_unsel);
             }
-            if (groupPosition == 5) {
+
+            if (groupPosition == 6) {
                 expandableplusminus.setVisibility(View.INVISIBLE);
                 imageView.setImageResource(R.drawable.menu_pointtv);
             }
