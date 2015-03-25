@@ -25,10 +25,18 @@ public class Constants {
     public static final String URL_NOW_PLAYING = EPG_BASE_URL + "/sony_set/now_playing/";
     public static final String URL_ON_OFF_STATE = EPG_BASE_URL + "/sony_set/get_second_screen_on_off_status/%s/";
     public static final String URL_CHANNEL_ID = EPG_BASE_URL + "/sony_set/get_channel_id/";
+    public static final String SUBMIT_FEEDBACK = BASE_URL + "feedbacksubmit/create.json?nid=%s&showid=%s&cid=%s&fullname=%s&email=%s&contactno=%s&usermsg=%s";
+
 
     //Constants for SonyDataManager
     public static final String PREFS = "SonyPreference";
     public static final String COUNTRY_ID = "country_id";
+    public static final String SHOW_TITLE = "show_title";
+    public static final String SHOW_NID = "show_nid";
+    public static final String SHOW_ID = "show_id";
+    //end
+
+
 
     public static final String SCHEDULE_SD=BASE_URL + "episode/%s.json?&hd=0&ln=en";
     public static final String SCHEDULE_HD=BASE_URL + "episode/%s.json?&hd=1&ln=en";
@@ -56,4 +64,5 @@ public class Constants {
     public static final String CLICK = "ui_click";
     public static final String SHOW_DETAILS_SCREEN = "Show Details Screen";
     public static final String VIDEO_DETAILS_SCREEN = "Video Details Screen";
+    //end
 }

@@ -19,6 +19,7 @@
     <dimen name="menucenterline">35dp</dimen>
     <dimen name="videoheaderheight">200dp</dimen>
     <dimen name="videoImageheaderheight">170dp</dimen>
+    <dimen name="margin_left_close">7dp</dimen>
 
 
 </resources>

@@ -97,6 +97,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
 
+        <activity
+            android:name=".activities.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
         <service android:name=".services.BackgroundService"/>
         <service android:name="com.teli.audio.common.ExtractService"/>
         <service android:name="com.zedo.androidsdk.service.ZedoAdServingService" android:label="@string/app_name"/>

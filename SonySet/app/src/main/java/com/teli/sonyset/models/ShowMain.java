@@ -14,6 +14,8 @@ public class ShowMain implements Parcelable{
 
     String title;
 
+    String nid;
+
     @SerializedName("field_text1")
     Concept timeConcept = new Concept();
 
@@ -109,6 +111,14 @@ public class ShowMain implements Parcelable{
         this.showLogo = showLogo;
     }
 
+    public String getNid() {
+        return nid;
+    }
+
+    public void setNid(String nid) {
+        this.nid = nid;
+    }
+
 
     @Override
     public int describeContents() {
@@ -118,6 +128,7 @@ public class ShowMain implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
+        dest.writeString(this.nid);
         dest.writeParcelable(this.timeConcept, 0);
         dest.writeParcelable(this.concept, 0);
         dest.writeString(this.banner);
@@ -133,6 +144,7 @@ public class ShowMain implements Parcelable{
 
     private ShowMain(Parcel in) {
         this.title = in.readString();
+        this.nid = in.readString();
         this.timeConcept = in.readParcelable(Concept.class.getClassLoader());
         this.concept = in.readParcelable(Concept.class.getClassLoader());
         this.banner = in.readString();

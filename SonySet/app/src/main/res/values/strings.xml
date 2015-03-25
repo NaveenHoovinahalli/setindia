@@ -25,4 +25,68 @@ Android gives you a world-class platform for creating apps and games for Android
         Click here to experience\n\t\t\tSecond Screen
     </string>
 
+
+
+    //Strings for spinner entries
+    <string-array name="occupation_items">
+        <item>-Select-</item>
+        <item>Student</item>
+        <item>Self-Employed</item>
+        <item>Executive</item>
+        <item>Manager</item>
+        <item>Professional</item>
+        <item>Homemaker</item>
+    </string-array>
+
+    <string-array name="show_items">
+        <item>-Select-</item>
+        <item>Sankatmochan Mahabali Hanuman</item>
+        <item>Dil Ki Baatein Dil Hi Jaane</item>
+        <item>Indian Idol Junior</item>
+        <item>Suryaputra Karn</item>
+        <item>Reporters</item>
+        <item>Aahat</item>
+        <item>CID</item>
+        <item>Adaalat</item>
+        <item>Crime Patrol - Satark</item>
+        <item>Bharat Ka Veer Putra Maharana Pratap</item>
+        <item>Tum Aise Hi Rehna</item>
+        <item>Itna Karo Na Mujhe Pyaar</item>
+        <item>Bhanwar</item>
+        <item>Mooh Boli Shaadi</item>
+    </string-array>
+
+    <string-array name="age_items">
+        <item>-Select-</item>
+        <item>4 to 14</item>
+        <item>15 to 24</item>
+        <item>25 to 34</item>
+        <item>35 to 44</item>
+        <item>45+</item>
+    </string-array>
+
+    <string-array name="gender_items">
+        <item>-Select-</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="country_items">
+        <item>-Select-</item>
+        <item>Imdia</item>
+        <item>Singapore</item>
+        <item>United States</item>
+        <item>Australia</item>
+        <item>Canada</item>
+        <item>New Zealand</item>
+        <item>South Africa</item>
+        <item>United Kingdom</item>
+        <item>United Arab Emirates</item>
+        <item>Pakistan</item>
+        <item>Other</item>
+    </string-array>
+
+
+
 </resources>

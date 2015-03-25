@@ -3,5 +3,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="TypographyDashes">
 
-    <string name="ga_trackingId">UA-59581041-1</string>
+    <string name="ga_trackingId">sss</string>
 </resources>
