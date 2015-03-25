@@ -42,10 +42,9 @@
             android:id="@+id/cast_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="title"
-            android:textColor="@android:color/black"
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            />
 
         <com.teli.sonyset.views.ExpandableTextView
             android:id="@+id/cast_detail"
@@ -54,7 +53,7 @@
             android:text="details"
             android:textColor="#767676"
             android:background="@drawable/arrow_bottom_right_bg"
-            android:paddingBottom="30dp"
+            android:paddingBottom="40dp"
             android:layout_marginTop="5dp"
             />
      <!--   android:maxLines="3"-->

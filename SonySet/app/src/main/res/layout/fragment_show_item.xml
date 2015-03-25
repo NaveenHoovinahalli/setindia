@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:drawable/screen_background_dark_transparent">
+    android:background="@android:color/white"
+    android:paddingRight="10dp"
+ >
 
     <TextView
         android:id="@+id/color_code_view"
@@ -18,26 +20,19 @@
         android:scaleType="centerCrop"
         />
 
-   <ImageView android:id="@+id/placeHolder"
-        android:layout_width="match_parent"
+ <!--  <ImageView android:id="@+id/placeHolder"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
        android:scaleType="fitXY"
         android:src="@drawable/showpage_mid_gradient"
        android:layout_alignParentBottom="true"
-        />
-
-   <!-- <ImageView
-        android:id="@+id/card_gradient"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:layout_below="@+id/color_code_view"
-        android:src="@drawable/card_gradient"
+       android:layout_marginRight="10dp"
         />-->
 
+
     <ImageView android:id="@+id/show_logo_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
@@ -50,6 +45,7 @@
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingBottom="5dp"
+        android:layout_marginBottom="20dp"
          >
        <!-- android:background="@drawable/textviewgradient"-->
         <com.teli.sonyset.views.SonyTextView
@@ -97,7 +93,4 @@
     </LinearLayout>
     <!--android:src="@drawable/ic_launcher"-->
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </RelativeLayout>

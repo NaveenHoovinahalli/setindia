@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/shows_sel"
-        android:scaleType="fitXY"
         android:gravity="center_vertical"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:layout_centerVertical="true"
@@ -49,15 +48,14 @@
         android:text="Test"
         />
 
-    <CheckBox
-        android:id="@+id/myCheckBox"
+
+    <Switch
+        android:id="@+id/btnToggel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/menuImage"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="250dp"
-        android:clickable="false"
-        android:focusable="false"
+        android:layout_marginLeft="200dp"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:visibility="gone"/>
 
     <!--android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"-->

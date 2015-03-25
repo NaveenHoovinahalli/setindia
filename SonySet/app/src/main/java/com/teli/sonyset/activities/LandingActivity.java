@@ -60,6 +60,7 @@ import com.teli.sonyset.fragments.VideoFragment;
 import com.teli.sonyset.models.BrightCoveThumbnail;
 import com.teli.sonyset.models.DetectedAudio;
 import com.teli.sonyset.models.NowPlayingResponse;
+import com.teli.sonyset.models.OnOffState;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.services.BackgroundService;
 import com.teli.sonyset.views.BusProvider;
@@ -173,6 +174,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private boolean isOpen = false;
     private static long backPressed;
     private Tracker t;
+    private String secondScreenMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,10 +238,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         bottomPager.setCurrentItem(FIRST_PAGE);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(2505);
+            bottomPager.setCurrentItem(2504);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(2503);
+            bottomPager.setCurrentItem(2504);
             SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
@@ -299,15 +301,21 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     public void onResponse(JSONObject response) {
 
                         if (response != null) {
-                            try {
-                                String onState = response.getString("on_state");
+
+                            OnOffState onOffState = new Gson().fromJson(response.toString(), OnOffState.class);
+
+                            if (onOffState!=null) {
+
+                                String onState = onOffState.getOnState();
+
                                 if (onState.equals("true")) {
                                     startServiceForDetection();
                                 } else {
                                     mSecondScreen.setVisibility(View.GONE);
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+
+                                secondScreenMessage = onOffState.getMessage();
+                                SonyDataManager.init(LandingActivity.this).saveSecondScreenMessage(secondScreenMessage);
                             }
                         }
                     }
@@ -426,7 +434,13 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("pageScrolled", "Error" + error);
-                       // thumbnailsBrightCove.put(i, "null");
+                         thumbnailsBrightCove.put(i, "null");
+
+                        if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                            setTopPager(promos, thumbnailsBrightCove);
+
+                            brightCoveList = new ArrayList<String>(thumbnailsBrightCove.values());
+                        }
                     }
                 });
         SetRequestQueue.getInstance(this).getRequestQueue().add(request);
@@ -952,44 +966,49 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
+            try {
+                if (isFirst) {
+                    Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
 
-            if (isFirst) {
-                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
+                    if (previousFragment.getView() != null) {
+                        View previousView = previousFragment.getView();
+                        LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                        LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                        pDividerLayout.setVisibility(View.VISIBLE);
+                        previousLayout.setSelected(false);
+                    }
 
-                if (previousFragment!=null) {
-                    View previousView = previousFragment.getView();
-                    LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
-                    LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-                    pDividerLayout.setVisibility(View.VISIBLE);
-                    previousLayout.setSelected(false);
+                    Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
+
+                    if (xFragment.getView() != null) {
+                        View xView = xFragment.getView();
+                        LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
+                        xDividerLayout.setVisibility(View.VISIBLE);
+                    }
+
+                    Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+
+                    if (currentFragment.getView() != null) {
+                        View currentView = currentFragment.getView();
+                        LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                        LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
+                        cDividerLayout.setVisibility(View.GONE);
+                        currentLayout.setSelected(true);
+                    }
+
+                    int nextItem = pager.getCurrentItem() + 1;
+                    Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
+                    View nextView = nextFragment.getView();
+                    LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
+                    nDividerLayout.setVisibility(View.GONE);
                 }
 
-                Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
 
-                if (xFragment!=null) {
-                    View xView = xFragment.getView();
-                    LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
-                    xDividerLayout.setVisibility(View.VISIBLE);
-                }
-
-                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
-
-                if (currentFragment!=null) {
-                    View currentView = currentFragment.getView();
-                    LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
-                    LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
-                    cDividerLayout.setVisibility(View.GONE);
-                    currentLayout.setSelected(true);
-                }
-
-                int nextItem = pager.getCurrentItem() + 1;
-                Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
-                View nextView = nextFragment.getView();
-                LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
-                nDividerLayout.setVisibility(View.GONE);
+            }catch (NullPointerException npe){
+                npe.printStackTrace();
             }
-            isFirst = true;
 
+            isFirst = true;
             bottomPager.setCurrentItem(pager.getCurrentItem());
             previousItem = pager.getCurrentItem();
         }
@@ -1024,6 +1043,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             initialDialog.setVisibility(View.GONE);
         }else if (backPressed + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
+        }else if(secondScreenFrag.getVisibility()==View.VISIBLE){
+            closeInitialSecondScreen();
         }else {
             Toast.makeText(this,"Press back again to exit!",Toast.LENGTH_SHORT).show();
         }

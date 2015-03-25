@@ -9,9 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+
         android:layout_marginLeft="10dp"
+        android:divider="@android:color/transparent"
         android:dividerHeight="5dp"
+
+        android:background="#FFFFFF"
       />
 
     <ProgressBar android:id="@+id/show_progress"

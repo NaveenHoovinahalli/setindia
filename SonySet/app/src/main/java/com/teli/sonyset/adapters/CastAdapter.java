@@ -1,6 +1,7 @@
 package com.teli.sonyset.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,12 @@ public class CastAdapter extends BaseAdapter {
         //   viewHolder = (ViewHolder) view.getTag();
       //  }*/
 
+
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikalight-plain-webfont.ttf");
+        mDetail.setTypeface(tf);
         mDetail.setText(casts.get(i).getDescription());
+        mDetail.setTrimLength(100);
+
         mTitle.setText(casts.get(i).getName());
 
         Picasso.with(mContext).load(Uri.parse(casts.get(i).getThumbnail())).placeholder(R.drawable.place_holder_circle).into(mImageView);

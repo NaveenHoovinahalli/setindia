@@ -58,7 +58,6 @@ public class WebViewActivity extends Activity {
 
         aliasMap = new LinkedHashMap<String, String>();
         aliasMap.put("banner", "c406d19s1");
-
         ZedoAndroidSdk.init(getApplicationContext(), "1408", aliasMap);
 
         if (getIntent().hasExtra(WEB_TEXT_HEADER)){

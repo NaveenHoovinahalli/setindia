@@ -3,6 +3,8 @@ package com.teli.sonyset.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -113,13 +115,13 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
 
         String url = String.format(Constants.BRIGHT_COVE_EPISODE_THUMBNAIL, s);
 
-        Log.d("EpisodeFragment", "thumbnails : " + url);
+        Log.d("ShowEpisodeFragment", "thumbnails : " + url);
         final JsonObjectRequest request = new JsonObjectRequest(url,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("MyActivity", "Thumbnail" + response);
+                        Log.d("ShowEpisodeFragment", "Thumbnail" + response);
 
 
                         if (response != null && !response.toString().isEmpty()) {
@@ -140,8 +142,11 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  thumbnailsBrightCove.put(i, "null");
-                        Log.d("pageScrolled", "Error" + error);
+                        thumbnailsBrightCove.put(i, "null");
+                        if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                            initAdapter(value, thumbnailsBrightCove);
+                        }
+                        Log.d("ShowEpisodeFragment", "Error" + error);
                     }
                 });
         SetRequestQueue.getInstance(mContext).getRequestQueue().add(request);
@@ -149,7 +154,10 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
 
     private void initAdapter(ArrayList<Video> response, HashMap<Integer, String> brightCoveThumbnails) {
         mExclusiveProgress.setVisibility(View.GONE);
-        if (episodes!=null && !episodes.isEmpty()) {
+        if (response!=null && !response.isEmpty()) {
+            Log.d("ShowEpisodeFragment", "episodes not empty");
+            Log.d("ShowEpisodeFragment", "brightCoveThumbnails size" + brightCoveThumbnails.size());
+            Log.d("ShowEpisodeFragment", "episodes size" + response.size());
 
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View headerView = layoutInflater.inflate(R.layout.fragment_header_item, null);
@@ -158,9 +166,10 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
             TextView episodeTitle = (TextView) headerView.findViewById(R.id.episode_title);
-            SonyTextView episodeNumber = (SonyTextView) headerView.findViewById(R.id.episode_num);
+            TextView episodeNumber = (TextView) headerView.findViewById(R.id.episode_num);
             SonyTextView episodeTime = (SonyTextView) headerView.findViewById(R.id.episode_time);
             TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
+            SonyTextView duration = (SonyTextView) headerView.findViewById(R.id.duration);
 
             if (brightCoveThumbnails.size() != 0)
                 if (!brightCoveThumbnails.get(0).equals("null")){
@@ -169,34 +178,48 @@ public class ShowEpisodeFragment extends Fragment implements AdapterView.OnItemC
                     episodeImage.setImageResource(R.drawable.place_holder);
                 }
 
-            episodeTitle.setText(episodes.get(0).getShowName());
-            episodeNumber.setText(episodes.get(0).getEpisodeNumber());
-            episodeTime.setText(episodes.get(0).getOnAirDate());
+            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
+            episodeTitle.setText(response.get(0).getShowName());
+            episodeTitle.setTypeface(tf);
 
-            String color = episodes.get(0).getColorCode();
+            episodeNumber.setTypeface(tf);
+            episodeNumber.setText(response.get(0).getEpisodeNumber());
 
-            if (!color.equalsIgnoreCase("null"))
-                if (color.equalsIgnoreCase("R")){
-                    colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_red));
-                }else if (color.equalsIgnoreCase("G")){
-                    colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_green));
-                }else if (color.equalsIgnoreCase("B")){
-                    colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_blue));
-                }
+            duration.setText(response.get(0).getDuration());
+            duration.setBackgroundColor(Color.parseColor("#000000"));
+
+            if (!response.get(0).getOnAirDate().isEmpty()) {
+                episodeTime.setText(response.get(0).getOnAirDate());
+                episodeTime.setBackgroundResource(R.drawable.rounded_text_box);
+            }
+
+            String color = response.get(0).getColorCode();
+            if (color!=null && !color.isEmpty() && !color.equals("null"))
+                if (!color.equalsIgnoreCase("null"))
+                    if (color.equalsIgnoreCase("r")){
+                        colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_red));
+                    }else if (color.equalsIgnoreCase("g")){
+                        colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_green));
+                    }else if (color.equalsIgnoreCase("b")){
+                        colorCode.setBackgroundColor(mContext.getResources().getColor(R.color.sony_blue));
+                    }
 
             ArrayList<String> brightCoveList = new ArrayList<String>(brightCoveThumbnails.values());
             for (int i =0 ;i<brightCoveList.size();i++){
                 brightCoveListOld.add(brightCoveList.get(i));
             }
-//color code
-            for (int i = 0 ; i<episodes.size();i++){
-                episodesOld.add(episodes.get(i));
+
+            for (int i = 0 ; i<response.size();i++){
+                episodesOld.add(response.get(i));
             }
 
-            episodes.remove(0);
-            brightCoveList.remove(0);
+           /* response.remove(0);
+            brightCoveList.remove(0);*/
 
-            ShowEpisodeAdapter adapter = new ShowEpisodeAdapter(mContext, episodes , brightCoveList);
+            Log.d("ShowEpisodeFragment", "brightCoveThumbnails size after removing" + brightCoveList.size());
+            Log.d("ShowEpisodeFragment", "episodes size after removing" + episodes.size());
+
+            ShowEpisodeAdapter adapter = new ShowEpisodeAdapter(mContext, response , brightCoveList);
             mEpisodeList.addHeaderView(headerView);
             mEpisodeList.setAdapter(adapter);
             mEpisodeList.setOnItemClickListener(this);

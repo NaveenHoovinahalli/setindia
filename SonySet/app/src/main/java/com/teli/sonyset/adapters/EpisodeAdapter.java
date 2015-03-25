@@ -2,6 +2,7 @@ package com.teli.sonyset.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,8 +61,8 @@ public class EpisodeAdapter extends BaseAdapter {
             viewHolder.mColorCode = (TextView) view.findViewById(R.id.color_code_view);
             viewHolder.episodeImage = (ImageView) view.findViewById(R.id.episode_iv);
             viewHolder.episodeTime = (SonyTextView) view.findViewById(R.id.episode_time);
-            viewHolder.episodeNum = (SonyTextView) view.findViewById(R.id.episode_num);
-            viewHolder.episodeTitle = (SonyTextView) view.findViewById(R.id.episode_title);
+            viewHolder.episodeNum = (TextView) view.findViewById(R.id.episode_num);
+            viewHolder.episodeTitle = (TextView) view.findViewById(R.id.episode_title);
             viewHolder.mDuration = (SonyTextView) view.findViewById(R.id.duration);
             view.setTag(viewHolder);
         }else {
@@ -69,8 +70,15 @@ public class EpisodeAdapter extends BaseAdapter {
             view.forceLayout();
         }
 
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikamedium_plain_webfont.ttf");
+        viewHolder.episodeTitle.setTypeface(tf);
         viewHolder.episodeTitle.setText(episodes.get(i).getShowName());
-        viewHolder.episodeTime.setText(episodes.get(i).getOnAirDate());
+
+        if (!episodes.get(i).getOnAirDate().isEmpty()) {
+            viewHolder.episodeTime.setText(episodes.get(i).getOnAirDate());
+            viewHolder.episodeTime.setBackgroundResource(R.drawable.rounded_text_box);
+        }
+
         viewHolder.mDuration.setText(episodes.get(i).getDuration());
 
         if (!brightCoveThumbnails.get(i).equals("null")){
@@ -79,33 +87,29 @@ public class EpisodeAdapter extends BaseAdapter {
             viewHolder.episodeImage.setImageResource(R.drawable.place_holder);
         }
 
-
         if (!episodes.get(0).getDuration().isEmpty()){
             viewHolder.mDuration.setText(episodes.get(0).getDuration());
+            viewHolder.mDuration.setBackgroundColor(Color.parseColor("#000000"));
         }else {
             viewHolder.mDuration.setVisibility(View.GONE);
-        }
-
-        if (!episodes.get(0).getEpisodeNumber().isEmpty()){
-            viewHolder.episodeTime.setText(episodes.get(0).getEpisodeNumber());
-        }else {
-            viewHolder.episodeTime.setVisibility(View.GONE);
         }
 
         String color = episodes.get(i).getColorCode();
         Log.d("EpisodeAdapter", "color code" + color);
 
         if (color!=null && !color.isEmpty()) {
-            if (color.equals("R")) {
+            if (color.equalsIgnoreCase("r")) {
                 viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#CD2E2E"));
-            } else if (color.equals("G")) {
+            } else if (color.equalsIgnoreCase("g")) {
                 viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#38A92C"));
-            } else if (color.equals("B")) {
+            } else if (color.equalsIgnoreCase("b")) {
                 viewHolder.mColorCode.setBackgroundColor(Color.parseColor("#4A67D6"));
             }
         }
 
         viewHolder.episodeNum.setText(episodes.get(i).getEpisodeNumber());
+        viewHolder.episodeNum.setTypeface(tf);
+
         return view;
     }
 
@@ -113,8 +117,8 @@ public class EpisodeAdapter extends BaseAdapter {
         TextView mColorCode;
         ImageView episodeImage;
         SonyTextView episodeTime;
-        SonyTextView episodeNum;
-        SonyTextView episodeTitle;
+        TextView episodeNum;
+        TextView episodeTitle;
         SonyTextView mDuration;
     }
 }

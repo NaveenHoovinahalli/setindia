@@ -72,6 +72,13 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-9ad10288957d074575fcc9c0452a2d5fc04c25fe.jar" />
     </item>
     <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-3dafafe971ad44a89cb30e378973a4067330847a.jar" />
+    </item>
+    <item
         jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -107,6 +114,13 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-8bada97f9ca0c27d9ee32011be66c2336671f5a8.jar" />
     </item>
     <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/libs/Pushwoosh.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8a6208b1040278385149c4c66a543b8f60c12514">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/Pushwoosh-fdcd718bae442dc40b0a028c5d5b41935847020c.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/gama_carousel_v1.0/gama_carousel_v1.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -117,14 +131,14 @@
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b3997d196eaa0f0816213a3db678197c455faa1b">
+        sha1="6a5228057b4df9168910a75d17b22894e1863120">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-7e885b33e6145a9221b544c75c5a35a039e76c02.jar" />
     </item>
     <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="afd08e97580f01bd95fda4f0fe372f0d9ea3866d">
+        sha1="92b92bcee2f113b56b2d010f7d4fa2a0ac178d9e">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-6564eb855e6e33489c24a20c0e144e45c1b479f6.jar" />
     </item>
     <item

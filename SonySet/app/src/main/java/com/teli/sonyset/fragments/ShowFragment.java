@@ -79,7 +79,7 @@ public class ShowFragment extends Fragment implements AdapterView.OnItemClickLis
     private void fetchAllShows() {
 
         String url = String.format(Constants.ALL_SHOWS, countryId, AndroidUtils.getScreenWidth(mContext), AndroidUtils.getScreenHeight(mContext));
-
+        Log.d("ShowFragment", "Fragment Response URL" + url);
         SonyRequest request = new SonyRequest(mContext , url) {
             @Override
             public void onResponse(JSONArray s) {

@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -33,8 +32,8 @@ import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.VideoplazaPlugin;
 import com.teli.sonyset.adapters.RelatedVideoAdapter;
 import com.teli.sonyset.models.RelatedVideo;
-import com.teli.sonyset.views.SonyVideoView;
 import com.teli.sonyset.views.SonyTextView;
+import com.teli.sonyset.views.SonyVideoView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,6 +73,9 @@ public class VideoDetailsActivity extends Activity implements AdapterView.OnItem
     @InjectView(R.id.published_on)
     SonyTextView mPublishedOn;
 
+    @InjectView(R.id.tvrelared)
+    TextView tvRelated;
+
     EventEmitter eventEmitter;
     RelatedVideoAdapter mRelatedVideoAdapter;
     String mToken = "KOXTTwEYaBzBSRHvS2lLfsDKcn3S98e-pOq3o0S4x6dBj2k1xBa1Hg..";
@@ -101,6 +103,8 @@ public class VideoDetailsActivity extends Activity implements AdapterView.OnItem
         t.setScreenName(Constants.VIDEO_DETAILS_SCREEN);
         t.send(new HitBuilders.ScreenViewBuilder().build());
 
+        Typeface tf = Typeface.createFromAsset(this.getAssets(), "klavikalight-plain-webfont.ttf");
+        tvRelated.setTypeface(tf);
         eventEmitter = mBCVideoView.getEventEmitter();
         fetchData();
         playVideo();

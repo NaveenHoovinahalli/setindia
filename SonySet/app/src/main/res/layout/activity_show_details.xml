@@ -40,7 +40,7 @@
         android:background="@drawable/text_gradient"
         android:orientation="vertical">
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/show_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,12 +49,11 @@
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:paddingTop="5dp"
-            android:text="Show Title"
-            android:textColor="@android:color/white"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/show_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,10 +61,24 @@
             android:paddingBottom="3dp"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
-            android:text="Show Time"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
+
+        <View android:id="@+id/topLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Sony_top_line"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <View android:id="@+id/bottomLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Sony_bottom_line"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
@@ -75,15 +88,19 @@
         android:background="#1e1e1e"
         android:layout_below="@+id/middle_layout"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/show_home_shadow"
+        android:layout_alignBottom="@+id/myviewpager"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/bottomPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/myviewpager"
-        >
+        android:layout_below="@+id/myviewpager"/>
 
-    </android.support.v4.view.ViewPager>
     <!-- android:layout_below="@+id/carousel"-->
     <ProgressBar
         android:id="@+id/progress"
@@ -143,12 +160,12 @@
         android:gravity="right"
         android:orientation="horizontal"
         android:padding="5dp">
-        <!-- <ImageView
+         <ImageView
              android:id="@+id/btnAlarm"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:src="@drawable/schedule_sel"
-             android:layout_marginRight="10dp"/>-->
+             android:src="@drawable/alarm"
+             android:layout_marginRight="10dp"/>
         <ImageView
             android:id="@+id/btnSetting"
             android:layout_width="wrap_content"
@@ -270,6 +287,8 @@
               android:src="@drawable/divider_horizonal"/>-->
 
     </LinearLayout>
+
+
 </RelativeLayout>
 
 
