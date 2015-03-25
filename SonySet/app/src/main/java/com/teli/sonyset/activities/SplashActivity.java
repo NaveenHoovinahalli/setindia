@@ -36,6 +36,7 @@ import butterknife.InjectView;
  */
 public class SplashActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener {
 
+    private static final String APP_ID = "";
     @InjectView(R.id.videoView)
     VideoView mVideoView;
 
@@ -49,6 +50,9 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.inject(this);
+
+
+       // com.facebook.AppEventsLogger.activateApp(this, APP_ID);
 
         String countryCode = getCountryCode();
         Log.d("Country Code test-splash", " code::" + countryCode);
