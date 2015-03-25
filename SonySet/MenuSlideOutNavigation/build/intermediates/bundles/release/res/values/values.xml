@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/MenuSlideOutNavigation/src/main/res/values/strings.xml -->
+    <!-- From: file:/home/nith/set_india_android/SonySet/MenuSlideOutNavigation/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">Mamlakati</string>
     <string name="hello">Hello World, MamlakatiActivity!</string>
