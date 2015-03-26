@@ -7,13 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teli.sonyset.R;
+import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.models.ShowDetail;
 import com.teli.sonyset.views.SonyTextView;
 
@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by naveen on 13/3/15.
  */
-public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
+public class ExpandableListAdapterMenu extends BaseExpandableListAdapter implements View.OnClickListener {
 
     Context context;
     List<String> listDataHeader;
@@ -37,9 +37,7 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
         this.listDataHeader=listDataHeader;
         this.listChildData=listChildData;
         this.showDetails=showsDetails;
-
     }
-
 
     @Override
     public int getGroupCount() {
@@ -80,99 +78,118 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         ImageView imageView;
+        Switch toggleButton;
+
         String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_groups, null);
         }
-        TextView textHeader= (TextView) convertView.findViewById(R.id.lblListHeader);
+        TextView textHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
         Typeface tf = Typeface.createFromAsset(context.getAssets(), "klavikaregular_plain_webfont.ttf");
         textHeader.setTypeface(tf);
         textHeader.setText(listDataHeader.get(groupPosition));
-        View colorcode=(View) convertView.findViewById(R.id.colorcodemenu);
-        imageView= (ImageView) convertView.findViewById(R.id.menuImage);
-        ImageView expandableplusminus= (ImageView) convertView.findViewById(R.id.expandableplusminus);
-        CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
+        View colorcode = (View) convertView.findViewById(R.id.colorcodemenu);
+        imageView = (ImageView) convertView.findViewById(R.id.menuImage);
+        ImageView expandableplusminus = (ImageView) convertView.findViewById(R.id.expandableplusminus);
+        //  CheckBox myCheckBox= (CheckBox) convertView.findViewById(R.id.myCheckBox);
 
-        if(isExpanded) {
+        toggleButton = (Switch) convertView.findViewById(R.id.btnToggel);
+        if (groupPosition == 6) {
+            toggleButton.setVisibility(View.VISIBLE);
+            boolean isPointTv = SonyDataManager.init(context).getIsPointTv();
+            if (isPointTv)
+                toggleButton.setChecked(true);
+            toggleButton.setOnClickListener(this);
+        } else
+            toggleButton.setVisibility(View.INVISIBLE);
+
+        if (isExpanded) {
             colorcode.setVisibility(View.VISIBLE);
             convertView.setBackgroundColor(Color.parseColor("#000000"));
             expandableplusminus.setImageResource(R.drawable.btn_square_minus);
-            if(groupPosition==0) {
+            if (groupPosition == 0) {
                 colorcode.setBackgroundResource(R.color.sony_red);
-                imageView.setImageResource(R.drawable.shows_sel_b);
+                imageView.setImageResource(R.drawable.shows_sel);
 
             }
-            if(groupPosition==1) {
+            if (groupPosition == 1) {
                 colorcode.setBackgroundResource(R.color.sony_blue);
-                imageView.setImageResource(R.drawable.schedule_sel_b);
+                imageView.setImageResource(R.drawable.schedule_sel);
 
             }
-            if(groupPosition==2) {
+            if (groupPosition == 2) {
                 colorcode.setBackgroundResource(R.color.sony_green);
-                imageView.setImageResource(R.drawable.episodes_sel_b);
+                imageView.setImageResource(R.drawable.episodes_sel);
 
             }
-            if(groupPosition==3) {
+            if (groupPosition == 3) {
                 colorcode.setBackgroundResource(R.color.sony_red);
-                imageView.setImageResource(R.drawable.video_sel_b);
-
-            }if(groupPosition==4) {
-                colorcode.setBackgroundResource(R.color.sony_green);
-                imageView.setImageResource(R.drawable.misc_sel_b);
+                imageView.setImageResource(R.drawable.videos_sel);
             }
 
-        }else {
+
+            if (groupPosition == 4) {
+                colorcode.setBackgroundResource(R.color.sony_blue);
+                imageView.setImageResource(R.drawable.feedback_sel);
+            }
+
+
+            if (groupPosition == 5) {
+                colorcode.setBackgroundResource(R.color.sony_green);
+                imageView.setImageResource(R.drawable.misc_sel);
+            }
+
+        } else {
             convertView.setBackgroundColor(Color.parseColor("#191919"));
             colorcode.setVisibility(View.INVISIBLE);
             expandableplusminus.setImageResource(R.drawable.btn_square_plus);
 
 
-            if (groupPosition == 2)
+         /*   if (groupPosition == 2)
                 expandableplusminus.setVisibility(View.INVISIBLE);
-            else expandableplusminus.setVisibility(View.VISIBLE);
+            else expandableplusminus.setVisibility(View.VISIBLE);*/
 
-            if (groupPosition == 5)
-                expandableplusminus.setVisibility(View.INVISIBLE);
-            else expandableplusminus.setVisibility(View.VISIBLE);
-
-            if (groupPosition == 5){
-                myCheckBox.setVisibility(View.VISIBLE);
-            }
 
             if (groupPosition == 0) {
-                imageView.setImageResource(R.drawable.shows_unsel_b);
+                imageView.setImageResource(R.drawable.shows_unsel);
             }
 
             if (groupPosition == 1) {
-                imageView.setImageResource(R.drawable.schedule_unsel_b);
+                imageView.setImageResource(R.drawable.schedule_unsel);
 
             }
             if (groupPosition == 2) {
-                imageView.setImageResource(R.drawable.episodes_unsel_b);
+                imageView.setImageResource(R.drawable.episodes_unsel);
+                expandableplusminus.setVisibility(View.INVISIBLE);
 
             }
             if (groupPosition == 3) {
-                imageView.setImageResource(R.drawable.video_unsel_b);
+                imageView.setImageResource(R.drawable.videos_unsel);
             }
 
-            if (groupPosition == 4)
-                imageView.setImageResource(R.drawable.misc_unsel_b);
-        }
-
-        myCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Toast.makeText(context,"Checked",Toast.LENGTH_SHORT).show();
+            if (groupPosition == 4){
+                expandableplusminus.setVisibility(View.INVISIBLE);
+                imageView.setImageResource(R.drawable.feedback_unsel);
             }
-        });
+
+            if (groupPosition == 5) {
+                imageView.setImageResource(R.drawable.misc_unsel);
+            }
+
+            if (groupPosition == 6) {
+                expandableplusminus.setVisibility(View.INVISIBLE);
+                imageView.setImageResource(R.drawable.menu_pointtv);
+            }
+
 
 //        SonyTextView lblListHeader = (SonyTextView) convertView
 //                .findViewById(R.id.lblListHeader);
 //        lblListHeader.setTypeface(null, Typeface.BOLD);
 //        lblListHeader.setText(headerTitle);
 
+        }
         return convertView;
     }
 
@@ -209,5 +226,19 @@ public class ExpandableListAdapterMenu extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        boolean on = ((Switch) view).isChecked();
+
+        if (on) {
+            Toast.makeText(context, "Second Screen ON", Toast.LENGTH_SHORT).show();
+            SonyDataManager.init(context).saveIsPointTvOn(true);
+
+        } else {
+            Toast.makeText(context, "Second Screen OFF", Toast.LENGTH_SHORT).show();
+            SonyDataManager.init(context).saveIsPointTvOn(false);
+        }
     }
 }

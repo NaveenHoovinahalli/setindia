@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -79,7 +80,7 @@ public class ShowFragment extends Fragment implements AdapterView.OnItemClickLis
     private void fetchAllShows() {
 
         String url = String.format(Constants.ALL_SHOWS, countryId, AndroidUtils.getScreenWidth(mContext), AndroidUtils.getScreenHeight(mContext));
-
+        Log.d("ShowFragment", "Fragment Response URL" + url);
         SonyRequest request = new SonyRequest(mContext , url) {
             @Override
             public void onResponse(JSONArray s) {
@@ -117,6 +118,35 @@ public class ShowFragment extends Fragment implements AdapterView.OnItemClickLis
             ShowAdapter adapter = new ShowAdapter(getActivity(), shows);
             mListview.setAdapter(adapter);
             mListview.setOnItemClickListener(this);
+//            mListview.setEnabled(false);
+            mListview.setOnTouchListener(new ListView.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    int action = event.getAction();
+                    switch (action) {
+                        case MotionEvent.ACTION_POINTER_DOWN:
+                            // Disallow ScrollView to intercept touch events.
+                            v.getParent().requestDisallowInterceptTouchEvent(true);
+                            break;
+
+                        case MotionEvent.ACTION_POINTER_UP:
+//                            ((LandingActivity)getActivity()).expandView();
+                            // Allow ScrollView to intercept touch events.
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+
+                        /*case MotionEvent.EDGE_RIGHT:
+//                            ((LandingActivity)getActivity()).expandView();
+                            // Allow ScrollView to intercept touch events.
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;*/
+                    }
+
+                    // Handle ListView touch events.
+                    v.onTouchEvent(event);
+                    return true;
+                }
+            });
         }
     }
 
@@ -128,5 +158,29 @@ public class ShowFragment extends Fragment implements AdapterView.OnItemClickLis
         intent.putExtra(ShowDetailsActivity.SHOW_ID,showId);
         intent.putExtra(ShowDetailsActivity.SHOW_COLOR_CODE,item.getColorCode());
         startActivity(intent);
+    }
+
+    public void enableTouch(){
+        mListview.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    return false; // Indicates that this has been handled by you and will not be forwarded further.
+                }
+                return false;
+            }
+        });
+    }
+
+    public void disbleTouch(){
+        mListview.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    return true; // Indicates that this has been handled by you and will not be forwarded further.
+                }
+                return false;
+            }
+        });
     }
 }

@@ -3,6 +3,7 @@ package com.teli.sonyset.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,11 +44,15 @@ import com.teli.sonyset.models.ShowMain;
 import com.teli.sonyset.models.Synopsis;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.views.SonyTextView;
+import com.zedo.androidsdk.ZedoAndroidSdk;
+import com.zedo.androidsdk.utils.AdRenderer;
 
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -67,19 +73,22 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     ImageView mShowImage;
 
     @InjectView(R.id.show_title)
-    SonyTextView mShowTitle;
+    TextView mShowTitle;
 
     @InjectView(R.id.noContent)
     SonyTextView mNoContent;
 
     @InjectView(R.id.show_time)
-    SonyTextView mShowTime;
+    TextView mShowTime;
 
     @InjectView(R.id.show_logo)
     ImageView mShowLogo;
 
     @InjectView(R.id.colorCodeText)
     TextView mColorCode;
+
+    @InjectView(R.id.topLayout)
+    RelativeLayout mTopLayout;
 
     public ShowDetailsStripAdapter adapter;
     public ViewPager pager;
@@ -125,14 +134,14 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     private String nid;
     private String showId;
     private String countryId;
+    Map<String, String> aliasMap;
     //  private ImageAdapter adapter1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_show_details);
+        setContentView(R.layout.activity_show_details1);
         ButterKnife.inject(this);
-
 
         t = ((SonySet) this.getApplication()).getTracker(
                 SonySet.TrackerName.APP_TRACKER);
@@ -144,6 +153,11 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             mprogress.setVisibility(View.GONE);
             return;
         }
+
+
+        aliasMap = new LinkedHashMap<String, String>();
+        aliasMap.put("banner", "c406d19s1");
+        ZedoAndroidSdk.init(getApplicationContext(), "1408", aliasMap);
 
         if (getIntent().hasExtra(SHOW_COLOR_CODE)){
             colorCode =  getIntent().getStringExtra(SHOW_COLOR_CODE);
@@ -170,6 +184,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             mNoContent.setVisibility(View.VISIBLE);
             mNoContent.setText("No Content Available!");
             mprogress.setVisibility(View.GONE);
+            mTopLayout.setVisibility(View.GONE);
         }
 
         super.onCreate(savedInstanceState);
@@ -229,6 +244,9 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         Picasso.with(this).load(Uri.parse(banner)).placeholder(R.drawable.place_holder).into(mShowImage);
         Picasso.with(this).load(Uri.parse(showLogo)).into(mShowLogo);
+
+        Typeface tf = Typeface.createFromAsset(this.getAssets(), "klavikabold_bold_webfont.ttf");
+        mShowTitle.setTypeface(tf);
         mShowTitle.setText(title);
 
         timeConcepts = timeConcept.getValues();
@@ -236,8 +254,10 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             time = timeConcepts.get(i).getValue();
         }
 
+        Typeface tf1 = Typeface.createFromAsset(this.getAssets(), "klavikamedium_plain_webfont.ttf");
+        mShowTime.setTypeface(tf1);
         mShowTime.setText(time);
-        mShowTime.setTextColor(Color.parseColor("#767676"));
+        mShowTime.setTextColor(Color.parseColor("#BABABA"));
 
         if (colorCode!=null && !colorCode.isEmpty() && !colorCode.equals("null")){
 
@@ -414,6 +434,9 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
                 break;
 
             case R.id.menuFeedback :
+
+                if(settingLayout.getVisibility()==View.VISIBLE)
+                    settingLayout.setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(ShowDetailsActivity.this,FeedbackActivity.class);
                 startActivity(intent);
                 break;
@@ -447,23 +470,55 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         @Override
         public void onPageSelected(int i) {
-            if (isFirst) {
-                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
-                View previousView = previousFragment.getView();
-                LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
-                LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-                previousLayout.setSelected(false);
-//                pDividerLayout.setVisibility(View.VISIBLE);
+            try {
+                if (isFirst) {
+                    Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
 
-                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
-                View currentView = currentFragment.getView();
-                LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
-                LinearLayout cDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-//                cDividerLayout.setVisibility(View.GONE);
-                currentLayout.setSelected(true);
+                    if (previousFragment.getView() != null) {
+                        View previousView = previousFragment.getView();
+                        LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                        LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                        pDividerLayout.setVisibility(View.VISIBLE);
+//                        previousLayout.setSelected(false);
+                    }
+
+                    Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
+
+                    if (xFragment.getView() != null) {
+                        View xView = xFragment.getView();
+                        LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
+                        xDividerLayout.setVisibility(View.VISIBLE);
+                    }
+
+                    Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+
+                    if (currentFragment.getView() != null) {
+                        View currentView = currentFragment.getView();
+                        LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                        LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
+                        cDividerLayout.setVisibility(View.GONE);
+//                        currentLayout.setSelected(true);
+                    }
+
+                    int nextItem = pager.getCurrentItem() + 1;
+                    Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
+                    View nextView = nextFragment.getView();
+                    LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
+                    nDividerLayout.setVisibility(View.GONE);
+
+                    int secondItem = pager.getCurrentItem() + 2;
+                    Fragment secondFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + secondItem);
+                    View secondView = secondFragment.getView();
+                    LinearLayout sDividerLayout = (LinearLayout) secondView.findViewById(R.id.divider);
+                    sDividerLayout.setVisibility(View.VISIBLE);
+                }
+
+
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
             }
+
             isFirst = true;
-            mBottomPager.setCurrentItem(pager.getCurrentItem());
             previousItem = pager.getCurrentItem();
         }
 
@@ -474,6 +529,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     public void setSelectedIten(int position) {
         pager.setCurrentItem(position);
+        mBottomPager.setCurrentItem(position);
     }
 
     public void setBottomPagerToConcept(){
@@ -484,4 +540,9 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
         mBottomPager.setCurrentItem(2503);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AdRenderer.showStickyFooter(this, "banner", AdRenderer.ANIMATION_SLIDE_FROM_BOTTOM);
+    }
 }

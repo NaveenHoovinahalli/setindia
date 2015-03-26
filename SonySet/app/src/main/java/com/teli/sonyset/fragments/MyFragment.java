@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.teli.sonyset.R;
-import com.teli.sonyset.activities.LandingActivity;
-import com.teli.sonyset.views.HorizontalLinearLayout;
 
 import java.util.ArrayList;
 
@@ -20,27 +18,18 @@ public class MyFragment extends Fragment {
     private LinearLayout linearLayout;
     int[] images = new int[]{
             R.drawable.strip_selector_show,
-            R.drawable.strip_selector_exclusive,
+//            R.drawable.strip_selector_exclusive,
             R.drawable.strip_selector_video,
             R.drawable.strip_selector_episode,
             R.drawable.strip_selector_schedule
     };
 
-    String[] names = new String[]{
-            "SHOWS",
-            "EXCLUSIVES",
-            "VIDEOS",
-            "EPISODES",
-            "SCHEDULE"
-    };
-
     private int pos;
     private LinearLayout strip_container;
-    private HorizontalLinearLayout rootLayout;
+    private LinearLayout rootLayout;
     private int mCount;
 
     static ArrayList<Fragment> fragments = new ArrayList<>();
-    private int previousItem;
 
     public static Fragment newInstance(Activity context, int pos,
                                        float scale, int count) {
@@ -66,24 +55,26 @@ public class MyFragment extends Fragment {
 
         pos = this.getArguments().getInt("pos");
         mCount = this.getArguments().getInt("count");
-        rootLayout = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
+        rootLayout = (LinearLayout) linearLayout.findViewById(R.id.root);
         rootLayout.setTag(mCount);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
         LinearLayout divider_container = (LinearLayout) linearLayout.findViewById(R.id.divider);
         strip_container.setTag(pos);
         strip_container.setBackgroundResource(images[pos]);
-        if (mCount == 2500) {
+//        if (mCount == 2500) {
+        if (mCount == 0) {
             strip_container.setSelected(true);
             divider_container.setVisibility(View.GONE);
         }
-        if (mCount == 2501) {
+//        if (mCount == 2501) {
+        if (mCount == 1) {
             divider_container.setVisibility(View.GONE);
         }
 
         strip_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((LandingActivity) getActivity()).setSelectedItem(mCount);
+//                ((LandingActivity) getActivity()).setSelectedItem(mCount);
                 for (int i = 0; i < fragments.size(); i++) {
                     View v = fragments.get(i).getView();
                     if (v != null) {
@@ -96,9 +87,9 @@ public class MyFragment extends Fragment {
             }
         });
 
-        HorizontalLinearLayout root = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
-        float scale = this.getArguments().getFloat("scale");
-        root.setScaleBoth(scale);
+//        HorizontalLinearLayout root = (HorizontalLinearLayout) linearLayout.findViewById(R.id.root);
+//        float scale = this.getArguments().getFloat("scale");
+//        root.setScaleBoth(scale);
 
         return linearLayout;
     }

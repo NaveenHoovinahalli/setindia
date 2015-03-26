@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/titleMargin"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true">
 
         <com.teli.sonyset.views.SonyTextView
             android:id="@+id/promo_title"
@@ -48,7 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:src="@drawable/play_btn_big"
-        android:layout_marginTop="@dimen/titleMargin"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

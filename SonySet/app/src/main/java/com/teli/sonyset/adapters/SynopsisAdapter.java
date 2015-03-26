@@ -1,6 +1,7 @@
 package com.teli.sonyset.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,6 @@ public class SynopsisAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        //  if (view == null){
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.fragment_synopsis,null);
@@ -63,8 +63,7 @@ public class SynopsisAdapter extends BaseAdapter {
         date = (SonyTextView) view.findViewById(R.id.date);
         episodeDetail = (ExpandableTextView) view.findViewById(R.id.episode_detail);
         fullEpisode = (ImageView) view.findViewById(R.id.full_episode);
-        fullDetails = (ImageView) view.findViewById(R.id.full_details);
-        //  }
+       // fullDetails = (ImageView) view.findViewById(R.id.full_details);
 
         String myString = synopsises.get(i).getTitle();
         String upperString = myString.substring(0,1).toUpperCase() + myString.substring(1);
@@ -89,7 +88,11 @@ public class SynopsisAdapter extends BaseAdapter {
 
             date.setText("(" + weekDay + "," + monthName + dateNum + ")");
         }
+
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikalight-plain-webfont.ttf");
+        episodeDetail.setTypeface(tf);
         episodeDetail.setText(synopsises.get(i).getText());
+        episodeDetail.setTrimLength(150);
 
         fullEpisode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,17 +109,17 @@ public class SynopsisAdapter extends BaseAdapter {
             }
         });
 
-        fullDetails.setOnClickListener(new View.OnClickListener() {
+      /*  fullDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*fullDetails.setLayoutParams(
+                *//*fullDetails.setLayoutParams(
                         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));*/
+                                ViewGroup.LayoutParams.WRAP_CONTENT));*//*
 
                 episodeDetail.setMaxLines(Integer.MAX_VALUE);
                 fullDetails.setVisibility(View.GONE);
             }
-        });
+        });*/
 
         return view;
     }

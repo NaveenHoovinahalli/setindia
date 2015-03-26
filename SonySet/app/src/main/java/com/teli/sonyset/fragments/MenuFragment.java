@@ -20,6 +20,7 @@ import com.korovyansk.android.slideout.SlideoutHelper;
 import com.teli.sonyset.R;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SonyDataManager;
+import com.teli.sonyset.activities.FeedbackActivity;
 import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.activities.MenuActivity;
 import com.teli.sonyset.activities.ShowDetailsActivity;
@@ -111,8 +112,9 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
         listDataHeader.add("SCHEDULE");
         listDataHeader.add("FULL EPISODES");
         listDataHeader.add("VIDEOS");
+        listDataHeader.add("FEEDBACK");
         listDataHeader.add("MISCELLANEOUS");
-        listDataHeader.add("TEST");
+        listDataHeader.add("SECOND SCREEN");
        /* listDataHeader.add("About SET");
         listDataHeader.add("Contact Us ");
         listDataHeader.add("Terms of Use ");
@@ -150,14 +152,17 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
         miscellaneous.add("Privacy Policy ");
         miscellaneous.add("Disclaimer");
 
-        List<String> test = new ArrayList<>();
+       List<String> pointtv = new ArrayList<>();
+
+        List<String> feedBack = new ArrayList<>();
 
         listDataChild.put(listDataHeader.get(0), shows); // Header, Child data
         listDataChild.put(listDataHeader.get(1), schedule);
         listDataChild.put(listDataHeader.get(2), episodes);
         listDataChild.put(listDataHeader.get(3),videos);
-        listDataChild.put(listDataHeader.get(4),miscellaneous);
-        listDataChild.put(listDataHeader.get(5),test);
+        listDataChild.put(listDataHeader.get(4),feedBack);
+        listDataChild.put(listDataHeader.get(5),miscellaneous);
+        listDataChild.put(listDataHeader.get(6),pointtv);
 
     }
 
@@ -219,7 +224,9 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
             }
         }
 
-        if (groupPosition == 4){
+
+
+        if (groupPosition == 5){
             if (childPosition == 0){
                 slideOut.close();
                 Intent intent = new Intent(mContext, WebViewActivity.class);
@@ -260,6 +267,8 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
                 intent.putExtra(WebViewActivity.WEB_TEXT_HEADER,"Disclaimer");
                 mContext.startActivity(intent);
             }
+
+
         }
         return false;
     }
@@ -275,6 +284,14 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
            intent.putExtra(Constants.OPEN_EPISODES,true);
            startActivity(intent);
        }
+
+        if (groupPosition == 4){
+            slideOut.close();
+            Intent intent = new Intent(mContext,FeedbackActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
 
         return false;
     }

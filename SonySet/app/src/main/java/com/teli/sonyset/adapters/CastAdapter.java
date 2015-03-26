@@ -1,6 +1,7 @@
 package com.teli.sonyset.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.teli.sonyset.views.SonyTextView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by madhuri on 12/3/15.
  */
@@ -25,7 +28,7 @@ public class CastAdapter extends BaseAdapter {
     ArrayList<Cast> casts = new ArrayList<>();
     private ExpandableTextView mDetail;
     private SonyTextView mTitle;
-    private ImageView mImageView;
+    private CircleImageView mImageView;
     private ImageView mDownImage;
     //   private ViewHolder viewHolder;
 
@@ -57,14 +60,19 @@ public class CastAdapter extends BaseAdapter {
             //  viewHolder = new ViewHolder();
             mDetail = (ExpandableTextView) view.findViewById(R.id.cast_detail);
             mTitle = (SonyTextView) view.findViewById(R.id.cast_title);
-            mImageView = (ImageView) view.findViewById(R.id.cast_iv);
+            mImageView = (CircleImageView) view.findViewById(R.id.cast_iv);
             mDownImage = (ImageView) view.findViewById(R.id.down_image);
             //view.setTag(viewHolder);
       //  }/*else {
         //   viewHolder = (ViewHolder) view.getTag();
       //  }*/
 
+
+        Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "klavikalight-plain-webfont.ttf");
+        mDetail.setTypeface(tf);
         mDetail.setText(casts.get(i).getDescription());
+        mDetail.setTrimLength(100);
+
         mTitle.setText(casts.get(i).getName());
 
         Picasso.with(mContext).load(Uri.parse(casts.get(i).getThumbnail())).placeholder(R.drawable.place_holder_circle).into(mImageView);

@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
@@ -30,7 +30,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +43,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.korovyansk.android.slideout.SlideoutActivity;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
 import com.teli.sonyset.SonySet;
@@ -52,9 +52,7 @@ import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
-import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
-import com.teli.sonyset.fragments.ExclusiveFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.SecondScreen;
 import com.teli.sonyset.fragments.ShowFragment;
@@ -62,6 +60,7 @@ import com.teli.sonyset.fragments.VideoFragment;
 import com.teli.sonyset.models.BrightCoveThumbnail;
 import com.teli.sonyset.models.DetectedAudio;
 import com.teli.sonyset.models.NowPlayingResponse;
+import com.teli.sonyset.models.OnOffState;
 import com.teli.sonyset.models.Video;
 import com.teli.sonyset.services.BackgroundService;
 import com.teli.sonyset.views.BusProvider;
@@ -100,6 +99,8 @@ import butterknife.OnClick;
  */
 public class LandingActivity extends FragmentActivity implements ViewPager.OnPageChangeListener {
 
+    private static final String TAG = "DemoActivity";
+
     @InjectView(R.id.topPager)
     MotionViewPager mTopPager;
 
@@ -121,23 +122,42 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @InjectView(R.id.initial_dialog)
     View initialDialog;
 
-    @InjectView(R.id.mainRelativeLayour)
+    @InjectView(R.id.mainRelativeLayout)
     RelativeLayout relLayout;
 
+    @InjectView(R.id.sliding_layout)
+    SlidingUpPanelLayout mLayout;
+
+    @InjectView(R.id.shows)
+    ImageView mShowsTab;
+
+    @InjectView(R.id.videos)
+    ImageView mVideosTab;
+
+    @InjectView(R.id.episodes)
+    ImageView mEpisodesTab;
+
+    @InjectView(R.id.schedule)
+    ImageView mScheduleTab;
+
+    public final static int PAGES = 4;
     @InjectView(R.id.menu_button)
     ImageView menuClose;
 
-    public final static int PAGES = 5;
+    @InjectView(R.id.dragView)
+    RelativeLayout mDragView;
+
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
-    public final static int LOOPS = 1000;
-    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+//    public final static int LOOPS = 1000;
+//    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+    public final static int FIRST_PAGE = 0;
     public final static float BIG_SCALE = 0.75f;
     public final static float SMALL_SCALE = 0.75f;
     public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
 
-    public MyPagerAdapter adapter;
-    public ViewPager pager;
+//    public MyPagerAdapter adapter;
+//    public ViewPager pager;
 
     private ArrayList<String> brightCoveIds = new ArrayList<String>();
     private static final double SLIDE_DURATION_FACTOR = 3.0;
@@ -179,11 +199,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private static long backPressed;
     private Tracker t;
     private boolean isMenuOpen;
+    private String secondScreenMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_landing);
+        setContentView(R.layout.activity_landing1);
         ButterKnife.inject(this);
         BusProvider.getInstance().register(this);
 
@@ -191,7 +212,17 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 SonySet.TrackerName.APP_TRACKER);
         t.setScreenName(Constants.LANDING_SCREEN);
         t.send(new HitBuilders.ScreenViewBuilder().build());
-        Log.d("FirstApi","CountryID"+SonyDataManager.init(this).getCountryId());
+        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        mShowsTab.setSelected(true);
+//        pager = (ViewPager) findViewById(R.id.myviewpager);
+//        adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
+//        pager.setAdapter(adapter);
+//        pager.setOnPageChangeListener(horizontalListener);
+//        pager.setCurrentItem(FIRST_PAGE);
+//        pager.setOffscreenPageLimit(15);
+//        pager.setOffscreenPageLimit(4);
+        /*mLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+
         if(SonyDataManager.init(this).getNoCountryId().equalsIgnoreCase("Sorry SetAsia is not present in your country")){
             showDialogForCountry();
         }
@@ -202,7 +233,48 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         pager.setOnPageChangeListener(horizontalListener);
         pager.setCurrentItem(FIRST_PAGE);
         pager.setOffscreenPageLimit(15);
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+                Log.i(TAG, "onPanelSlide, offset " + slideOffset);
+            }
 
+            @Override
+            public void onPanelExpanded(View panel) {
+                Log.i(TAG, "onPanelExpanded");
+                Log.i(TAG, "onPanelExpanded item::" + bottomPager.getCurrentItem());
+                *//*if(bottomPager.getCurrentItem() == 2500) {
+                    Log.i(TAG, "onPanelExpanded Fragment 2500::");
+                    Fragment fragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.bottomPager + ":" + bottomPager.getCurrentItem());
+                    if (fragment != null) {
+                        Log.i(TAG, "onPanelExpanded Fragment::");
+
+                        if (fragment.getView() != null) {
+                            Log.i(TAG, "onPanelExpanded Fragment View");
+                            View previousView = fragment.getView();
+                            RelativeLayout showLayout = (RelativeLayout) previousView.findViewById(R.id.show_layout);
+                            ListView listview = (ListView) showLayout.findViewById(R.id.shows_lv);
+                            listview.setEnabled(true);
+                        }
+                    }
+                }*//*
+            }
+
+            @Override
+            public void onPanelCollapsed(View panel) {
+                Log.i(TAG, "onPanelCollapsed");
+
+            }
+
+            @Override
+            public void onPanelAnchored(View panel) {
+                Log.i(TAG, "onPanelAnchored");
+            }
+
+            @Override
+            public void onPanelHidden(View panel) {
+                Log.i(TAG, "onPanelHidden");
+            }
+        });*/
         initialDialog.setVisibility(View.GONE);
 
 //        pager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.loopPagerMargin));
@@ -213,16 +285,20 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
         int width = displaymetrics.widthPixels;
-        Log.d("Screen","width"+width);
-        if(width==540){
-            Log.d("Screen inside if","width"+width);
-            pager.setPageMargin(-420);
-        }else if (width==800) {
-            mTopPager.setMinimumHeight(600);
-            pager.setPageMargin(-616);
+        Log.d("Screen", "width" + width);
+        if (width == 540) {
+            Log.d("Screen inside if", "width" + width);
+//            pager.setPageMargin(-420);
+            ViewGroup.LayoutParams params =  mDragView.getLayoutParams();
+            params.height = 822;
+            mDragView.setLayoutParams(params);
 
-        }else {
-            pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
+        } else if (width == 800) {
+            mTopPager.setMinimumHeight(600);
+//            pager.setPageMargin(-616);
+
+        } else {
+//            pager.setPageMargin(((int) getResources().getDimension(R.dimen.loopPagerMargin)));
 
         }
 //        pager.setPageMargin(-860);
@@ -243,28 +319,29 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 //        bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
         bottomPager.setOnPageChangeListener(bottomPagerListener);
         bottomPager.setOffscreenPageLimit(15);
-        bottomPager.setCurrentItem(FIRST_PAGE);
+        bottomPager.setCurrentItem(0);
 
         if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
-            bottomPager.setCurrentItem(2505);
+//            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(3);
             SonyDataManager.init(this).saveHdIsFromMenu(true);
         } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
-            bottomPager.setCurrentItem(2503);
+//            bottomPager.setCurrentItem(2504);
+            bottomPager.setCurrentItem(3);
             SonyDataManager.init(this).saveHdIsFromMenu(false);
         } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(true);
-            bottomPager.setCurrentItem(2502);
+//            bottomPager.setCurrentItem(2502);
+            bottomPager.setCurrentItem(1);
         } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
             SonyDataManager.init(this).savePrecapsIsFromMenu(false);
-            bottomPager.setCurrentItem(2502);
+//            bottomPager.setCurrentItem(2502);
+            bottomPager.setCurrentItem(1);
         } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
-            bottomPager.setCurrentItem(2503);
+//            bottomPager.setCurrentItem(2503);
+            bottomPager.setCurrentItem(2);
         }
 
-        receiver = new ResponseReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(BackgroundService.MY_ACTION);
-        registerReceiver(receiver, intentFilter);
 
         countryCode = SonyDataManager.init(this).getConutryCode();
 
@@ -275,6 +352,36 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         initSecondScreenFragment();
 
 
+    }
+
+    @OnClick({R.id.shows, R.id.videos, R.id.episodes, R.id.schedule})
+    public void OnClickListener(View view){
+        switch (view.getId()){
+            case R.id.shows:
+                setSelected(view);
+                bottomPager.setCurrentItem(0);
+                break;
+            case R.id.videos:
+                setSelected(view);
+                bottomPager.setCurrentItem(1);
+                break;
+            case R.id.episodes:
+                setSelected(view);
+                bottomPager.setCurrentItem(2);
+                break;
+            case R.id.schedule:
+                setSelected(view);
+                bottomPager.setCurrentItem(3);
+                break;
+        }
+    }
+
+    private void setSelected(View view) {
+        mShowsTab.setSelected(false);
+        mVideosTab.setSelected(false);
+        mEpisodesTab.setSelected(false);
+        mScheduleTab.setSelected(false);
+        view.setSelected(true);
     }
 
     private void showDialogForCountry() {
@@ -297,7 +404,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void initSecondScreenFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.second_screen_frag,new SecondScreen()).commit();
+        fragmentManager.beginTransaction().replace(R.id.second_screen_frag, new SecondScreen()).commit();
     }
 /*
     @Subscribe
@@ -321,19 +428,30 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     public void onResponse(JSONObject response) {
 
                         if (response != null) {
-                            try {
-                                String onState = response.getString("on_state");
+
+                            OnOffState onOffState = new Gson().fromJson(response.toString(), OnOffState.class);
+
+                            if (onOffState!=null) {
+
+                                String onState = onOffState.getOnState();
+
+
                                 if (onState.equals("true")) {
+                                    mSecondScreen.setVisibility(View.VISIBLE);
+
+                                    SonyDataManager.init(LandingActivity.this).saveIsPointTvOn(true);
 
                                     /*if(SonyDataManager.init(LandingActivity.this).getOnState()){*/
-                                        startServiceForDetection();
+                                    startServiceForDetection();
                                     //}
 
                                 } else {
+                                    SonyDataManager.init(LandingActivity.this).saveIsPointTvOn(false);
                                     mSecondScreen.setVisibility(View.GONE);
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+
+                                secondScreenMessage = onOffState.getMessage();
+                                SonyDataManager.init(LandingActivity.this).saveSecondScreenMessage(secondScreenMessage);
                             }
                         }
                     }
@@ -350,6 +468,11 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private void startServiceForDetection() {
         Intent intent = new Intent(this, BackgroundService.class);
         startService(intent);
+
+        receiver = new ResponseReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(BackgroundService.MY_ACTION);
+        registerReceiver(receiver, intentFilter);
     }
 
     private void fetchPromos() {
@@ -402,7 +525,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     public void onMenuClicked(View view) {
 
         int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
-        SlideoutActivity.prepare(LandingActivity.this, R.id.mainRelativeLayour, width);
+        SlideoutActivity.prepare(LandingActivity.this, R.id.mainRelativeLayout, width);
         startActivity(new Intent(LandingActivity.this,
                 MenuActivity.class));
 
@@ -425,7 +548,6 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }*/
 
     }
-
 
 
     private void fetchThumbnail(String s, final ArrayList<Video> promos, final int i) {
@@ -458,7 +580,13 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("pageScrolled", "Error" + error);
-                        // thumbnailsBrightCove.put(i, "null");
+                        thumbnailsBrightCove.put(i, "null");
+
+                        if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+                            setTopPager(promos, thumbnailsBrightCove);
+
+                            brightCoveList = new ArrayList<String>(thumbnailsBrightCove.values());
+                        }
                     }
                 });
         SetRequestQueue.getInstance(this).getRequestQueue().add(request);
@@ -592,13 +720,26 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         if (countryCode != null && !countryCode.isEmpty())
             if (!countryCode.equals("in")) {
+                mSecondScreen.setVisibility(View.GONE);
                 return;
             } else {
                 Log.d("LandingAcitivity", "countrycode india" + countryCode);
-                checkForSecondScreen();
+                boolean ispointtv=SonyDataManager.init(LandingActivity.this).getIsPointTv();
+                if(ispointtv) {
+                    checkForSecondScreen();
+                }else {
+                    mSecondScreen.setVisibility(View.GONE);
+
+                    Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
+                    stopService(stopService);
+                    if(receiver!=null)
+                        unregisterReceiver(receiver);
+                }
             }
 
         Log.d("MenuOpen","Resume");
+
+
 
         //menuClose.setVisibility(View.INVISIBLE);
 
@@ -611,7 +752,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     }
 
-    private class NavigationAdapter extends FragmentStatePagerAdapter {
+    private class NavigationAdapter extends FragmentPagerAdapter {
 
 //        private static final String[] TITLES = new String[]{"Episodes", "Schedule", "Shows", "Exclusives", "Videos", "Extra"};
 
@@ -628,7 +769,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         public Fragment getItem(int position) {
             Fragment f = null;
             Log.d("LandingActivity", "AdapterPosition" + position);
-            position = position % 5;
+//            position = position % 5;
 //            final int pattern = position % 5;
             switch (position) {
 
@@ -636,19 +777,19 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     f = new ShowFragment();
                     trackClicks("shows");
                     break;
+//                case 1:
+//                    f = new ExclusiveFragment();
+//                    trackClicks("exclusive");
+//                    break;
                 case 1:
-                    f = new ExclusiveFragment();
-                    trackClicks("exclusive");
-                    break;
-                case 2:
                     f = new VideoFragment();
                     trackClicks("videos");
                     break;
-                case 3:
+                case 2:
                     f = new EpisodeFragment();
                     trackClicks("episodes");
                     break;
-                case 4:
+                case 3:
                     f = new Schedule();
                     trackClicks("schedule");
                     break;
@@ -658,7 +799,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public int getCount() {
-            return 5 * LOOPS;
+//            return 5 * LOOPS;
+            return 4;
         }
 
        /* @Override
@@ -681,7 +823,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         t.send(new HitBuilders.AppViewBuilder().build());
         t.send(new HitBuilders.EventBuilder()
                 .setCategory(Constants.CLICK)
-                .setAction("clicked "+tab)
+                .setAction("clicked " + tab)
                 .setLabel(Constants.LANDING_SCREEN)
                 .build());
     }
@@ -689,14 +831,17 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     @OnClick(R.id.secondScreen)
     public void secondScreenClicked() {
 
+        if(initialDialog.getVisibility() ==View.VISIBLE){
+            initialDialog.setVisibility(View.GONE);
+        }
 
-        if (timer!=null)
+        if (timer != null)
             timer.cancel();
 
-        if (mHandler!=null)
+        if (mHandler != null)
             mHandler.removeCallbacks(mUpdateResults);
 
-        if(mHandler1!=null)
+        if (mHandler1 != null)
             mHandler1.removeCallbacks(mStartAnimation);
 
         if (programLink != null && !programLink.isEmpty()) {
@@ -705,7 +850,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(WebViewActivity.WEB_URL, programLink);
             startActivity(intent);
-        }else {
+        } else {
            /* if(!AndroidUtils.isNetworkOnline(getApplicationContext())){
                 return;
             }
@@ -719,7 +864,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void openInitialSecondScreen() {
 
-        if(!isOpen){
+        if (!isOpen) {
             isOpen = true;
             Animation animFrameLayout = AnimationUtils.loadAnimation(LandingActivity.this, R.anim.slide_in_right);
             animFrameLayout.setAnimationListener(new Animation.AnimationListener() {
@@ -755,10 +900,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     private void closeInitialSecondScreen() {
 
-        if(isOpen){
+        if (isOpen) {
             isOpen = false;
 
-            Animation animFrameLayout = AnimationUtils.loadAnimation(LandingActivity.this,R.anim.slide_out_right);
+            Animation animFrameLayout = AnimationUtils.loadAnimation(LandingActivity.this, R.anim.slide_out_right);
             secondScreenFrag.setAnimation(animFrameLayout);
             secondScreenFrag.setVisibility(View.GONE);
             secScreenClose.setVisibility(View.GONE);
@@ -859,8 +1004,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
             dialog.show();*/
 
         initialDialog.setVisibility(View.VISIBLE);
-        ImageView okImage = (ImageView)initialDialog.findViewById(R.id.ok_img);
-        ImageView arrow = (ImageView)initialDialog.findViewById(R.id.arrow_img);
+        ImageView okImage = (ImageView) initialDialog.findViewById(R.id.ok_img);
+        ImageView arrow = (ImageView) initialDialog.findViewById(R.id.arrow_img);
         okImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -884,7 +1029,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                     //if (response != null && !response.isEmpty())
 
-                    Log.d("LandingActivitySecondScreen","onReceive");
+                    Log.d("LandingActivitySecondScreen", "onReceive");
 
                     closeInitialSecondScreen();
                     detectedAudio = new Gson().fromJson(response.toString(), DetectedAudio.class);
@@ -900,10 +1045,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                     mStartAnimation = new Runnable() {
                         public void run() {
 
-                            if(mHandler!=null){
+                            if (mHandler != null) {
                                 mHandler.removeCallbacks(mUpdateResults);
                             }
-                            if(timer!=null){
+                            if (timer != null) {
                                 timer.cancel();
                             }
 
@@ -932,7 +1077,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                                     isIteration3 = true;
                                     //count = 1;
                                     num_images = IMAGE_IDS_SMALL.length;
-                                    i=0;
+                                    i = 0;
                                    /* timer1.scheduleAtFixedRate(new TimerTask() {
 
                                         public void run() {
@@ -943,7 +1088,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                                 }
 
-                            }else{
+                            } else {
 
                                 if (i >= num_images) {
                                     i = 0;
@@ -982,10 +1127,6 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         //  unregisterReceiver(receiver);
         super.onPause();
-        Log.d("MenuOpen","Pause");
-        //menuClose.setImageResource(R.drawable.close_btn);
-        /*menuClose.setImageResource(R.drawable.close_btn);
-        menuClose.setVisibility(View.VISIBLE);*/
     }
 
     @Override
@@ -993,14 +1134,15 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
         stopService(stopService);
-        unregisterReceiver(receiver);
+        if(receiver!=null)
+            unregisterReceiver(receiver);
         super.onDestroy();
     }
 
 
     private int previousItem = FIRST_PAGE;
     private boolean isFirst;
-    ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
+    /*ViewPager.OnPageChangeListener horizontalListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i2) {
 
@@ -1008,44 +1150,49 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
+            try {
+                if (isFirst) {
+                    Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
 
-            if (isFirst) {
-                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
+                    if (previousFragment.getView() != null) {
+                        View previousView = previousFragment.getView();
+                        LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                        LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                        pDividerLayout.setVisibility(View.VISIBLE);
+                        previousLayout.setSelected(false);
+                    }
 
-                if (previousFragment!=null) {
-                    View previousView = previousFragment.getView();
-                    LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
-                    LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-                    pDividerLayout.setVisibility(View.VISIBLE);
-                    previousLayout.setSelected(false);
+                    Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
+
+                    if (xFragment.getView() != null) {
+                        View xView = xFragment.getView();
+                        LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
+                        xDividerLayout.setVisibility(View.VISIBLE);
+                    }
+
+                    Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+
+                    if (currentFragment.getView() != null) {
+                        View currentView = currentFragment.getView();
+                        LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                        LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
+                        cDividerLayout.setVisibility(View.GONE);
+                        currentLayout.setSelected(true);
+                    }
+
+                    int nextItem = pager.getCurrentItem() + 1;
+                    Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
+                    View nextView = nextFragment.getView();
+                    LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
+                    nDividerLayout.setVisibility(View.GONE);
                 }
 
-                Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
 
-                if (xFragment!=null) {
-                    View xView = xFragment.getView();
-                    LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
-                    xDividerLayout.setVisibility(View.VISIBLE);
-                }
-
-                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
-
-                if (currentFragment!=null) {
-                    View currentView = currentFragment.getView();
-                    LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
-                    LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
-                    cDividerLayout.setVisibility(View.GONE);
-                    currentLayout.setSelected(true);
-                }
-
-                int nextItem = pager.getCurrentItem() + 1;
-                Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
-                View nextView = nextFragment.getView();
-                LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
-                nDividerLayout.setVisibility(View.GONE);
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
             }
-            isFirst = true;
 
+            isFirst = true;
             bottomPager.setCurrentItem(pager.getCurrentItem());
             previousItem = pager.getCurrentItem();
         }
@@ -1057,37 +1204,67 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
     public void setSelectedItem(int position) {
         pager.setCurrentItem(position);
-    }
+    }*/
 
     ViewPager.OnPageChangeListener bottomPagerListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int i, float v, int i2) {}
-
-        @Override
-        public void onPageSelected(int i) {
-            pager.setCurrentItem(bottomPager.getCurrentItem());
+        public void onPageScrolled(int i, float v, int i2) {
         }
 
         @Override
-        public void onPageScrollStateChanged(int i) {}
+        public void onPageSelected(int i) {
+            //pager.setCurrentItem(bottomPager.getCurrentItem());
+            setMiddletab(i);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+        }
     };
 
 
     @Override
     public void onBackPressed() {
 
-        if(initialDialog.getVisibility()==View.VISIBLE){
+        if (initialDialog.getVisibility() == View.VISIBLE) {
             initialDialog.setVisibility(View.GONE);
-        }else if (backPressed + 2000 > System.currentTimeMillis()) {
+        } else if (backPressed + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
-        }else if(secondScreenFrag.getVisibility()==View.VISIBLE){
+        } else if (secondScreenFrag.getVisibility() == View.VISIBLE) {
             closeInitialSecondScreen();
-        }else {
-            Toast.makeText(this,"Press back again to exit!",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Press back again to exit!", Toast.LENGTH_SHORT).show();
         }
         backPressed = System.currentTimeMillis();
     }
+
+    public void expandView(){
+        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+    }
+
+   public void setMiddletab(int i){
+
+       View view;
+       switch (i){
+           case 0: view = findViewById(R.id.shows);
+               setSelected(view);
+               break;
+
+           case 1:view = findViewById(R.id.videos);
+               setSelected(view);
+               break;
+
+           case 2:view = findViewById(R.id.episodes);
+               setSelected(view);
+               break;
+
+           case 3:view = findViewById(R.id.schedule);
+               setSelected(view);
+               break;
+       }
+   }
 }
+
 
 
 

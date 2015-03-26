@@ -9,10 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.TextView;
 
 import com.teli.sonyset.R;
+import com.teli.sonyset.Utils.SonyDataManager;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -58,5 +58,7 @@ public class SecondScreen extends Fragment {
 
     private void fetchText() {
 
+        String message = SonyDataManager.init(mContext).getSecondScreenMessage();
+        welcomeText.setText(message);
     }
 }

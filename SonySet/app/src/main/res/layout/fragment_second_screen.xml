@@ -48,7 +48,6 @@
             android:layout_below="@+id/tv_image"
             android:layout_toRightOf="@+id/side_bar"
             android:background="#222222"
-
             >
 
             <TextView

@@ -102,7 +102,7 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
         SonyRequest request = new SonyRequest(mContext,url) {
             @Override
             public void onResponse(JSONArray s) {
-                Log.d("ShowFragment", "Fragment Response" + s);
+                Log.d("EpisodeFragment", "Fragment Response" + s);
 
                 fetchBrightCoveID(s);
             }
@@ -168,8 +168,14 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       // thumbnailsBrightCove.put(i,"null");
+                        thumbnailsBrightCove.put(i,"null");
                         Log.d("pageScrolled", "Error" + error);
+
+                        if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
+
+                            Log.d("EpisodeFragment", "equal length" );
+                            initAdapter(value, thumbnailsBrightCove);
+                        }
                     }
                 });
         SetRequestQueue.getInstance(mContext).getRequestQueue().add(request);
@@ -192,7 +198,7 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
 
             ImageView episodeImage = (ImageView) headerView.findViewById(R.id.episode_iv);
             TextView episodeTitle = (TextView) headerView.findViewById(R.id.episode_title);
-            SonyTextView episodeNumber = (SonyTextView) headerView.findViewById(R.id.episode_num);
+            TextView episodeNumber = (TextView) headerView.findViewById(R.id.episode_num);
             SonyTextView episodeTime = (SonyTextView) headerView.findViewById(R.id.episode_time);
             TextView colorCode = (TextView) headerView.findViewById(R.id.color_code_view);
             TextView duration = (TextView) headerView.findViewById(R.id.duration);
@@ -209,6 +215,8 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 }
 
             episodeTitle.setText(episodes.get(0).getShowName());
+
+            episodeNumber.setText(episodes.get(0).getEpisodeNumber());
 
             episodeTime.setText(episodes.get(0).getOnAirDate());
 

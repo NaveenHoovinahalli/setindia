@@ -29,7 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:src="@drawable/place_holder"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        />
     </LinearLayout>
 
     <LinearLayout

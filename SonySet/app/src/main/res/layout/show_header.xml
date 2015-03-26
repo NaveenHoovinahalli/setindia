@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="@dimen/promoHeight">
+    android:layout_height="wrap_content">
 
     <com.teli.sonyset.views.SonyTextView
         android:id="@+id/color_code_view"
-        android:layout_width="5dp"
+        android:layout_width="4dp"
         android:layout_height="match_parent"
         android:paddingBottom="5dp"
         android:background="#666666"
@@ -16,7 +16,7 @@
         android:id="@+id/episode_iv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:layout_toRightOf="@+id/color_code_view"
         android:src="@drawable/place_holder"
         android:layout_alignParentRight="true"
@@ -29,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/color_code_view"
         android:layout_alignParentTop="true"
+        android:textSize="10sp"
+        android:padding="2dp"
         />
 
     <LinearLayout
@@ -36,34 +38,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        >
+        android:layout_marginLeft="10dp">
 
         <com.teli.sonyset.views.SonyTextView
             android:id="@+id/episode_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Time"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:background="@drawable/rounded_text_box"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/episode_top_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Episode"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/episode_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="Title"
+            android:paddingBottom="10dp"
             />
     </LinearLayout>
 

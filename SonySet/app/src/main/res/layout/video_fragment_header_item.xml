@@ -40,7 +40,7 @@
             android:textColor="@android:color/white"
             android:text="Title"
             android:textAllCaps="true"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:layout_marginBottom="3dp"
             />
 

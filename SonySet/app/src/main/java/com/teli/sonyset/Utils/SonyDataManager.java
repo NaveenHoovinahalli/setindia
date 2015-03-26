@@ -10,6 +10,8 @@ public class SonyDataManager {
 
     private static final String HD_MENU = "hd_is_from_menu";
     private static final String PRECAPS_MENU = "precap_is_menu";
+    private static final String SECOND_SCREEN_MESSAGE = "second_screen_message";
+    private static final String POINTTV="point_tv";
     private final SharedPreferences msharedpreference;
     Context context;
     public static final String SHOWS="shows";
@@ -81,6 +83,22 @@ public class SonyDataManager {
 
     public String getMenuItemUrl(String s) {
         return msharedpreference.getString(s,"");
+    }
+
+    public void saveSecondScreenMessage(String secondScreenMessage) {
+        msharedpreference.edit().putString(SECOND_SCREEN_MESSAGE, secondScreenMessage).apply();
+    }
+
+    public String getSecondScreenMessage() {
+        return msharedpreference.getString(SECOND_SCREEN_MESSAGE, "");
+    }
+
+    public void saveIsPointTvOn(boolean isPointTV){
+        msharedpreference.edit().putBoolean(POINTTV,isPointTV).apply();
+    }
+
+    public boolean getIsPointTv(){
+        return msharedpreference.getBoolean(POINTTV,true);
     }
 
     public void saveShowTitle(String title) {

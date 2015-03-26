@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teli.sonyset.R;
@@ -96,9 +95,9 @@ public class FeedbackActivity extends Activity {
 
 
         aliasMap = new LinkedHashMap<String, String>();
-        aliasMap.put("banner", "c1986d14s378");
+        aliasMap.put("banner", "c406d19s1");
 
-        ZedoAndroidSdk.init(getApplicationContext(), "480", aliasMap);
+        ZedoAndroidSdk.init(getApplicationContext(), "1408", aliasMap);
 
         addItemsToRelatedToSpinner();
         addItemsToOccupationSpinner();
@@ -112,7 +111,7 @@ public class FeedbackActivity extends Activity {
 
     private void initializeRelatedToSpinner() {
 
-        Log.d(getClass().getSimpleName(),"initializeRelatedTo"+showTitle);
+        Log.d(getClass().getSimpleName(), "initializeRelatedTo" + showTitle);
 
         if(!showTitle.isEmpty()){
             for (int i = 0; i<relatedToList.size();i++){
@@ -282,7 +281,7 @@ public class FeedbackActivity extends Activity {
 
         alertDialogBuilder.setTitle("Sony Entertainment Television");
         alertDialogBuilder
-                .setMessage("Thankyou. Your feedback is successfully submitted.")
+                .setMessage("Thank you. Your feedback is successfully submitted.")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

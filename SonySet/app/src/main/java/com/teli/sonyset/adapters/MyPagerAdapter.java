@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.views.HorizontalLinearLayout;
-
-import java.util.ArrayList;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
@@ -34,6 +31,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return LandingActivity.PAGES * LandingActivity.LOOPS;
+//        return LandingActivity.PAGES * LandingActivity.LOOPS;
+        return LandingActivity.PAGES;
     }
 }

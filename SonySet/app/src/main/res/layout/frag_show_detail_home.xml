@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -28,7 +29,7 @@
 
             <include layout="@layout/show_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/promoHeight"
                 android:id="@+id/first_iv"
                 android:layout_marginBottom="5dp"/>
 
@@ -39,13 +40,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"/>-->
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
+            android:id="@+id/read_more_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_the_show"
             android:textSize="18sp"
-            android:id="@+id/read_more_text"
-            android:textColor="@android:color/black"
+            android:textColor="#474747"
             android:layout_below="@+id/shows_gv"
             android:layout_marginLeft="10dp"
             />
@@ -60,17 +61,16 @@
             android:layout_marginRight="10dp"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
             android:id="@+id/about_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Read more details"
             android:textSize="14sp"
             android:padding="5dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/read_more_text"
             android:layout_alignParentLeft="true"
-            android:textColor="#848484"
+            android:textColor="#767676"
             android:layout_marginLeft="8dp"
             android:maxLines="3"
             />
@@ -85,14 +85,14 @@
             android:layout_marginLeft="10dp"
             />
 
-        <com.teli.sonyset.views.SonyTextView
+        <TextView
+            android:id="@+id/cast_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cast"
             android:textSize="18sp"
             android:layout_below="@+id/line"
-            android:textColor="@android:color/black"
-            android:id="@+id/cast_text"
+            android:textColor="#474747"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             />
@@ -141,22 +141,31 @@
             android:layout_below="@+id/cast_text"
             >
 
-            <com.pkmmte.view.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/cast_iv1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                app:border_width="2dp"
+                app:border_color="#D7D7D7"
+                android:layout_margin="5dp"
                 />
 
-            <com.pkmmte.view.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/cast_iv2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                app:border_width="2dp"
+                app:border_color="#D7D7D7"
+                android:layout_margin="5dp"
                 />
 
-            <com.pkmmte.view.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/cast_iv3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                app:border_width="2dp"
+                app:border_color="#D7D7D7"
+                android:layout_margin="5dp"
               />
 
         </LinearLayout>

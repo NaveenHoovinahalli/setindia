@@ -58,7 +58,6 @@ public class WebViewActivity extends Activity {
 
         aliasMap = new LinkedHashMap<String, String>();
         aliasMap.put("banner", "c406d19s1");
-
         ZedoAndroidSdk.init(getApplicationContext(), "1408", aliasMap);
 
         if (getIntent().hasExtra(WEB_TEXT_HEADER)){
@@ -101,6 +100,12 @@ public class WebViewActivity extends Activity {
 
     @OnClick(R.id.backBtn)
     public void backPressed(){
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
         super.onBackPressed();
     }
 
