@@ -38,7 +38,6 @@ public class Constants {
     //end
 
 
-
     public static final String SCHEDULE_SD=BASE_URL + "episode/%s.json?&hd=0&ln=en";
     public static final String SCHEDULE_HD=BASE_URL + "episode/%s.json?&hd=1&ln=en";
 

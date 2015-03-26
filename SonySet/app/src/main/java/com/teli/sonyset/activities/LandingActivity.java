@@ -201,6 +201,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private boolean isMenuOpen;
     private String secondScreenMessage;
     private NavigationAdapterForeign mPagerAdapterForeign;
+    private boolean isReceiverRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -359,6 +360,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         super.onCreate(savedInstanceState);
 
         initSecondScreenFragment();
+
+
     }
 
     @OnClick({R.id.shows, R.id.videos, R.id.episodes, R.id.schedule})
@@ -487,6 +490,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BackgroundService.MY_ACTION);
         registerReceiver(receiver, intentFilter);
+        isReceiverRegistered = true;
     }
 
     private void fetchPromos() {
@@ -746,8 +750,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                     Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
                     stopService(stopService);
-                    if(receiver!=null)
+                    if(receiver!=null && isReceiverRegistered){
                         unregisterReceiver(receiver);
+                        isReceiverRegistered = false;
+                    }
                 }
             }
 
@@ -1148,8 +1154,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
         stopService(stopService);
-        if(receiver!=null)
+        if(receiver!=null && isReceiverRegistered){
             unregisterReceiver(receiver);
+            isReceiverRegistered = false;
+        }
         super.onDestroy();
     }
 
