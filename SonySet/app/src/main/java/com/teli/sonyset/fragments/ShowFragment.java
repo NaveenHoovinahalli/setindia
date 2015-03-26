@@ -21,7 +21,6 @@ import com.teli.sonyset.Utils.AndroidUtils;
 import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
-import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.activities.ShowDetailsActivity;
 import com.teli.sonyset.adapters.ShowAdapter;
 import com.teli.sonyset.models.ShowDetail;

@@ -76,12 +76,14 @@ public class ShowDetailsStripFragment extends Fragment {
         mColor = this.getArguments().getString("color");
         LinearLayout divider_container = (LinearLayout) linearLayout.findViewById(R.id.divider);
         strip_container = (LinearLayout) linearLayout.findViewById(R.id.strip_item);
-        if (mColor.toLowerCase().equals("b"))
-            strip_container.setBackgroundResource(blue[pos]);
-        else if (mColor.toLowerCase().equals("g"))
-            strip_container.setBackgroundResource(green[pos]);
-        else
-        strip_container.setBackgroundResource(red[pos]);
+
+        if (mColor!=null && !mColor.isEmpty() && !mColor.equals("null"))
+            if (mColor.toLowerCase().equals("b"))
+                strip_container.setBackgroundResource(blue[pos]);
+            else if (mColor.toLowerCase().equals("g"))
+                strip_container.setBackgroundResource(green[pos]);
+            else
+                strip_container.setBackgroundResource(red[pos]);
 
         strip_container.setTag(pos);
 

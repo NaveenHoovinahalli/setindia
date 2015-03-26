@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.fragments.MyFragment;
 import com.teli.sonyset.views.HorizontalLinearLayout;
-
-import java.util.ArrayList;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
 

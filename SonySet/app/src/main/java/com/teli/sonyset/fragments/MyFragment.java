@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.teli.sonyset.R;
-import com.teli.sonyset.activities.LandingActivity;
-import com.teli.sonyset.views.HorizontalLinearLayout;
 
 import java.util.ArrayList;
 

@@ -35,4 +35,5 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:3.23.0'
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'com.sothree.slidinguppanel:library:3.0.0'
 }

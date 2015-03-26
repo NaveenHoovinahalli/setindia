@@ -505,6 +505,12 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
                     View nextView = nextFragment.getView();
                     LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
                     nDividerLayout.setVisibility(View.GONE);
+
+                    int secondItem = pager.getCurrentItem() + 2;
+                    Fragment secondFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + secondItem);
+                    View secondView = secondFragment.getView();
+                    LinearLayout sDividerLayout = (LinearLayout) secondView.findViewById(R.id.divider);
+                    sDividerLayout.setVisibility(View.VISIBLE);
                 }
 
 

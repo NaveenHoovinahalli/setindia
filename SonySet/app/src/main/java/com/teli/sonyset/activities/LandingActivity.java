@@ -18,23 +18,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SlidingPaneLayout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,9 +52,7 @@ import com.teli.sonyset.Utils.Constants;
 import com.teli.sonyset.Utils.SetRequestQueue;
 import com.teli.sonyset.Utils.SonyDataManager;
 import com.teli.sonyset.Utils.SonyRequest;
-import com.teli.sonyset.adapters.MyPagerAdapter;
 import com.teli.sonyset.fragments.EpisodeFragment;
-import com.teli.sonyset.fragments.ExclusiveFragment;
 import com.teli.sonyset.fragments.Schedule;
 import com.teli.sonyset.fragments.SecondScreen;
 import com.teli.sonyset.fragments.ShowFragment;
@@ -150,6 +143,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     public final static int PAGES = 4;
     @InjectView(R.id.menu_button)
     ImageView menuClose;
+
+    @InjectView(R.id.dragView)
+    RelativeLayout mDragView;
 
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
@@ -293,6 +289,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         if (width == 540) {
             Log.d("Screen inside if", "width" + width);
 //            pager.setPageMargin(-420);
+            ViewGroup.LayoutParams params =  mDragView.getLayoutParams();
+            params.height = 822;
+            mDragView.setLayoutParams(params);
+
         } else if (width == 800) {
             mTopPager.setMinimumHeight(600);
 //            pager.setPageMargin(-616);
@@ -1213,7 +1213,8 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         @Override
         public void onPageSelected(int i) {
-//            pager.setCurrentItem(bottomPager.getCurrentItem());
+            //pager.setCurrentItem(bottomPager.getCurrentItem());
+            setMiddletab(i);
         }
 
         @Override
@@ -1240,7 +1241,30 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     public void expandView(){
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
     }
+
+   public void setMiddletab(int i){
+
+       View view;
+       switch (i){
+           case 0: view = findViewById(R.id.shows);
+               setSelected(view);
+               break;
+
+           case 1:view = findViewById(R.id.videos);
+               setSelected(view);
+               break;
+
+           case 2:view = findViewById(R.id.episodes);
+               setSelected(view);
+               break;
+
+           case 3:view = findViewById(R.id.schedule);
+               setSelected(view);
+               break;
+       }
+   }
 }
+
 
 
 

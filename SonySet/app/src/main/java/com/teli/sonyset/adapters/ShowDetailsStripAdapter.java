@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.teli.sonyset.activities.LandingActivity;
 import com.teli.sonyset.activities.ShowDetailsActivity;
 import com.teli.sonyset.fragments.ShowDetailsStripFragment;
 import com.teli.sonyset.views.HorizontalLinearLayout;
