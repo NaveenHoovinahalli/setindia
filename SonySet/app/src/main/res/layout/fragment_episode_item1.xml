@@ -36,6 +36,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
+        android:layout_toLeftOf="@+id/play_iv1"
         >
 
         <com.teli.sonyset.views.SonyTextView

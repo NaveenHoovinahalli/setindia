@@ -200,6 +200,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private Tracker t;
     private boolean isMenuOpen;
     private String secondScreenMessage;
+    private boolean isReceiverRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -473,6 +474,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BackgroundService.MY_ACTION);
         registerReceiver(receiver, intentFilter);
+        isReceiverRegistered = true;
     }
 
     private void fetchPromos() {
@@ -732,8 +734,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
                     Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
                     stopService(stopService);
-                    if(receiver!=null)
+                    if(receiver!=null && isReceiverRegistered){
                         unregisterReceiver(receiver);
+                        isReceiverRegistered = false;
+                    }
                 }
             }
 
@@ -1134,8 +1138,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         Intent stopService = new Intent(LandingActivity.this, BackgroundService.class);
         stopService(stopService);
-        if(receiver!=null)
+        if(receiver!=null && isReceiverRegistered){
             unregisterReceiver(receiver);
+            isReceiverRegistered = false;
+        }
         super.onDestroy();
     }
 
