@@ -319,10 +319,28 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         if (!SonyDataManager.init(this).getConutryCode().equals("in")){
             mEpisodesTab.setVisibility(View.GONE);
             mPagerAdapterForeign = new NavigationAdapterForeign(getSupportFragmentManager(), LandingActivity.this);
-            bottomPager.setAdapter(mPagerAdapter);
+            bottomPager.setAdapter(mPagerAdapterForeign);
             bottomPager.setOnPageChangeListener(bottomPagerListenerForeign);
             bottomPager.setOffscreenPageLimit(15);
             bottomPager.setCurrentItem(0);
+
+            if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
+//            bottomPager.setCurrentItem(2504);
+                bottomPager.setCurrentItem(2);
+                SonyDataManager.init(this).saveHdIsFromMenu(true);
+            } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
+//            bottomPager.setCurrentItem(2504);
+                bottomPager.setCurrentItem(2);
+                SonyDataManager.init(this).saveHdIsFromMenu(false);
+            } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
+                SonyDataManager.init(this).savePrecapsIsFromMenu(true);
+//            bottomPager.setCurrentItem(2502);
+                bottomPager.setCurrentItem(1);
+            } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
+                SonyDataManager.init(this).savePrecapsIsFromMenu(false);
+//            bottomPager.setCurrentItem(2502);
+                bottomPager.setCurrentItem(1);
+            }
         }else {
             mPagerAdapter = new NavigationAdapter(getSupportFragmentManager(), LandingActivity.this);
             bottomPager.setAdapter(mPagerAdapter);
