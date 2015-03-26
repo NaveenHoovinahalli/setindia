@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainRelativeLayour"
+    android:id="@+id/mainRelativeLayout"
     android:background="@color/sony_grey">
 
     <RelativeLayout
@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-
         android:paddingTop="15dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"

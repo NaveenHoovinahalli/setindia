@@ -191,7 +191,7 @@ public class VideoDetailsActivity extends Activity implements AdapterView.OnItem
                             mBCVideoView.setVideoURI(Uri.parse(videoUrl));
                             mBCVideoView.requestFocus();
                             VideoplazaPlugin vpPlugin = new VideoplazaPlugin();
-                            vpPlugin.init(mBCVideoView);
+                            vpPlugin.init(mBCVideoView, mVideoId);
                             getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE).edit().putInt("VIDEO_HEIGHT", mBCVideoView.getHeight()).commit();
                         } catch (JSONException e) {
                             e.printStackTrace();

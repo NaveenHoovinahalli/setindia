@@ -111,7 +111,7 @@ public class FeedbackActivity extends Activity {
 
     private void initializeRelatedToSpinner() {
 
-        Log.d(getClass().getSimpleName(),"initializeRelatedTo"+showTitle);
+        Log.d(getClass().getSimpleName(), "initializeRelatedTo" + showTitle);
 
         if(!showTitle.isEmpty()){
             for (int i = 0; i<relatedToList.size();i++){

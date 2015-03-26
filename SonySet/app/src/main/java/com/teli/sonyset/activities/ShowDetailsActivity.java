@@ -140,7 +140,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_show_details);
+        setContentView(R.layout.activity_show_details1);
         ButterKnife.inject(this);
 
         t = ((SonySet) this.getApplication()).getTracker(
@@ -470,23 +470,49 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
         @Override
         public void onPageSelected(int i) {
-            if (isFirst) {
-                Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
-                View previousView = previousFragment.getView();
-                LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
-                LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-                previousLayout.setSelected(false);
-//                pDividerLayout.setVisibility(View.VISIBLE);
+            try {
+                if (isFirst) {
+                    Fragment previousFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + previousItem);
 
-                Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
-                View currentView = currentFragment.getView();
-                LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
-                LinearLayout cDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
-//                cDividerLayout.setVisibility(View.GONE);
-                currentLayout.setSelected(true);
+                    if (previousFragment.getView() != null) {
+                        View previousView = previousFragment.getView();
+                        LinearLayout previousLayout = (LinearLayout) previousView.findViewById(R.id.strip_item);
+                        LinearLayout pDividerLayout = (LinearLayout) previousView.findViewById(R.id.divider);
+                        pDividerLayout.setVisibility(View.VISIBLE);
+//                        previousLayout.setSelected(false);
+                    }
+
+                    Fragment xFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + (pager.getCurrentItem() - 1));
+
+                    if (xFragment.getView() != null) {
+                        View xView = xFragment.getView();
+                        LinearLayout xDividerLayout = (LinearLayout) xView.findViewById(R.id.divider);
+                        xDividerLayout.setVisibility(View.VISIBLE);
+                    }
+
+                    Fragment currentFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + pager.getCurrentItem());
+
+                    if (currentFragment.getView() != null) {
+                        View currentView = currentFragment.getView();
+                        LinearLayout currentLayout = (LinearLayout) currentView.findViewById(R.id.strip_item);
+                        LinearLayout cDividerLayout = (LinearLayout) currentView.findViewById(R.id.divider);
+                        cDividerLayout.setVisibility(View.GONE);
+//                        currentLayout.setSelected(true);
+                    }
+
+                    int nextItem = pager.getCurrentItem() + 1;
+                    Fragment nextFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.myviewpager + ":" + nextItem);
+                    View nextView = nextFragment.getView();
+                    LinearLayout nDividerLayout = (LinearLayout) nextView.findViewById(R.id.divider);
+                    nDividerLayout.setVisibility(View.GONE);
+                }
+
+
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
             }
+
             isFirst = true;
-            mBottomPager.setCurrentItem(pager.getCurrentItem());
             previousItem = pager.getCurrentItem();
         }
 
@@ -497,6 +523,7 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
 
     public void setSelectedIten(int position) {
         pager.setCurrentItem(position);
+        mBottomPager.setCurrentItem(position);
     }
 
     public void setBottomPagerToConcept(){

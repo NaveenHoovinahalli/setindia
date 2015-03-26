@@ -148,7 +148,7 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("EpisodeFragment", "Thumbnail" + response);
+                        Log.d("MyActivity", "Thumbnail" + response);
 
                         if (response != null && !response.toString().isEmpty()) {
                             BrightCoveThumbnail brightCoveThumbnail = new Gson().fromJson(response.toString(), BrightCoveThumbnail.class);
@@ -160,8 +160,6 @@ public class EpisodeFragment extends Fragment implements AdapterView.OnItemClick
                             }
 
                             if (thumbnailsBrightCove.size() == brightCoveIds.size()) {
-
-                                Log.d("EpisodeFragment", "equal length" );
                                 initAdapter(value, thumbnailsBrightCove);
                             }
                         }

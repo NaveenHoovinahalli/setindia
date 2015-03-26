@@ -34,6 +34,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return LandingActivity.PAGES * LandingActivity.LOOPS;
+//        return LandingActivity.PAGES * LandingActivity.LOOPS;
+        return LandingActivity.PAGES;
     }
 }
