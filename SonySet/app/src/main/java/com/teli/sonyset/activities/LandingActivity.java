@@ -1,8 +1,10 @@
 package com.teli.sonyset.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -189,6 +191,10 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 SonySet.TrackerName.APP_TRACKER);
         t.setScreenName(Constants.LANDING_SCREEN);
         t.send(new HitBuilders.ScreenViewBuilder().build());
+        Log.d("FirstApi","CountryID"+SonyDataManager.init(this).getCountryId());
+        if(SonyDataManager.init(this).getNoCountryId().equalsIgnoreCase("Sorry SetAsia is not present in your country")){
+            showDialogForCountry();
+        }
 
         pager = (ViewPager) findViewById(R.id.myviewpager);
         adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
@@ -268,6 +274,24 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
 
         initSecondScreenFragment();
 
+
+    }
+
+    private void showDialogForCountry() {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LandingActivity.this);
+
+        alertDialogBuilder.setTitle("Sony Entertainment Television");
+        alertDialogBuilder
+                .setMessage("Sorry SetAsia is not present in your country.")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 

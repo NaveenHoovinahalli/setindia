@@ -23,6 +23,8 @@ public class CountryInfo implements Parcelable{
 
     String ccid;
 
+    String cid;
+
     @SerializedName("menu")
     ArrayList<MenuItem> menuItems;
 
@@ -75,6 +77,14 @@ public class CountryInfo implements Parcelable{
 
     public void setPopUpItems(ArrayList<MenuItem> popUpItems) {
         this.popUpItems = popUpItems;
+    }
+
+    public String getCid() {
+        return cid == null ? "" : cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     @Override

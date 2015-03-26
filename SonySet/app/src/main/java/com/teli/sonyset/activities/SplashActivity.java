@@ -138,9 +138,6 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
 
     private void checkForUpgrade() {
 
-        //String playStoreVersion = countryInfo.getData().getVersion();
-
-                        /*if(!currentVersion.equals(playStoreVersion)){*/
         String forceUpgrade = countryInfo.getForceUpgrade();
         String message = countryInfo.getMessages().get(0);
 
@@ -154,7 +151,6 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
         }else if(forceUpgrade.equals("0") && message.isEmpty()){
             launch();
         }
-        //}
 
     }
 
@@ -181,7 +177,8 @@ public class SplashActivity extends Activity implements MediaPlayer.OnCompletion
                     if(countryInfo!=null){
 
                         SonyDataManager.init(SplashActivity.this).saveCountryId(countryInfo.getCcid());
-
+                        SonyDataManager.init(SplashActivity.this).saveNoCountryId(countryInfo.getCid());
+                        Log.d("FirstApi","CountryID"+countryInfo.getCcid());
                         for (int i = 0; i<countryInfo.getMenuItems().size();i++){
                             SonyDataManager.init(SplashActivity.this).saveMenuItemUrl(countryInfo.getMenuItems().get(i).getTitle(),
                                     countryInfo.getMenuItems().get(i).getUrl());

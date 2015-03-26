@@ -223,7 +223,7 @@ public class FeedbackActivity extends Activity {
         super.onBackPressed();
     }
 
-    @OnClick(R.id.submit_btn)
+    @OnClick(R.id.reset_btn)
     public void resetClicked(){
         relatedToSpinner.setSelection(0);
         occupationSpinner.setSelection(0);
@@ -280,7 +280,7 @@ public class FeedbackActivity extends Activity {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(FeedbackActivity.this);
 
-        alertDialogBuilder.setTitle("Sony SAB Update");
+        alertDialogBuilder.setTitle("Sony Entertainment Television");
         alertDialogBuilder
                 .setMessage("Thankyou. Your feedback is successfully submitted.")
                 .setCancelable(false)

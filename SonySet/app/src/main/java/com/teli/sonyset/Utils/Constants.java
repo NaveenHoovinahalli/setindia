@@ -34,8 +34,8 @@ public class Constants {
     public static final String SHOW_TITLE = "show_title";
     public static final String SHOW_NID = "show_nid";
     public static final String SHOW_ID = "show_id";
+    public static final String NO_COUNTRY_ID = "no_country_id";
     //end
-
 
 
     public static final String SCHEDULE_SD=BASE_URL + "episode/%s.json?&hd=0&ln=en";
