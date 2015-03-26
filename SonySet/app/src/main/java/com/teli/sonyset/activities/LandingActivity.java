@@ -200,6 +200,7 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private Tracker t;
     private boolean isMenuOpen;
     private String secondScreenMessage;
+    private NavigationAdapterForeign mPagerAdapterForeign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,34 +315,42 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         if (countryId != null)
             fetchPromos();
 
-        mPagerAdapter = new NavigationAdapter(getSupportFragmentManager(), LandingActivity.this);
-        bottomPager.setAdapter(mPagerAdapter);
-//        bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
-        bottomPager.setOnPageChangeListener(bottomPagerListener);
-        bottomPager.setOffscreenPageLimit(15);
-        bottomPager.setCurrentItem(0);
+        if (!SonyDataManager.init(this).getConutryCode().equals("in")){
+            mEpisodesTab.setVisibility(View.GONE);
+            mPagerAdapterForeign = new NavigationAdapterForeign(getSupportFragmentManager(), LandingActivity.this);
+            bottomPager.setAdapter(mPagerAdapter);
+            bottomPager.setOnPageChangeListener(bottomPagerListenerForeign);
+            bottomPager.setOffscreenPageLimit(15);
+            bottomPager.setCurrentItem(0);
+        }else {
+            mPagerAdapter = new NavigationAdapter(getSupportFragmentManager(), LandingActivity.this);
+            bottomPager.setAdapter(mPagerAdapter);
+//          bottomPager.setScrollDurationFactor(SLIDE_DURATION_FACTOR);
+            bottomPager.setOnPageChangeListener(bottomPagerListener);
+            bottomPager.setOffscreenPageLimit(15);
+            bottomPager.setCurrentItem(0);
 
-        if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
+            if (getIntent().hasExtra(Constants.OPEN_IS_HD)) {
 //            bottomPager.setCurrentItem(2504);
-            bottomPager.setCurrentItem(3);
-            SonyDataManager.init(this).saveHdIsFromMenu(true);
-        } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
+                bottomPager.setCurrentItem(3);
+                SonyDataManager.init(this).saveHdIsFromMenu(true);
+            } else if (getIntent().hasExtra(Constants.OPEN_IS_SD)) {
 //            bottomPager.setCurrentItem(2504);
-            bottomPager.setCurrentItem(3);
-            SonyDataManager.init(this).saveHdIsFromMenu(false);
-        } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
-            SonyDataManager.init(this).savePrecapsIsFromMenu(true);
+                bottomPager.setCurrentItem(3);
+                SonyDataManager.init(this).saveHdIsFromMenu(false);
+            } else if (getIntent().hasExtra(Constants.OPEN_PRECAPS)) {
+                SonyDataManager.init(this).savePrecapsIsFromMenu(true);
 //            bottomPager.setCurrentItem(2502);
-            bottomPager.setCurrentItem(1);
-        } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
-            SonyDataManager.init(this).savePrecapsIsFromMenu(false);
+                bottomPager.setCurrentItem(1);
+            } else if (getIntent().hasExtra(Constants.OPEN_PROMOS)) {
+                SonyDataManager.init(this).savePrecapsIsFromMenu(false);
 //            bottomPager.setCurrentItem(2502);
-            bottomPager.setCurrentItem(1);
-        } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
+                bottomPager.setCurrentItem(1);
+            } else if (getIntent().hasExtra(Constants.OPEN_EPISODES)) {
 //            bottomPager.setCurrentItem(2503);
-            bottomPager.setCurrentItem(2);
+                bottomPager.setCurrentItem(2);
+            }
         }
-
 
         countryCode = SonyDataManager.init(this).getConutryCode();
 
@@ -350,8 +359,6 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         super.onCreate(savedInstanceState);
 
         initSecondScreenFragment();
-
-
     }
 
     @OnClick({R.id.shows, R.id.videos, R.id.episodes, R.id.schedule})
@@ -371,7 +378,12 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
                 break;
             case R.id.schedule:
                 setSelected(view);
-                bottomPager.setCurrentItem(3);
+
+                if (!SonyDataManager.init(this).getConutryCode().equals("in")){
+                    bottomPager.setCurrentItem(2);
+                }else {
+                    bottomPager.setCurrentItem(3);
+                }
                 break;
         }
     }
@@ -379,7 +391,9 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
     private void setSelected(View view) {
         mShowsTab.setSelected(false);
         mVideosTab.setSelected(false);
-        mEpisodesTab.setSelected(false);
+
+        if (mEpisodesTab!=null)
+            mEpisodesTab.setSelected(false);
         mScheduleTab.setSelected(false);
         view.setSelected(true);
     }
@@ -1222,6 +1236,39 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         }
     };
 
+    ViewPager.OnPageChangeListener bottomPagerListenerForeign = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i2) {
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            //pager.setCurrentItem(bottomPager.getCurrentItem());
+            setMiddletabForeign(i);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+        }
+    };
+
+    private void setMiddletabForeign(int i) {
+        View view;
+        switch (i){
+            case 0: view = findViewById(R.id.shows);
+                setSelected(view);
+                break;
+
+            case 1:view = findViewById(R.id.videos);
+                setSelected(view);
+                break;
+
+            case 2:view = findViewById(R.id.schedule);
+                setSelected(view);
+                break;
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -1242,27 +1289,64 @@ public class LandingActivity extends FragmentActivity implements ViewPager.OnPag
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
     }
 
-   public void setMiddletab(int i){
+    public void setMiddletab(int i){
 
-       View view;
-       switch (i){
-           case 0: view = findViewById(R.id.shows);
-               setSelected(view);
-               break;
+        View view;
+        switch (i){
+            case 0: view = findViewById(R.id.shows);
+                setSelected(view);
+                break;
 
-           case 1:view = findViewById(R.id.videos);
-               setSelected(view);
-               break;
+            case 1:view = findViewById(R.id.videos);
+                setSelected(view);
+                break;
 
-           case 2:view = findViewById(R.id.episodes);
-               setSelected(view);
-               break;
+            case 2:view = findViewById(R.id.episodes);
+                setSelected(view);
+                break;
 
-           case 3:view = findViewById(R.id.schedule);
-               setSelected(view);
-               break;
-       }
-   }
+            case 3:view = findViewById(R.id.schedule);
+                setSelected(view);
+                break;
+        }
+    }
+
+    private class NavigationAdapterForeign extends FragmentPagerAdapter {
+        Activity mContext;
+
+        public NavigationAdapterForeign(FragmentManager fm, Activity context) {
+            super(fm);
+            this.mContext = context;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment f = null;
+            switch (position) {
+
+                case 0:
+                    f = new ShowFragment();
+                    trackClicks("shows");
+                    break;
+                case 1:
+                    f = new VideoFragment();
+                    trackClicks("videos");
+                    break;
+
+                case 2:
+                    f = new Schedule();
+                    trackClicks("schedule");
+                    break;
+            }
+            return f;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+    }
+
 }
 
 

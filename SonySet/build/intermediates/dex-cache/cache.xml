@@ -9,6 +9,13 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/picasso-2.3.2-a14e6235a1981543ae0ef2736becf03b0f4b2fb3.jar" />
     </item>
     <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/library-2.4.0-b227798b3d9edc1c0513c2124d797d0a9afd6328.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -37,6 +44,13 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/butterknife-5.1.1-9d90052329d886bc522a74b257eee11cd9b82e24.jar" />
     </item>
     <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.squareup/otto/1.3.5/7941cd2c2c8ec006800d75c35f8a9dacf892ab93/otto-1.3.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/otto-1.3.5-231260aaa5726f2d72036066d0dfc31b82d5e9b1.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -51,6 +65,13 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-055c5d3a6a720b0386ab26aa7f6e453fb73c9e8c.jar" />
     </item>
     <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-6c2401417c4c405504576220f40ea1a010d80b1d.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/libs/zedoandroidsdk1.0.4.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -63,55 +84,6 @@
         revision="21.1.2"
         sha1="e084e6b8a000c2a3fd71fa1c6f603f47f90ea7c4">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/jacocoagent-a3ecf981089195893bd17c5d4f483f93b49fc7e1.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-9ad10288957d074575fcc9c0452a2d5fc04c25fe.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-3dafafe971ad44a89cb30e378973a4067330847a.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gson-2.2.4-f97977d2bed7ed377b4973a57f93240d171df5e1.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-94b974631439b8a5f9351af137669153b7a7916c.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/library-2.4.0-b227798b3d9edc1c0513c2124d797d0a9afd6328.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.squareup/otto/1.3.5/7941cd2c2c8ec006800d75c35f8a9dacf892ab93/otto-1.3.5.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7941cd2c2c8ec006800d75c35f8a9dacf892ab93">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/otto-1.3.5-231260aaa5726f2d72036066d0dfc31b82d5e9b1.jar" />
-    </item>
-    <item
-        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-6c2401417c4c405504576220f40ea1a010d80b1d.jar" />
     </item>
     <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/android-sdk-4.3.4/unspecified/classes.jar"
@@ -135,11 +107,18 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gama_carousel_v1.0-f29f5199736490024f73ef5ef77dd2e775ba80c3.jar" />
     </item>
     <item
-        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="05e87017cfd1fc34283be7d31345164b2a06835f">
-        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-7e885b33e6145a9221b544c75c5a35a039e76c02.jar" />
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-3dafafe971ad44a89cb30e378973a4067330847a.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-9ad10288957d074575fcc9c0452a2d5fc04c25fe.jar" />
     </item>
     <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.2/classes.jar"
@@ -149,11 +128,32 @@
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-bfeb21b5f34ea0f0256d67f8093c0fdc9e7b38d2.jar" />
     </item>
     <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/MenuSlideOutNavigation/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b57cdb5cdd57206136aa15dddb74fde0ce7be539">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-7e885b33e6145a9221b544c75c5a35a039e76c02.jar" />
+    </item>
+    <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/SonySet/phoicAudioLib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="bc00b7bc51f402e8780d7ae040652cf6f6e2e428">
         <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-6564eb855e6e33489c24a20c0e144e45c1b479f6.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/gson-2.2.4-f97977d2bed7ed377b4973a57f93240d171df5e1.jar" />
+    </item>
+    <item
+        jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/pre-dexed/debug/classes-94b974631439b8a5f9351af137669153b7a7916c.jar" />
     </item>
     <item
         jar="/home/madhuri/Videos/Latest_Code/set_india_android/SonySet/app/build/intermediates/exploded-aar/jp.co.recruit_mp/android-HeaderFooterGridView/0.2.3/classes.jar"

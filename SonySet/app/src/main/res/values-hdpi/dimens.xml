@@ -22,6 +22,7 @@
     <dimen name="menuShadowRightMargin">40dp</dimen>
     <dimen name="margin_left_close">10dp</dimen>
     <dimen name="drag_height">478dp</dimen>
-    <dimen name="show_top_image_height">478dp</dimen>
+    <dimen name="show_top_image_height">330dp</dimen>
+    <dimen name="landing_top_image_height">325dp</dimen>
 
 </resources>

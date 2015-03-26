@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -277,12 +278,17 @@ public class MenuFragment extends Fragment implements ExpandableListView.OnChild
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
        if(groupPosition==2){
-           slideOut.close();
-           Intent intent = new Intent(mContext,LandingActivity.class);
-           intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-           intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-           intent.putExtra(Constants.OPEN_EPISODES,true);
-           startActivity(intent);
+
+           if (SonyDataManager.init(getActivity()).getConutryCode().equals("in")) {
+               slideOut.close();
+               Intent intent = new Intent(mContext, LandingActivity.class);
+               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+               intent.putExtra(Constants.OPEN_EPISODES, true);
+               startActivity(intent);
+           }else {
+               Toast.makeText(getActivity(),"Sorry no episode found",Toast.LENGTH_SHORT).show();
+           }
        }
 
         if (groupPosition == 4){

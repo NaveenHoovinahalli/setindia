@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/promo_name"
             style="@style/textView"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:textAllCaps="true"
             android:textSize="12sp"
             />

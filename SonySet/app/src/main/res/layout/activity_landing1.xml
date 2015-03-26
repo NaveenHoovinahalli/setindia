@@ -13,7 +13,7 @@
         android:gravity="bottom"
         sothree:umanoDragView="@+id/dragView"
         sothree:umanoOverlay="false"
-        sothree:umanoPanelHeight="320dp"
+        sothree:umanoPanelHeight="@dimen/landing_top_image_height"
         sothree:umanoParalaxOffset="100dp"
         sothree:umanoShadowHeight="4dp">
 
@@ -27,7 +27,7 @@
                 android:id="@+id/topPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="35dp"
                 android:layout_below="@id/rlheader" />
 
             <com.teli.sonyset.views.CirclePageIndicator
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="45dp"
                 android:paddingTop="15dp"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"

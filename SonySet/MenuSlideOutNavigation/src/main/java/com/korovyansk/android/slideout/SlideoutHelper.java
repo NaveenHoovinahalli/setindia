@@ -31,15 +31,21 @@ public class SlideoutHelper {
 
 		ViewGroup v1 = (ViewGroup) activity.findViewById(id).getRootView();
 		v1.setDrawingCacheEnabled(true);
-		Bitmap source = Bitmap.createBitmap(v1.getDrawingCache());
-		v1.setDrawingCacheEnabled(false);
-		if (statusBarHeight != 0) {
-			sCoverBitmap = Bitmap.createBitmap(source, 0, statusBarHeight, source.getWidth(), source.getHeight() - statusBarHeight);
-			source.recycle();
-		} else {
-			sCoverBitmap = source;
-		}
-		sWidth = width;
+		Bitmap source =null;
+
+        try {
+            source = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+            if (statusBarHeight != 0) {
+                sCoverBitmap = Bitmap.createBitmap(source, 0, statusBarHeight, source.getWidth(), source.getHeight() - statusBarHeight);
+                source.recycle();
+            } else {
+                sCoverBitmap = source;
+            }
+            sWidth = width;
+        }catch (OutOfMemoryError e){
+            e.printStackTrace();
+        }
 	}
 
 	public SlideoutHelper(Activity activity) {

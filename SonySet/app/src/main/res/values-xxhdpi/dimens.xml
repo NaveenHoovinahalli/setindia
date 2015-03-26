@@ -21,5 +21,7 @@
     <dimen name="videoImageheaderheight">180dp</dimen>
     <dimen name="menuShadowRightMargin">38dp</dimen>
     <dimen name="margin_left_close">3dp</dimen>
-    <dimen name="drag_height">545dp</dimen>
+    <dimen name="drag_height">544dp</dimen>
+    <dimen name="show_top_image_height">390dp</dimen>
+    <dimen name="landing_top_image_height">350dp</dimen>
 </resources>

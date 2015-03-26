@@ -11,8 +11,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,6 +26,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.squareup.picasso.Picasso;
 import com.teli.sonyset.R;
 import com.teli.sonyset.SonySet;
@@ -113,6 +116,12 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
     @InjectView(R.id.settingDesc)
     LinearLayout settingLayout;
 
+    @InjectView(R.id.sliding_layout)
+    SlidingUpPanelLayout mSlideLayout;
+
+    @InjectView(R.id.dragView)
+    RelativeLayout mDragview;
+
     private NavigationAdapter mPagerAdapter;
     public static final String SHOW_ID = "show_id";
     public static final String SHOW_COLOR_CODE = "show_clor_code";
@@ -154,6 +163,19 @@ public class ShowDetailsActivity extends FragmentActivity implements ViewPager.O
             return;
         }
 
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int width = displaymetrics.widthPixels;
+        Log.d("Screen", "width" + width);
+        if (width == 540) {
+            ViewGroup.LayoutParams params = mSlideLayout.getLayoutParams();
+            params.height = 850;
+            mSlideLayout.setLayoutParams(params);
+
+            ViewGroup.LayoutParams params1 =  mDragview.getLayoutParams();
+            params1.height = 807;
+            mDragview.setLayoutParams(params1);
+        }
 
         aliasMap = new LinkedHashMap<String, String>();
         aliasMap.put("banner", "c406d19s1");
